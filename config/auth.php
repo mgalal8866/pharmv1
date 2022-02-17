@@ -39,6 +39,9 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],'brandaccount' => [
+            'driver' => 'session',
+            'provider' => 'brandaccounts',
         ],
     ],
 
@@ -63,7 +66,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ], 'brandaccounts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Brandaccount::class,
         ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -89,6 +96,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],'brandaccounts' => [
+            'provider' => 'brandaccounts',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

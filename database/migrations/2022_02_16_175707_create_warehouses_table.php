@@ -9,7 +9,7 @@ class CreateWarehousesTable extends Migration {
 	public function up()
 	{
 		Schema::create('warehouses', function(Blueprint $table) {
-			$table->increments('id', true)->primary();
+			$table->increments('id');
 			$table->string('name', 250);
 			$table->integer('phone');
 			$table->string('address', 250);

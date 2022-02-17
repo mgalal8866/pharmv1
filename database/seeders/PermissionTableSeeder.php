@@ -1,27 +1,73 @@
 <?php
+
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-class PermissionTableSeeder extends Seeder
+
+class PermissionTableseeder extends Seeder
 {
-/**
-* Run the database seeds.
-*
-* @return void
-*/
-public function run()
-{
-$permissions = [
-'role-list',
-'role-create',
-'role-edit',
-'role-delete',
-'product-list',
-'product-create',
-'product-edit',
-'product-delete'
-];
-foreach ($permissions as $permission) {
-Permission::create(['name' => $permission]);
-}
-}
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $permissions =[
+            'المستخدمين',
+            'قائمة المستخدمين',
+            'اضافة مستخدم',
+            'تعديل مستخدم',
+            'حذف مستخدم',
+            'صلاحيات المستخدمين',
+
+            'عرض صلاحية',
+            'اضافة صلاحية',
+            'تعديل صلاحية',
+            'حذف صلاحية',
+
+
+            'الوحدات',
+            'اضافه وحده',
+            'حذف وحده',
+            'تعديل وحده',
+            'تغير حاله وحده',
+
+            'الاقسام',
+            'اضافه قسم',
+            'حذف قسم',
+            'تعديل قسم',
+            'تغير حاله قسم',
+
+            'المنتجات',
+            'اضافه منتج',
+            'تعديل منتج',
+            'حذف منتج',
+            'تغير حاله منتج',
+
+            'العملاء',
+            'اضافه عميل',
+            'عرض العملاء',
+            'تعديل عميل',
+            'حذف عميل',
+            'تغير حاله عميل',
+
+            'الطلبات',
+            'عرض الطلب',
+
+            'الاشعارات',
+            'ارسال اشعار',
+
+            'قائمه الاعدادات',
+            'الاعدادات',
+            'تعديل الاعدادات',
+
+        ];
+        foreach ($permissions as $permission)
+        {
+            Permission::create(['name'=> $permission]);
+        }
+    }
+
 }
