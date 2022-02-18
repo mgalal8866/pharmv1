@@ -29,12 +29,14 @@ $brandaccount = Brandaccount::create([
 
 
 
-$role = Role::create(['name' => 'Admin']);
+$role = Role::create(['guard_name' => 'web','name' => 'Admin']);
 $permissions = Permission::pluck('id','id')->all();
 $role->syncPermissions($permissions);
 $user->assignRole([$role->id]);
 
-
-$brandaccount->assignRole([$role->id]);
+$rolebrandaccount = Role::create(['guard_name' => 'brandaccount','name' => 'Admin']);
+$permissions2 = Permission::where('guard_name' , 'brandaccount')->pluck('id','id')->all();
+$rolebrandaccount->syncPermissions($permissions2);
+$brandaccount->assignRole([$rolebrandaccount->id]);
 }
 }

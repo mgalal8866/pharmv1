@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Brand;
 use App\Models\Brandaccount;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use Symfony\Component\HttpFoundation\Response;
 
 class BrandaccountController extends Controller
 {
@@ -14,7 +16,12 @@ class BrandaccountController extends Controller
      */
     public function index()
     {
-        //
+        
+        if(View::exists('brands.login'))
+        {
+            return view('brands.login');
+        }
+        abort(Response::HTTP_NOT_FOUND);
     }
 
     /**

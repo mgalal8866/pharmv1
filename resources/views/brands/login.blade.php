@@ -22,6 +22,14 @@
                 <a class="h1">    <b>{{ env('app_name') }}</b>Brands V1.5</a>
             </div>
             <div class="card-body">
+                @if(session()->has('message'))
+                <span>{{ session()->get('message') }}</span>
+            @endif
+
+            @if(session()->has('email'))
+            <span>{{ session()->get('email') }}</span>
+        @endif
+
                                 <p class="login-box-msg">{{ __('tran.msglogin') }}</p>
                                         <form method="POST" action="{{ route('brand.login') }}">
                                             @csrf
@@ -32,11 +40,15 @@
                                                         <span class="fas fa-envelope"></span>
                                                     </div>
                                                 </div>
-                                                @error('email')
+                                              
+                                                {{-- @error('email') --}}
+                                                @if ($errors->has('email'))
+
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>{{  $errors->first('email') }}</strong>
                                                 </span>
-                                            @enderror
+                                                @endif
+                                            {{-- @enderror --}}
                                             </div>
 
                                             <div class="input-group mb-3">
@@ -89,6 +101,14 @@
 
         </div>
 
+        {{-- <a class="dropdown-item" href="{{ route('brand.logout') }}" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+        {{ __('Logout') }}
+      </a>
+
+      <form id="logout-form" action="{{ route('brand.logout') }}" method="POST" class="d-none">
+         @csrf
+      </form> --}}
     </div>
 
 <script src="{{ URL::asset('assets/plugins/jquery/jquery.min.js') }}"></script>

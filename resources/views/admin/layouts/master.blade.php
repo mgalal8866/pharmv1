@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  @include('layouts.head')
+  @include('admin.layouts.head')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -14,9 +14,9 @@
     <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
- @include('layouts.main_headerbar')
+ @include('admin.layouts.main_headerbar')
 
-@include('layouts.main_sidebar')
+@include('admin.layouts.main_sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -45,7 +45,7 @@
 
 
 
- @include('layouts.footer')
+ @include('admin.layouts.footer')
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -55,6 +55,6 @@
 </div>
 <!-- ./wrapper -->
 
-@include('layouts.footer_scripts')
+@include('admin.layouts.footer_scripts')
 </body>
 </html>
