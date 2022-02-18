@@ -35,14 +35,14 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-             
+
 
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
-                                Charts
+                                Products
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -50,31 +50,138 @@
                             <li class="nav-item">
                                 <a href="pages/charts/chartjs.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>ChartJS</p>
+                                    <p>New Product</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="pages/charts/flot.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Flot</p>
+                                    <p>View Products</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/inline.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inline</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/uplot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>uPlot</p>
-                                </a>
-                            </li>
+
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Categories
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>New Category</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View Category</p>
+                                </a>
+                            </li>
 
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Unit'S
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>New Unit</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View Unit</p>
+                                </a>
+                            </li>
 
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Warehouse
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>New Warehouse</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View Warehouse</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Orders
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View Orders</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View Warehouse</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Brands
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>New Brand</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View Warehouse</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
                     <li class="nav-header">EXAMPLES</li>
                     <li class="nav-item">
                         <a href="pages/calendar.html" class="nav-link">

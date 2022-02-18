@@ -13,12 +13,20 @@ class Brandaccount extends Authenticatable
 {
     use HasFactory, Notifiable , HasRoles;
 
-    protected $guarded = [];
-
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+    protected $guarded = ['brandaccount'];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = Hash::make($value);
+    //     dd( $this->attributes['password']);
+    // }
 
     public function scopeIsActive($query)
     {

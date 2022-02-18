@@ -66,7 +66,8 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ], 'brandaccounts' => [
+        ],
+        'brandaccounts' => [
             'driver' => 'eloquent',
             'model' => App\Models\Brandaccount::class,
         ],

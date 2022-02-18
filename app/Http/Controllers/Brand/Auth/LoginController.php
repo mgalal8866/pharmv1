@@ -26,13 +26,23 @@ class LoginController extends Controller
     public function processLogin(LoginRequest $request)
     {
 
-        return('sddsd');
-        $remember_me = $request->has('remember_me') ? true:false;
-        if(auth()->guard('brandaccount')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me))
-       {
-            return  'fgfdg';
 
-        }
+        $remember_me = $request->has('remember_me') ? true:false;
+       // if(Auth::guard('brandaccount')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me))
+    //    {
+    //         return  'fgfdg';
+
+    //     }
+        // $credentials = $request->except(['_token']);
+        // if(Auth::guard('brandaccount')->attempt($credentials))
+        // {
+
+        //             return  'fgfdg';
+        // }
+        dd(auth()->guard('web')->attempt(['email' => $request->input('email'), 'password' => bcrypt($request->input('password'))]));
+        if (auth()->guard('brandaccount')->attempt(['email' => $request->input('email'), 'password' => bcrypt($request->input('password'))])) {
+            return  'fgfdg';  }
+
         // dd($request);
 
         return redirect()->back();
