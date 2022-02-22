@@ -2,16 +2,32 @@
 
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
 use App\Http\Controllers\WarehouseController;
+use App\Models\Brandaccount;
+use App\Models\User;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::get('/get_role', function () {
+
+    $permissions2 = Permission::where('guard_name' , 'web')->pluck('id','id')->all();
+return  $permissions2;
+    $user = Brandaccount::find(1);
+    $role = Role::find(2);
+    $permissions = Permission::where('guard_name' , 'brandaccount')->pluck('id','id')->all();
+    $role->syncPermissions($permissions);
+    $user->assignRole([$role->id]);
+
+
+});
 
 Route::get('/get_category', function () {
     try {
