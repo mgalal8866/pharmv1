@@ -3,6 +3,7 @@
 Hi
 @stop
 @section('css')
+@endsection
 @section('page')
 @endsection
 @section('page1')

@@ -4,7 +4,7 @@ Dashborad
 @stop
 
 @section('css')
-@livewireStyles
+
 @endsection
 
 @section('page')
@@ -17,15 +17,10 @@ Dashborad
 @endsection
 
 @section('content')
-@isset($slot)
-{{ $slot }}
-
-@endisset
-
 
 
 @endsection
 
 @section('js')
-@livewireScripts
+
 @endsection

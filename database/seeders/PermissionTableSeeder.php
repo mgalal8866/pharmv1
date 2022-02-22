@@ -63,6 +63,21 @@ class PermissionTableseeder extends Seeder
             'الاعدادات',
             'تعديل الاعدادات',
 
+//************* UNIT*************************** */
+            'viewunit',
+            'newunit',
+            'editunit',
+            'deleteunit',
+//************* CATEGORY*************************** */
+            'viewcategory',
+            'newcategory',
+            'editcategory',
+            'deletecategory',
+//************* WAREHOUSE*************************** */
+            'viewwarehouse',
+            'newwarehouse',
+            'editwarehouse',
+            'deletewarehouse',
         ];
         foreach ($permissions as $permission)
         {

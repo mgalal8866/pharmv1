@@ -28,7 +28,29 @@
   <script src="{{ URL::asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ URL::asset('assets/dist/js/adminlte.js') }}"></script>
+  <script src="{{ URL::asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+        <script src="{{ URL::asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+  <script>
+
+  $(function () {
+    var url = window.location;
+    // for single sidebar menu
+    $('ul.nav-sidebar a').filter(function () {
+        return this.href == url;
+    }).addClass('active');
+
+    // for sidebar menu and treeview
+    $('ul.nav-treeview a').filter(function () {
+        return this.href == url;
+    }).parentsUntil(".nav-sidebar > .nav-treeview")
+        .css({'display': 'block'})
+        .addClass('menu-open').prev('a')
+        .addClass('active');
+});
+  </script>
   <!-- AdminLTE for demo purposes -->
-  <script src="{{ URL::asset('assets/dist/js/demo.js') }}"></script>
+  {{-- <script src="{{ URL::asset('assets/dist/js/demo.js') }}"></script> --}}
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ URL::asset('assets/dist/js/pages/dashboard.js') }}"></script> --}}
+@yield('js')

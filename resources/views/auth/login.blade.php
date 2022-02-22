@@ -33,6 +33,7 @@
                                                     </div>
                                                 </div>
                                                 @error('email')
+                                                
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

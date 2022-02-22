@@ -11,7 +11,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ asset('assets/pharm.png')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
  @include('admin.layouts.main_headerbar')
@@ -28,7 +28,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#"> @yield('page1','Dashbord')</a></li>
+              <li class="breadcrumb-item"><a href="admin/dashborad"> @yield('page1','Dashbord')</a></li>
               <li class="breadcrumb-item active"> @yield('page2','Home')</li>
             </ol>
           </div><!-- /.col -->
@@ -45,12 +45,12 @@
 
 
 
- @include('admin.layouts.footer')
+    @include('admin.layouts.footer')
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
