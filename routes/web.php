@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\ProductController;
@@ -55,24 +55,27 @@ Route::group(
         //     [
         //         'prefix' => 'admin',
         //     ], function(){
-        //***********************  Start Unit***********************************//
+
+            //***********************  Start Unit***********************************//
         Route::get('/view_unit',[UnitsController::class,'index'])->name('viewunit');
         //***********************  end Unit***********************************//
+
         //***********************  Start Category***********************************//
         Route::get('/view_category',[CategoryController::class,'index'])->name('viewcategory');
         //***********************  end Category***********************************//
+
         //***********************  Start UNITS***********************************//
         Route::get('/warehouses',[WarehouseController::class,'index'])->name('viewwarehouses');
         //***********************  end UNITS***********************************//
 
 
-            //***********************  Start USERS***********************************//
-            Route::get('/users',[UserController::class,'index'])->name('users.view');
-            //***********************  end USERS***********************************//
-            //***********************  Start Roles***********************************//
-            Route::get('/roles',[RolesController::class,'index'])->name('roles.view');
-            //***********************  end Roles***********************************//
+        //***********************  Start USERS***********************************//
+        Route::get('/users',[UsersController::class,'livewireindex'])->name('users.view');
+        //***********************  end USERS***********************************//
 
+        //***********************  Start Roles***********************************//
+        Route::get('/roles',[RolesController::class,'index'])->name('roles.view');
+        //***********************  end Roles***********************************//
 
 
         //***********************  Start Products***********************************//
@@ -81,8 +84,6 @@ Route::group(
         //***********************  end Products***********************************//
 
             Route::get('/unit/create',CreateUnit::class);
-
-
             Route::get('/', function () {return view('admin.dashborad');});
             Route::get('/getusers',[UserController::class,'index']);
         // });
