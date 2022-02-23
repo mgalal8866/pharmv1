@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 
 class Viewwarehouse extends Component
 {
+  
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 

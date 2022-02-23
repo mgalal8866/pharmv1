@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RolesController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
 use App\Http\Controllers\WarehouseController;
 use App\Models\Brandaccount;
@@ -64,8 +65,19 @@ Route::group(
         Route::get('/warehouses',[WarehouseController::class,'index'])->name('viewwarehouses');
         //***********************  end UNITS***********************************//
 
+
+            //***********************  Start USERS***********************************//
+            Route::get('/users',[UserController::class,'index'])->name('users.view');
+            //***********************  end USERS***********************************//
+            //***********************  Start Roles***********************************//
+            Route::get('/roles',[RolesController::class,'index'])->name('roles.view');
+            //***********************  end Roles***********************************//
+
+
+
         //***********************  Start Products***********************************//
-        Route::get('/products',[ProductController::class,'index'])->name('viewproducts');
+        Route::get('/products',[ProductController::class,'index'])->name('product.view');
+        Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
         //***********************  end Products***********************************//
 
             Route::get('/unit/create',CreateUnit::class);

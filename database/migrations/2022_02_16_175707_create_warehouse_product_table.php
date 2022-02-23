@@ -10,12 +10,14 @@ class CreateWarehouseProductTable extends Migration {
 	{
 		Schema::create('warehouse_product', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('warehouse_id')->unsigned();
-			$table->integer('product_id')->unsigned();
+            // $table->text('slug');
+			$table->unsignedInteger('warehouse_id')->unsigned();
+			$table->unsignedInteger('product_id');
+            $table->string('code');
 			$table->string('qty');
 			$table->string('price_sale');
 			$table->string('price_buy');
-			
+			$table->text('image')->nullable();
 			$table->string('unit_id');
 			$table->string('category_id');
             $table->timestamps();

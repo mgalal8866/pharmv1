@@ -15,3 +15,13 @@ if(!function_exists('isBrandaccountActive'))
         return false;
     }
 }
+
+if(!function_exists('Uploadimage'))
+{
+    function uploadimages($folder,$image)
+        {
+        $image->store('/',$folder);
+        $filename = $image->hashName();
+        return  $filename;
+        }
+}

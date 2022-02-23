@@ -73,6 +73,9 @@ class Viewproduct extends Component
 
     public function render()
     {
+        // $product = Product::where('active',1)->orderBy('id', 'desc')->
+        //     whereHas('category', function($q){$q->where('active' ,1);})->latest()->paginate($this->limitPerPage);
+
         $products = Product::where('name','like', '%'. $this->searchtxt . '%')->orderBy('id','desc')->latest()->paginate(20);
 
         // return view('livewire.admin.product.viewproduct',['products'=>$products]);

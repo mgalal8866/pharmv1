@@ -21,8 +21,8 @@ products
 
 
 @section('content')
-{{-- <livewire:admin.product.createproduct/> --}}
-<livewire:admin.product.viewproduct/>
+<livewire:admin.product.createproduct/>
+{{-- <livewire:admin.product.viewproduct/> --}}
 @endsection
 
 @section('js')

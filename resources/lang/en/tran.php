@@ -5,7 +5,14 @@ return [
 
     'msglogin' => 'Login system',
     //********************General******************** */
-    'code' => 'Code',
+
+     'users' => 'Users',
+     'roles' => 'Roles',
+     'code' => 'Code',
+    'general' => 'General',
+    'image' => 'Images',
+    'description' => 'Description',
+    'dis' => 'Discount',
     'effective' => 'effective',
     'qty' => 'Qty',
     'price_buy' => 'Price buy',

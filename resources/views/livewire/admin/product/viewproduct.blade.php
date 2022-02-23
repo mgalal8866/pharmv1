@@ -1,5 +1,5 @@
 <div>
-    @include('livewire.admin.product.createproduct')
+    {{-- @include('livewire.admin.product.createproduct') --}}
     @include('livewire.admin.product.deleteproduct')
     @include('livewire.admin.product.editproduct')
     <div class="card">
@@ -44,15 +44,31 @@
                         @if ($products->count() != 0)
                         @foreach ($products as $item )
                         <tr>
+                            {{-- {{ dd($item->warehouse_product()->first()->image) }} --}}
                             <td>{{ $item->id }}</td>
+                            {{-- @if(!empty($item->warehouse_product()->first()->image)) --}}
+                            {{-- <?php  $property_images = json_decode($item->warehouse_product()->first()->image);?> --}}
+                            {{-- {{ dd($property_images[0]) }} --}}
+                            {{-- <td>
+                                <img src=" {{ asset('storage/'. ($property_images[0])?$property_images[0]:'dsd') }}"
+                                style="width:100px; height:100px;">
+                            </td> --}}
+                            {{-- @else --}}
+                            <td>
+                                <img src=" {{ $item->warehouse_product()->first()->image }}"
+                                style="width:100px; height:100px;">
+                            </td>
+                            {{-- @endif --}}
+
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->address }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->warehouse_product()->first()->code }}</td>
+                            <td>{{ $item->effective }}</td>
+                            <td>{{ $item->warehouse_product()->first()->qty}}</td>
+                            <td>{{ $item->warehouse_product()->first()->price_buy }}</td>
+                            <td>{{ $item->warehouse_product()->first()->price_sale }}</td>
+                            <td>{{ $item->warehouse_product()->first()->warehouse->name }}</td>
+                            <td>{{ $item->warehouse_product()->first()->unit->name }}</td>
+                            <td>{{ $item->warehouse_product()->first()->category->name }}</td>
                             <td>
                                 {{-- @can('editproduct') --}}
                                 <button class="btn btn-info  btn-sm"   data-toggle="modal" data-target="#modal-edit" wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>

@@ -17,5 +17,9 @@ class Warehouse extends Model
             $this->attributes['name'] = $value;
             $this->attributes['slug'] = Str::slug($value);
         }
+        public function warehouse_product()
+        {
+            return $this->hasOne(Warehouse_product::class);
+        }
 
 }

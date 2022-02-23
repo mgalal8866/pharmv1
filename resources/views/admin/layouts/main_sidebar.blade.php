@@ -100,22 +100,41 @@
                             <p>
                                 {{ __('tran.product') }}
                                 {{-- <span class="right badge badge-danger"> 0 </span> --}}
+                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('viewproducts') }}" class="nav-link">
+                                <a href="{{route('product.view') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> {{ __('tran.view') . __('tran.product') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('viewproducts') }}" class="nav-link">
+                                <a href="{{route('product.create') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> {{ __('tran.new') . __('tran.product') }}</p>
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('roles.view') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                {{ __('tran.roles') }}
+                                <span class="right badge badge-danger"> 0 </span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('users.view') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                {{ __('tran.users') }}
+                                <span class="right badge badge-danger"> 0 </span>
+                            </p>
+                        </a>
                     </li>
                     {{-- <li class="nav-item">
                         <a href="#" class="nav-link">

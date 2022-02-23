@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-products
+Roles
 @stop
 @section('css')
   <!-- DataTables -->
@@ -10,19 +10,18 @@ products
   @livewireStyles
   @endsection
 @section('page')
-{{ __('tran.products') }}
+{{ __('tran.roles') }}
 @endsection
 @section('page1')
 {{ __('tran.home') }}
 @endsection
 @section('page2')
-{{ __('tran.products') }}
+{{ __('tran.roles') }}
 @endsection
 
 
 @section('content')
-{{-- <livewire:admin.product.createproduct/> --}}
-<livewire:admin.product.viewproduct/>
+<livewire:admin.roles.viewroles/>
 @endsection
 
 @section('js')
