@@ -40,7 +40,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="exampleInputemail">{{ __('tran.email') }}</label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="exampleInputemail" wire:model="email" placeholder="{{ __('tran.enter') . __('tran.email') }}">
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="exampleInputemail" wire:model="email" placeholder="{{ __('tran.enter') . __('tran.email') }}" required>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -49,23 +49,30 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="form-group">
-                            <label for="exampleInputemail">{{ __('tran.role') }}</label>
-                            <input type="text" class="form-control @error('role') is-invalid @enderror" id="exampleInputrole" wire:model="role" placeholder="{{ __('tran.enter') . __('tran.role') }}">
-                            
-                            @error('role')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
+                            <div class="form-group" wire:ignore>
+                                <label>{{ __('tran.role') }}</label>
+                                <div class="select2-purple">
+                                    <select id="role-dropdown" wire:model="role" class="select2 @error('role') is-invalid @enderror" multiple="multiple"
+                                    data-placeholder="{{ __('tran.enter') . __('tran.role') }}"
+                                    data-dropdown-css-class="select2-purple" style="width: 100%;" autocomplete="off" required>
+                                    @foreach ( $roles as $item )
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                    </select>
+                                    @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                     </div>
                 </div>
-                    <div class="row">
+                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="exampleInputphone">{{ __('tran.password') }}</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputpassword" wire:model="password" placeholder="{{ __('tran.enter')  .   __('tran.password')}}">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputpassword" wire:model="password" placeholder="{{ __('tran.enter')  .   __('tran.password')}}" required>
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -76,7 +83,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="exampleInputpasswordconfirm">{{ __('tran.passwordconfirm') }}</label>
-                                <input type="password" class="form-control @error('passwordconfirm') is-invalid @enderror" id="exampleInputpasswordconfirm" wire:model="passwordconfirm" placeholder="{{ __('tran.enter')  .   __('tran.passwordconfirm')}}">
+                                <input type="password" class="form-control @error('passwordconfirm') is-invalid @enderror" id="exampleInputpasswordconfirm" wire:model="passwordconfirm" placeholder="{{ __('tran.enter')  .   __('tran.passwordconfirm')}}" required>
                                 @error('passwordconfirm')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -84,7 +91,7 @@
                                 @enderror
                             </div>
                         </div>
-                </div>
+                   </div>
                     <!-- /.card-body -->
 
             </div>
@@ -101,3 +108,6 @@
         <!-- /.modal-dialog -->
       </div>
 </div>
+@push('jslive')
+
+@endpush

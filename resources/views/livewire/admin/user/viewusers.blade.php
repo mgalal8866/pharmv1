@@ -55,7 +55,7 @@
                                 @else
 
                                         <div class="badge badge-success">{{ $item->active }}</div>
-                             
+
                                 @endif
                             </td>
                             <td>{{ $item->created_at }}</td>
