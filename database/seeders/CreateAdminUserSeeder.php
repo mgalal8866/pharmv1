@@ -18,7 +18,8 @@ public function run()
 $user = User::create([
 'name' => 'Brand',
 'email' => 'mgalaladmin@gmail.com',
-'password' => bcrypt('123456')
+'password' => bcrypt('123456'),
+'phone' => '0000',
 ]);
 
 $brandaccount = Brandaccount::create([

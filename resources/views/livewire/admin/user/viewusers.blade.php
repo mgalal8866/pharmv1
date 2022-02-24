@@ -1,6 +1,6 @@
 <div>
     @include('livewire.admin.user.createusers')
-    {{-- @include('livewire.admin.user.deleteusers') --}}
+    @include('livewire.admin.user.deleteuser')
     @include('livewire.admin.user.editusers')
     <div class="card">
         <div class="card-header" >
@@ -61,10 +61,10 @@
                             <td>{{ $item->created_at }}</td>
                             <td>
                                 {{-- @can('edituser') --}}
-                                <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
+                                <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->id }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
                                 {{-- @endcan --}}
                                 {{-- @can('deluser') --}}
-                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->id }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
                                 {{-- @endcan --}}
                             </td>
                         </tr>

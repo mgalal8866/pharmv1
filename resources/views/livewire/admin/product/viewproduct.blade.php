@@ -55,11 +55,17 @@
                             </td> --}}
                             {{-- @else --}}
                             <td>
-                                <img src=" {{ $item->warehouse_product()->first()->image }}"
+                                @if(!empty($item->warehouse_product()->first()->image))
+
+                                <img src="{{ $item->warehouse_product()->first()->image }}"
                                 style="width:100px; height:100px;">
+                                @else
+
+                                @endif
+                               
                             </td>
                             {{-- @endif --}}
-
+                                    
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->warehouse_product()->first()->code }}</td>
                             <td>{{ $item->effective }}</td>

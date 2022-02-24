@@ -54,7 +54,7 @@
                                 <div class="select2-purple">
                                     <select id="role-dropdown" wire:model="role" class="select2 @error('role') is-invalid @enderror" multiple="multiple"
                                     data-placeholder="{{ __('tran.enter') . __('tran.role') }}"
-                                    data-dropdown-css-class="select2-purple" style="width: 100%;" autocomplete="off" required>
+                                    data-dropdown-css-class="select2-purple" style="width: 100%;" autocomplete="off" >
                                     @foreach ( $roles as $item )
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach

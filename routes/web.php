@@ -14,8 +14,23 @@ use App\Http\Controllers\RolesController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
 use App\Http\Controllers\WarehouseController;
 use App\Models\Brandaccount;
+use App\Models\Product;
 use App\Models\User;
+use App\Models\Warehouse_product;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+ 
+Route::get('/ge', function () {
+
+    return Warehouse_product::get()->groupBy('product_id');
+// return Product::whereHas('warehouse_product', function($q){
+
+// })->with('warehouse_product', function($q){
+//     $q->groupBy('product_id');
+
+// })->get();
+
+});
 
 Route::get('/get_role', function () {
 

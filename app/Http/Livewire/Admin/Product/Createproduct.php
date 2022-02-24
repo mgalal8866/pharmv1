@@ -35,8 +35,9 @@ class Createproduct extends Component
         // }
         // $this->images = json_encode($this->images);
         //  }
+        if(!empty($this->images)){
          $this->images = uploadimages('product',$this->images);
-
+        }
         $product = Product::create([
         'name' => $this->name,
         'effective' => '$this->effective',
@@ -44,6 +45,7 @@ class Createproduct extends Component
         ]);
         $product->warehouse_product()->create([
             'warehouse_id' => $this->warehouse_id,
+            'code'         => $this->code,
         	'qty'          => $this->qty,
             'price_sale'   => $this->price_sale,
             'price_buy'	   => $this->price_buy,
@@ -51,6 +53,8 @@ class Createproduct extends Component
             'category_id'  => $this->category_id,
             'image'        => (!empty($this->images))?$this->images:Null
         ]);
+        $this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
 
         // Image::create(['image' => $this->images]);
 
