@@ -19,7 +19,7 @@ use App\Models\User;
 use App\Models\Warehouse_product;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
- 
+
 Route::get('/ge', function () {
 
     return Warehouse_product::get()->groupBy('product_id');
@@ -30,6 +30,11 @@ Route::get('/ge', function () {
 
 // })->get();
 
+});
+
+Route::get('/front', function () {
+
+  return view('front.layout.pagenew');
 });
 
 Route::get('/get_role', function () {

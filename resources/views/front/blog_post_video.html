@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>CosyOne - Blog Single Post</title>
+		<meta charset="utf-8">
+		<!--add responsive layout support-->
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<!--meta info-->
+		<meta name="author" content="">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<!--include favicon-->
+		<link rel="shortcut icon" type="image/x-icon" href="images/fav.png">
+		<!--fonts include-->
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<!--stylesheet include-->
+		<link rel="stylesheet" type="text/css" media="all" href="plugins/owl-carousel/assets/owl.carousel.min.css">
+		<link rel="stylesheet" type="text/css" media="all" href="plugins/jackbox/css/jackbox.min.css">
+		<link rel="stylesheet" type="text/css" media="all" href="css/animate.css">
+		<link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+		<!--[if lte IE 10]>
+			<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+			<link rel="stylesheet" type="text/css" media="screen" href="plugins/jackbox/css/jackbox-ie9.css">
+		<![endif]-->
+		<!--head libs-->
+		<!--[if lte IE 8]>
+			<style>
+				#preloader{display:none !important;}
+			</style>
+		<![endif]-->
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/modernizr.js"></script>
+	</head>
+	<body class="sticky_menu">
+
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+		<div id="preloader"></div>
+		<!--styleswitcher-->
+		<div id="styleswitcher" class="bg_grey_light d_xs_none">
+			<button id="open_switcher" class="bg_scheme_color color_white vc_child"><i class="fa fa-cogs d_inline_m"></i></button>
+			<p class="fs_large fw_light second_font color_dark tt_uppercase m_bottom_20">Style Switcher</p>
+			<p class="second_font m_bottom_5">Layout type</p>
+			<div class="clearfix m_bottom_13">
+				<button class="tt_uppercase fs_medium layout_button color_white bg_scheme_color fw_light f_left m_right_5 tr_all">Wide</button>
+				<button class="tt_uppercase fs_medium layout_button color_dark bg_white fw_light f_left tr_all">Boxed</button>
+			</div>
+			<p class="second_font m_bottom_5">Header style</p>
+			<div class="styled_select relative m_bottom_15">
+				<div class="select_title fs_medium fw_light color_light relative d_none tr_all">Header 1</div>
+				<select>
+					<option value="Header 1">Header 1</option>
+					<option value="Header 2">Header 2</option>
+					<option value="Header 3">Header 3</option>
+					<option value="Header 4">Header 4</option>
+				</select>
+				<ul id="header_select" class="options_list d_none tr_all hidden bg_grey_light_2"></ul>
+			</div>
+			<p class="second_font m_bottom_5">Footer style</p>
+			<div class="styled_select relative m_bottom_15">
+				<div class="select_title fs_medium fw_light color_light relative d_none tr_all">Footer 1</div>
+				<select>
+					<option value="Footer 1">Footer 1</option>
+					<option value="Footer 2">Footer 2</option>
+					<option value="Footer 3">Footer 3</option>
+					<option value="Footer 4">Footer 4</option>
+				</select>
+				<ul id="footer_select" class="options_list d_none tr_all hidden bg_grey_light_2"></ul>
+			</div>
+			<p class="second_font m_bottom_5">Background for boxed layout</p>
+			<div class="styled_select relative m_bottom_13">
+				<div class="select_title fs_medium fw_light color_light relative d_none tr_all">Color</div>
+				<select>
+					<option value="Color">Color</option>
+					<option value="Image">Image</option>
+				</select>
+				<ul class="options_list d_none tr_all hidden bg_grey_light_2 change_bg_select"></ul> 
+			</div>
+			<div class="m_bottom_20" id="color_background_container">
+				<p class="second_font d_inline_m m_right_3">Background color:</p>
+				<div class="bgpicker_wrap bg_white d_inline_m">
+					<button id="cpicker" class="bg_white d_block"></button>
+				</div>
+			</div>
+			<div class="m_bottom_20 d_none" id="image_background_container">
+				<p class="second_font d_inline_m m_right_3">Background image:</p>
+				<ul class="hr_list d_inline_m">
+					<li class="m_right_3 bgpicker_wrap bg_white d_inline_m"><button class="d_block" data-bg="images/body_bg_1.jpg"></button></li>
+					<li class="m_right_3 bgpicker_wrap bg_white d_inline_m"><button class="d_block" data-bg="images/body_bg_2.jpg"></button></li>
+				</ul>
+			</div>
+			<button id="reset_switcher" class="button_type_2 w_full tt_uppercase fs_medium second_font t_align_c black state_2 m_bottom_5 tr_all">Reset</button>
+		</div>
+		<!--layout-->
+		<div class="wide_layout db_centered bg_white">
+			<!--[if (lt IE 9) | IE 9]>
+				<div class="bg_red" style="padding:5px 0 12px;">
+				<div class="container" style="width:1170px;"><div class="row wrapper"><div class="clearfix color_white" style="padding:9px 0 0;float:left;width:80%;"><i class="fa fa-exclamation-triangle f_left m_right_10" style="font-size:25px;"></i><b>Attention! This page may not display correctly.</b> <b>You are using an outdated version of Internet Explorer. For a faster, safer browsing experience.</b></div><div class="t_align_r" style="float:left;width:20%;"><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode" class="button_type_1 d_block f_right lbrown tr_all second_font fs_medium" target="_blank" style="margin-top:6px;">Update Now!</a></div></div></div></div>
+			<![endif]-->
+			<header role="banner" class="w_inherit">
+				<!--top part-->
+				<div class="header_top_part p_top_0 p_bottom_0">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4 t_xs_align_c htp_offset p_xs_top_0 p_xs_bottom_0">
+								<!--shop nav-->
+								<nav class="d_xs_inline_b">
+									<ul class="hr_list second_font si_list fs_small">
+										<li><a class="sc_hover tr_delay" href="account.html">My Account</a></li>
+										<li><a class="sc_hover tr_delay" href="orders_list.html">Orders List</a></li>
+										<li><a class="sc_hover tr_delay" href="wishlist.html">Wishlist</a></li>
+										<li><a class="sc_hover tr_delay" href="checkout.html">Checkout</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-lg-4 col-md-5 col-sm-4 fs_small color_light fw_light t_xs_align_c htp_offset p_xs_top_0 p_xs_bottom_0">
+								<b class="scheme_color">Free shipping</b> on orders over $100. Need Help? <b class="scheme_color">866.526.3979</b>
+							</div>
+							<div class="col-lg-4 col-md-3 col-sm-4 t_align_r t_xs_align_c">
+								<div class="clearfix d_inline_b t_align_l">
+									<!--currency-->
+									<div class="f_right relative transform3d">
+										<button class="tr_all second_font color_dark fs_small type_2 m_sm_top_10 m_xs_top_0" data-open-dropdown="#currency">&#36;<i class="fa fa-angle-down d_inline_m m_left_25"></i></button>
+										<ul id="currency" data-show="wicket" data-hide="wicketout" class="sub_menu dropdown fs_medium bg_grey_light second_font animated">
+											<li>
+												<a href="#" class="sc_hover">
+													&#36; US Dollar
+												</a>
+											</li>
+											<li>
+												<a href="#" class="sc_hover">
+													&#163; Pound Sterling
+												</a>
+											</li>
+											<li>
+												<a href="#" class="sc_hover">
+													&#8364; Euro
+												</a>
+											</li>
+										</ul>
+									</div>
+									<!--language-->
+									<div class="f_right relative transform3d">
+										<button class="tr_all second_font color_dark type_2 m_sm_top_10 m_xs_top_0" data-open-dropdown="#language">
+											<img src="images/flag_en.jpg" alt="" class="d_inline_m m_right_10"><i class="fa fa-angle-down d_inline_m fs_small"></i>
+										</button>
+										<ul id="language" data-show="wicket" data-hide="wicketout" class="sub_menu dropdown fs_medium bg_grey_light second_font animated">
+											<li>
+												<a href="#" class="sc_hover">
+													<img src="images/flag_en.jpg" alt="" class="d_inline_m m_right_7">
+													English
+												</a>
+											</li>
+											<li>
+												<a href="#" class="sc_hover">
+													<img src="images/flag_g.jpg" alt="" class="d_inline_m m_right_7">
+													German
+												</a>
+											</li>
+											<li>
+												<a href="#" class="sc_hover">
+													<img src="images/flag_s.jpg" alt="" class="d_inline_m m_right_7">
+													Spanish
+												</a>
+											</li>
+										</ul>
+									</div>
+									<!--login-->
+									<div class="f_right relative transform3d">
+										<button class="tr_all second_font color_dark type_2 m_sm_top_10 m_xs_top_0" data-open-dropdown="#login"><i class="fa fa-user d_inline_m m_right_5"></i> <span class="fs_small">Login</span></button>
+										<div id="login" data-show="fadeInUp" data-hide="fadeOutDown" class="dropdown bg_grey_light login_dropdown animated">
+											<form class="m_bottom_15">
+												<ul>
+													<li class="m_bottom_15">
+														<label for="username" class="second_font m_bottom_4 d_inline_b fs_medium">Username</label>
+														<input type="text" name="" id="username" class="w_full tr_all">
+													</li>
+													<li class="m_bottom_20">
+														<label for="password" class="second_font m_bottom_4 d_inline_b fs_medium">Password</label>
+														<input type="password" name="" id="password" class="w_full tr_all">
+													</li>
+													<li class="m_bottom_20">
+														<input type="checkbox" name="" id="remember_me">
+														<label for="remember_me" class="second_font fs_medium">Remember me</label>
+													</li>
+													<li>
+														<button class="t_align_c tt_uppercase w_full second_font d_block fs_medium button_type_2 lbrown tr_all">Log In</button>
+													</li>
+												</ul>
+											</form>
+											<div class="m_bottom_14 t_align_c">
+												<a href="#" class="second_font sc_hover fs_small">Forgot your password?</a><br>
+												<a href="#" class="second_font sc_hover fs_small">Forgot your username?</a>
+											</div>
+											<hr class="divider_white m_bottom_25">
+											<h5 class="color_dark tt_uppercase second_font t_align_c m_bottom_15 fw_light">New Customer?</h5>
+											<a href="#" role="button" class="button_type_2 tt_uppercase fs_medium second_font d_block t_align_c black state_2">Create An Account</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="m_bottom_27 m_sm_bottom_10">
+				<div class="header_bottom_part bg_white type_2 t_sm_align_c w_inherit">
+					<div class="container">
+						<div class="d_table w_full d_xs_block">
+							<div class="col-lg-2 col-md-2 d_sm_block w_sm_full d_table_cell d_xs_block f_none v_align_m m_xs_bottom_15">
+								<!--logo-->
+								<a href="index.html" class="d_inline_b m_sm_top_5 m_sm_bottom_5 m_xs_bottom_0">
+									<img src="images/logo.png" alt="">
+								</a>
+							</div>
+							<div class="col-lg-8 col-md-8 d_sm_block w_sm_full d_table_cell d_xs_block f_none v_align_m">
+								<button id="mobile_menu_button" class="vc_child d_xs_block db_xs_centered d_none m_bottom_10 m_top_15 bg_lbrown color_white tr_all"><i class="fa fa-navicon d_inline_m"></i></button>
+								<!--main menu-->
+								<nav role="navigation" class="d_xs_none">
+									<ul class="main_menu relative type_2 d_sm_inline_b d_xs_block t_sm_align_l hr_list second_font fs_medium">
+										<li>
+											<a href="index.html" class="tt_uppercase tr_delay">Home <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
+											<!--sub menu (second level)-->
+											<ul class="sub_menu bg_grey_light tr_all">
+												<li><a href="index.html">Home v1</a></li>
+												<li><a href="index_v2.html">Home v2</a></li>
+												<li><a href="index_v3.html">Home v3</a></li>
+												<li><a href="index_v4.html">Home v4</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="index.html" class="tt_uppercase tr_delay">Sliders <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
+											<!--sub menu (second level)-->
+											<ul class="sub_menu bg_grey_light tr_all">
+												<li><a href="index_v4.html">Revolution</a></li>
+												<li><a href="index_v3.html">Flex</a></li>
+												<li><a href="index.html">Layer</a></li>
+												<li><a href="index_v2.html">Royal</a></li>
+											</ul>
+										</li>
+										<li>
+											<a class="tt_uppercase tr_delay">Shop <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5"></i></a>
+											<div class="mega_menu bg_grey_light tr_all">
+												<div class="row">
+													<section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
+														<h6 class="color_dark m_bottom_13"><b class="second_font ">Living Rooms</b></h6>
+														<img src="images/mega_menu_img_1.jpg" alt="" class="m_bottom_3">
+														<ul class="mega_menu_list">
+															<li><a href="#" class="d_block sc_hover tr_delay">Sofas</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">Chairs</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">Ottomans</a></li>
+														</ul>
+													</section>
+													<section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
+														<h6 class="color_dark m_bottom_13"><b class="second_font ">Bedrooms</b></h6>
+														<img src="images/mega_menu_img_2.jpg" alt="" class="m_bottom_3">
+														<ul class="mega_menu_list">
+															<li><a href="#" class="d_block sc_hover tr_delay">Beds</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">Dressers/Chests</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">Nightstands</a></li>
+														</ul>
+													</section>
+													<section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
+														<h6 class="color_dark m_bottom_13"><b class="second_font ">Dining Rooms</b></h6>
+														<img src="images/mega_menu_img_3.jpg" alt="" class="m_bottom_3">
+														<ul class="mega_menu_list">
+															<li><a href="#" class="d_block sc_hover tr_delay">Tables</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">Dining Chairs</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">China Cabinets</a></li>
+														</ul>
+													</section>
+													<section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
+														<h6 class="color_dark m_bottom_13"><b class="second_font ">Home Office</b></h6>
+														<img src="images/mega_menu_img_4.jpg" alt="" class="m_bottom_3">
+														<ul class="mega_menu_list">
+															<li><a href="#" class="d_block sc_hover tr_delay">Desks &amp; Tables</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">Office Chairs</a></li>
+															<li><a href="#" class="d_block sc_hover tr_delay">Workspace Storage</a></li>
+														</ul>
+													</section>
+												</div>
+											</div>
+										</li>
+										<li>
+											<a href="portfolio_1_column_with_sidebar.html" class="tt_uppercase tr_delay">Portfolio <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
+											<!--sub menu (second level)-->
+											<ul class="sub_menu bg_grey_light tr_all">
+												<li>
+													<a href="portfolio_1_column_with_sidebar.html">Grid</a>
+													<!--sub menu (third level)-->
+													<ul class="sub_menu bg_grey_light tr_all">
+														<li><a href="portfolio_1_column_with_sidebar.html">1 column with sidebar</a></li>
+														<li><a href="portfolio_2_columns.html">2 columns</a></li>
+														<li><a href="portfolio_3_columns.html">3 columns</a></li>
+														<li><a href="portfolio_3_columns_with_sidebar.html">3 columns with sidebar</a></li>
+														<li><a href="portfolio_4_columns.html">4 columns</a></li>
+													</ul>
+												</li>
+												<li>
+													<a href="portfolio_masonry.html">Masonry</a>
+													<!--sub menu (third level)-->
+													<ul class="sub_menu bg_grey_light tr_all">
+														<li><a href="portfolio_masonry.html">Masonry</a></li>
+														<li><a href="portfolio_masonry_full_width.html">Full width masonry</a></li>
+													</ul>
+												</li>
+												<li>
+													<a href="portfolio_single_project_v1.html">Single project pages</a>
+													<!--sub menu (third level)-->
+													<ul class="sub_menu bg_grey_light tr_all">
+														<li><a href="portfolio_single_project_v1.html">Single project page v1</a></li>
+														<li><a href="portfolio_single_project_v2.html">Single project page v2</a></li>
+														<li><a href="portfolio_single_project_v3.html">Single project page v3</a></li>
+														<li><a href="portfolio_single_project_video_list.html">Single project with video list</a></li>
+														<li><a href="portfolio_single_project_video_slider.html">Single project with video slider</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="pages_category_grid.html" class="tt_uppercase tr_delay">Pages <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
+											<ul class="sub_menu bg_grey_light tr_all">
+												<li><a href="pages_category_grid.html">Category page v1</a></li>
+												<li><a href="pages_category_list.html">Category page v2</a></li>
+												<li><a href="pages_deals_of_the_day.html">Category page v3</a></li>
+												<li><a href="pages_product_v1.html">Product page v1</a></li>
+												<li><a href="pages_product_v2.html">Product page v2</a></li>
+												<li><a href="pages_product_v3.html">Product page v3</a></li>
+												<li><a href="pages_wishlist.html">Wishlist</a></li>
+												<li><a href="pages_compare_products.html">Compare</a></li>
+												<li><a href="pages_shopping_cart.html">Shopping cart</a></li>
+												<li><a href="pages_checkout.html">Checkout</a></li>
+												<li><a href="pages_manufacturers.html">Manufacturers</a></li>
+												<li><a href="pages_manufacturer.html">Manufacturer page</a></li>
+												<li><a href="pages_orders_list.html">Orders list</a></li>
+												<li><a href="pages_order_page.html">Order page</a></li>
+												<li><a href="pages_about.html">About us</a></li>
+												<li><a href="page_404.html">404 page</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="features_elements.html" class="tt_uppercase tr_delay">Features <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
+											<ul class="sub_menu bg_grey_light tr_all">
+												<li><a href="features_elements.html">Elements</a></li>
+												<li><a href="features_typography.html">Typography</a></li>
+												<li><a href="features_columns.html">Columns</a></li>
+												<li><a href="index_rtl.html">Rtl layout</a></li>
+											</ul>
+										</li>
+										<li class="current">
+											<a href="blog.html" class="tt_uppercase tr_delay">Blog <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
+											<ul class="sub_menu bg_grey_light tr_all">
+												<li><a href="blog.html">Blog page</a></li>
+												<li><a href="blog_post.html">Blog post</a></li>
+												<li class="current"><a href="blog_post_video.html">Blog video post</a></li>
+											</ul>
+										</li>
+										<li><a href="contact.html" class="tt_uppercase tr_delay">Contact</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-lg-2 col-md-2 d_sm_block w_sm_full d_table_cell d_xs_block f_none v_align_m m_xs_bottom_15">
+								<ul class="hr_list si_list list_with_focused_form shop_list f_right f_sm_none d_sm_inline_b t_sm_align_l t_xs_align_c">
+									<li class="m_xs_bottom_5">
+										<!--searchform-->
+										<div class="search_form_container d_inline_b relative">
+											<form role="search" class="relative f_right f_xs_none db_xs_centered button_in_input clearfix">
+												<input type="text" name="" tabindex="1" placeholder="Search" class="fs_medium color_light fw_light w_full tr_all f_right hidden">
+												<button class="color_dark color_lbrown_hover tr_all"><i class="fa fa-search d_inline_m"></i></button>
+											</form>
+										</div>
+									</li>
+									<!--shopping cart-->
+									<li class="relative open_mini_shopping_cart d_xs_inline_b t_xs_align_l">
+										<button class="color_dark active_lbrown tr_all" data-open-dropdown="#shopping_cart">
+											<i class="fa fa-shopping-cart fs_large"></i><sup>3</sup>
+											<b class="second_font fs_small d_inline_b m_left_10">$355</b>
+										</button>
+										<div id="shopping_cart" data-show="fadeInUp" data-hide="fadeOutDown" class="bg_grey_light dropdown animated">
+											<div class="sc_header fs_small fw_light">Recently added item(s)</div>
+											<hr class="divider_white">
+											<ul class="shopping_cart_list m_bottom_4">
+												<li class="relative">
+													<div class="clearfix lh_small">
+														<a href="#" class="f_left m_right_10 d_block"><img src="images/sc_img_1.jpg" alt=""></a>
+														<a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4">Cursus eleifend elit aenean</a>
+														<p class="fs_medium">1 x <b class="color_dark">$499.00</b></p>
+													</div>
+													<hr class="divider_white m_top_15 m_bottom_0">
+													<span class="close fs_small color_light tr_all color_dark_hover fw_light">x</span>
+												</li>
+												<li class="relative">
+													<div class="clearfix lh_small">
+														<a href="#" class="f_left m_right_10 d_block"><img src="images/sc_img_2.jpg" alt=""></a>
+														<a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4">Auctor wisi et urna</a>
+														<p class="m_bottom_4 fs_medium">1 x <b class="color_dark">$1,599.00</b></p>
+														<ul class="fw_light fs_small lh_small">
+															<li>Size: <span class="color_dark">2-Seat Sofa</span>,</li>
+															<li>Color: <span class="color_dark">Red</span></li>
+														</ul>
+													</div>
+													<hr class="divider_white m_top_15 m_bottom_0">
+													<span class="close fs_small color_light tr_all color_dark_hover fw_light">x</span>
+												</li>
+												<li class="relative">
+													<div class="clearfix lh_small">
+														<a href="#" class="f_left m_right_10 d_block"><img src="images/sc_img_3.jpg" alt=""></a>
+														<a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4">Aliquam erat volut</a>
+														<p class="fs_medium">2 x <b class="color_dark">$99.00</b></p>
+													</div>
+													<hr class="divider_white m_top_15 m_bottom_0">
+													<span class="close fs_small color_light tr_all color_dark_hover fw_light">x</span>
+												</li>
+											</ul>
+											<ul class="fs_medium second_font color_dark m_bottom_15">
+												<li><span class="d_inline_b total_title">Tax:</span><span class="fw_light">$0.00</span></li>
+												<li><span class="d_inline_b total_title">Discount:</span><span class="fw_light">$37.00</span></li>
+												<li><b><span class="d_inline_b total_title">Total:</span>$999.00</b></li>
+											</ul>
+											<a href="#" role="button" class="button_type_2 tt_uppercase fs_medium second_font d_block t_align_c black state_2 m_bottom_5">View Cart</a>
+											<a href="#" role="button" class="t_align_c tt_uppercase w_full second_font d_block fs_medium button_type_2 lbrown tr_all">Checkout</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!--breadcrumbs-->
+			<div class="breadcrumbs bg_grey_light_2 fs_medium fw_light">
+				<div class="container">
+					<a href="index.html" class="sc_hover">Home</a> / <span class="color_light">Blog Single Post</span>
+				</div>
+			</div>
+			<!--main content-->
+			<div class="page_section_offset">
+				<div class="container">
+					<div class="row">
+						<aside class="col-lg-3 col-md-3 col-sm-3">
+							<!--categories widget-->
+							<section class="m_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Blog Categories</h5>
+								<hr class="divider_bg m_bottom_23">
+								<ul class="categories_list second_font w_break">
+									<li class="relative"><a href="#" class="fs_large_0 d_inline_b">Furniture</a></li>
+									<li class="relative"><a href="#" class="fs_large_0 d_inline_b">Inspiration</a></li>
+									<li class="relative"><a href="#" class="fs_large_0 d_inline_b">Tips &amp; Tricks</a></li>
+								</ul>
+							</section>
+							<figure class="relative wrapper scale_image_container m_bottom_40 r_image_container m_xs_bottom_30">
+								<img src="images/banner_img_1.jpg" alt="" class="tr_all scale_image">
+								<!--caption-->
+								<figcaption class="caption_type_1 tr_all">
+									<div class="d_inline_b color_white fw_light caption_title tt_uppercase bg_lbrown_translucent">
+										Special Offer
+									</div>
+									<div class="caption_inner">
+										<h3 class="color_white second_font fw_light m_bottom_5 fs_sm_default">Your Bedroom Lives Here. <a href="#" class="color_lbrown color_white_hover second_font fw_light fs_ex_small fs_sm_default">Buy Now!</a></h3>
+									</div>
+								</figcaption>
+							</figure>
+							<!--articles-->
+							<section class="m_bottom_40 m_xs_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Popular Articles</h5>
+								<hr class="divider_bg m_bottom_25">
+								<ul>
+									<li class="relative m_bottom_15 t_sm_align_c t_xs_align_l">
+										<article class="clearfix lh_small">
+											<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/popular_img_1.jpg" alt=""></a>
+											<h6 class="fs_medium m_bottom_4"><a href="#" class="second_font color_dark sc_hover d_block p_top_4">Ut tellus dolor dapibus</a></h6>
+											<a href="#" class="sc_hover fs_medium fw_light">20 comments</a>
+										</article>
+										<hr class="m_top_15 m_bottom_0">
+									</li>
+									<li class="relative m_bottom_15 t_sm_align_c t_xs_align_l">
+										<article class="clearfix lh_small">
+											<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/popular_img_2.jpg" alt=""></a>
+											<h6 class="fs_medium m_bottom_4"><a href="#" class="fs_medium second_font color_dark sc_hover d_block p_top_4">Elementum vel</a></h6>
+											<a href="#" class="sc_hover fs_medium fw_light">17 comments</a>
+										</article>
+										<hr class="m_top_15 m_bottom_0">
+									</li>
+									<li class="relative t_sm_align_c t_xs_align_l">
+										<article class="clearfix lh_small">
+											<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/popular_img_3.jpg" alt=""></a>
+											<h6 class="fs_medium m_bottom_4"><a href="#" class="fs_medium second_font color_dark sc_hover d_block p_top_4">Pellentesque sed dolor</a></h6>
+											<a href="#" class="sc_hover fs_medium fw_light">11 comments</a>
+										</article>
+									</li>
+								</ul>
+							</section>
+							<!--subscribe widget-->
+							<section class="m_bottom_40 m_xs_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Newsletter Sign Up</h5>
+								<hr class="divider_bg m_bottom_25">
+								<p class="second_font m_bottom_15">Get exclusive deals you will not find anywhere else straight to your inbox!</p>
+								<form class="newsletter">
+									<input type="email" placeholder="Enter your email address" name="newsletter-email" class="tr_all fw_light w_full fs_medium m_bottom_10">
+									<button class="second_font w_full tt_uppercase fs_medium button_type_2 black state_2 d_block tr_all">Subscribe</button>
+								</form>
+							</section>
+							<!--new products widget-->
+							<section class="m_bottom_40 m_xs_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">New Products</h5>
+								<hr class="divider_bg m_bottom_25">
+								<ul>
+									<li class="relative m_bottom_15">
+										<div class="clearfix lh_small t_sm_align_c t_xs_align_l">
+											<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/compare_img_1.jpg" alt=""></a>
+											<a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_8 d_sm_inline_b d_xs_block p_top_4">Ut tellus dolor dapibus</a>
+											<b class="second_font scheme_color fs_medium d_sm_block d_xs_inline_b">$430.00</b>
+										</div>
+										<hr class="m_top_15 m_bottom_0">
+									</li>
+									<li class="relative m_bottom_15">
+										<div class="clearfix lh_small t_sm_align_c t_xs_align_l">
+											<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/compare_img_2.jpg" alt=""></a>
+											<a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_8 d_sm_inline_b d_xs_block p_top_4">Elementum vel</a>
+											<b class="second_font scheme_color fs_medium d_sm_block d_xs_inline_b">$1 050.00</b>
+										</div>
+										<hr class="m_top_15 m_bottom_0">
+									</li>
+									<li class="relative">
+										<div class="clearfix lh_small t_sm_align_c t_xs_align_l">
+											<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/bestsellers_img_1.jpg" alt=""></a>
+											<a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_8 d_sm_inline_b d_xs_block p_top_4">Pollentesque sed dolor</a>
+											<b class="second_font scheme_color fs_medium d_sm_block d_xs_inline_b">$990.00</b>
+										</div>
+									</li>
+								</ul>
+							</section>
+							<!--last comments widget-->
+							<section class="m_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Latest Comments</h5>
+								<hr class="divider_bg m_bottom_25">
+								<ul class="fw_light">
+									<li class="relative m_bottom_15">
+										<div class="fs_small m_bottom_2 color_light">Posted by: <a href="#" class="sc_hover">admin</a></div>
+										<p>Ut tellus dolor dapibus eget, elementum vel, cursus eleifend elit. Aenean auctor wisi et urna. Aliquam erat volutpat.</p>
+										<hr class="m_top_15 m_bottom_0">
+									</li>
+									<li class="relative m_bottom_15">
+										<div class="fs_small m_bottom_2 color_light">Posted by: <a href="#" class="sc_hover">John</a></div>
+										<p>Duis ac turpis. Integer retrum ante eu lacus. Vestibulum libero nisl.</p>
+										<hr class="m_top_15 m_bottom_0">
+									</li>
+									<li class="relative">
+										<div class="fs_small m_bottom_2 color_light">Posted by: <a href="#" class="sc_hover">admin</a></div>
+										<p>Vivam eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis.</p>
+									</li>
+								</ul>
+							</section>
+						</aside>
+						<main class="col-lg-9 col-md-9 col-sm-9 m_bottom_30 m_xs_bottom_10">
+							<article class="m_bottom_33 m_xs_bottom_30">
+								<figure>
+									<div class="iframe_video_container m_bottom_15">
+										<iframe src="http://player.vimeo.com/video/64473966?title=0&amp;byline=0&amp;portrait=0&amp;color=dedede"  allowfullscreen></iframe>
+									</div>
+									<figcaption class="clearfix">
+										<!--post info (date & comments)-->
+										<div class="post_info size_2 f_left m_right_30 t_align_c lh_small m_sm_right_20">
+											<div class="date size_2 bg_scheme_color color_white second_font tt_uppercase m_bottom_18">
+												<b class="d_inline_b m_bottom_2">22</b>
+												<p class="fs_medium">Jun</p>
+											</div>
+											<a href="#" class="sc_hover"><i class="fa fa-comments d_inline_m m_right_3"></i> <span class="fs_small d_inline_m">3</span></a>
+											<hr class="m_bottom_15 m_top_15">
+											<p class="m_bottom_7 fw_light fs_small">Share this:</p>
+												<div class="d_inline_m addthis_widget_container">
+													<!-- AddThis Button BEGIN -->
+													<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+													<a class="addthis_button_preferred_1 d_block m_bottom_5"></a>
+													<a class="addthis_button_preferred_2 d_block m_bottom_5"></a>
+													<a class="addthis_button_preferred_3 d_block m_bottom_5"></a>
+													<a class="addthis_button_preferred_4 d_block m_bottom_5"></a>
+													<a class="addthis_button_compact d_block m_bottom_5"></a>
+													</div>
+													<!-- AddThis Button END -->
+												</div>
+										</div>
+										<!--post excerpt-->
+										<div class="f_left post_excerpt size_2">
+											<h4 class="second_font m_bottom_5 lh_small color_dark"><b>Sed ut perspiciatis unde omnis iste natus</b></h4>
+											<div class="fs_medium fw_light color_light m_bottom_8">by <a href="#" class="sc_hover">admin</a>, in <a href="#" class="sc_hover">Furniture</a>, rate this item 
+											<ul class="rating_list hr_list wrapper d_inline_m m_left_7 article_rating m_right_5">
+												<li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+												<li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+												<li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+												<li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+												<li><i class="fa fa-star tr_all"></i></li>
+											</ul> (3 votes)</div>
+											<p class="fw_light m_bottom_14">Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec erat volutpat. Duis ac turpis. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Accumsan fermentum dictum magna. Sed laoreet aliquam leo.</p>
+											<p class="fw_light m_bottom_14">Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. </p>
+											<p class="fw_light m_bottom_14">Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at.</p>
+											<hr class="m_bottom_10">
+											<span class="d_inline_b m_right_5 second_font">Tags:</span> <div class="fw_light d_inline_b"><a href="#" class="sc_hover">furniture</a>, <a href="#" class="sc_hover">table</a>, <a href="#" class="sc_hover">sofa</a></div>
+										</div>
+									</figcaption>
+								</figure>
+							</article>
+							<!--more in this category-->
+							<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">More In This Category</h5>
+							<hr class="divider_bg m_bottom_25">
+							<div class="row">
+								<div class="col-lg-4 col-md-4 col-sm-4 m_bottom_47 m_xs_bottom_30">
+									<article class="clearfix lh_small t_sm_align_c t_xs_align_l">
+										<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/popular_img_1.jpg" alt=""></a>
+										<h6 class="fs_medium m_bottom_4"><a href="#" class="second_font color_dark sc_hover d_block p_top_4">Ut tellus dolor dapibus</a></h6>
+										<span class="color_light fs_medium fw_light">28 May 2014,</span> <a href="#" class="sc_hover fs_medium fw_light">20 comments</a>
+									</article>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 m_bottom_47 m_xs_bottom_30">
+									<article class="clearfix lh_small t_sm_align_c t_xs_align_l">
+										<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/popular_img_2.jpg" alt=""></a>
+										<h6 class="fs_medium m_bottom_4"><a href="#" class="second_font color_dark sc_hover d_block p_top_4">Elementum vel</a></h6>
+										<span class="color_light fs_medium fw_light">21 May 2014,</span> <a href="#" class="sc_hover fs_medium fw_light">17 comments</a>
+									</article>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 m_bottom_47 m_xs_bottom_30">
+									<article class="clearfix lh_small t_sm_align_c t_xs_align_l">
+										<a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="images/popular_img_3.jpg" alt=""></a>
+										<h6 class="fs_medium m_bottom_4"><a href="#" class="second_font color_dark sc_hover d_block p_top_4">Pellentesque sed dolor</a></h6>
+										<span class="color_light fs_medium fw_light">18 May 2014,</span> <a href="#" class="sc_hover fs_medium fw_light">11 comments</a>
+									</article>
+								</div>
+							</div>
+							<!--comments-->
+							<section class="m_bottom_42 m_xs_bottom_30">
+								<h2 class="fw_light second_font color_dark tt_uppercase m_bottom_27">Comments</h2>
+								<!--comment level 1-->
+								<div class="clearfix m_bottom_20">
+									<a href="#" class="d_block m_right_14 f_left author_photo"><img src="images/no_photo.jpg" alt=""></a>
+									<div class="comment_content f_left f_xs_none">
+										<div class="m_bottom_12 relative lh_small p_top_4 comment_info">
+											<a href="#" class="second_font color_default sc_hover d_inline_b v_align_b">John Smith,</a> <span class="color_light fs_medium d_inline_b v_align_b fw_light">28 May 2014</span>
+											<button class="brands_carousel_next button_type_4 grey state_2 tr_all vc_child d_inline_b reply_button black_hover"><i class="fa fa-reply d_inline_m m_top_0"></i></button>
+										</div>
+										<p class="fw_light">Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna.</p>
+									</div>
+								</div>
+								<hr class="m_bottom_20">
+								<!--comment level 2-->
+								<div class="clearfix m_bottom_20 m_left_20 comment_level_2">
+									<a href="#" class="d_block m_right_14 f_left author_photo"><img src="images/no_photo.jpg" alt=""></a>
+									<div class="comment_content f_left f_xs_none">
+										<div class="m_bottom_12 relative lh_small p_top_4 comment_info">
+											<a href="#" class="second_font color_default sc_hover d_inline_b v_align_b">admin,</a> <span class="color_light fs_medium d_inline_b v_align_b fw_light">28 May 2014</span>
+											<button class="brands_carousel_next button_type_4 grey state_2 tr_all vc_child d_inline_b reply_button black_hover"><i class="fa fa-reply d_inline_m m_top_0"></i></button>
+										</div>
+										<p class="fw_light">Sed laoret aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna.</p>
+									</div>
+								</div>
+								<hr class="m_bottom_20 m_left_20">
+								<!--comment level 1-->
+								<div class="clearfix">
+									<a href="#" class="d_block m_right_14 f_left author_photo"><img src="images/no_photo.jpg" alt=""></a>
+									<div class="comment_content f_left f_xs_none">
+										<div class="m_bottom_12 relative lh_small p_top_4 comment_info">
+											<a href="#" class="second_font color_default sc_hover d_inline_b v_align_b">John Smith,</a> <span class="color_light fs_medium d_inline_b v_align_b fw_light">28 May 2014</span>
+											<button class="brands_carousel_next button_type_4 grey state_2 tr_all vc_child d_inline_b reply_button black_hover"><i class="fa fa-reply d_inline_m m_top_0"></i></button>
+										</div>
+										<p class="fw_light">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+									</div>
+								</div>
+							</section>
+							<section>
+								<h2 class="fw_light second_font color_dark tt_uppercase m_bottom_27">Leave A Comment</h2>
+								<p class="second_font m_bottom_14">Make sure you enter the (<span class="color_red">*</span>) required information where indicated. HTML code is not allowed.</p>
+								<form class="b_default_layout">
+									<ul>
+										<li class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_15">
+												<label class="second_font required d_inline_b m_bottom_5 clickable" for="c_name">Name</label><br>
+												<input type="text" name="" id="c_name" class="tr_all w_full">
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_15">
+												<label class="second_font required d_inline_b m_bottom_5 clickable" for="c_email">Email Address</label><br>
+												<input type="email" name="" id="c_email" class="tr_all w_full">
+											</div>
+										</li>
+										<li class="m_bottom_15">
+											<label class="second_font d_inline_b m_bottom_5 clickable" for="c_url">Website URL</label><br>
+											<input type="url" name="" id="c_url" class="tr_all w_full">
+										</li>
+										<li class="m_bottom_5">
+											<label class="second_font required d_inline_b m_bottom_5 clickable" for="c_message">Message</label><br>
+											<textarea id="c_message" name="" rows="6" class="tr_all w_full"></textarea>
+										</li>
+										<li>
+											<button class="button_type_2 black state_2 tr_all second_font fs_medium tt_uppercase d_inline_b"><span class="m_left_10 m_right_10 d_inline_b">Submit</span></button>
+										</li>
+									</ul>
+								</form>
+							</section>
+						</main>
+					</div>
+				</div>
+			</div>
+			<!--footer-->
+			<footer role="contentinfo" class="p_top_0">
+				<div class="section_offset bg_grey_light_2 m_bottom_35 m_xs_bottom_30">
+					<div class="container m_top_10">
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-3 m_bottom_15 m_xs_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Tags</h5>
+								<hr class="divider_bg m_bottom_25">
+								<!--tags-->
+								<ul class="hr_list tags_list second_font fs_medium">
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">bed</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">bestseller</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">chair</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">chaise</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">desk</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">dresser</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">ottoman</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">sale</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">sleeper</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">sofa</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">stool</a></li>
+									<li class="m_right_3 m_bottom_3"><a href="#" class="tr_delay button_type_1 d_block grey state_2">table</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 m_bottom_15 m_xs_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Latest Tweets</h5>
+								<hr class="divider_bg m_bottom_25">
+								<!--twitter feed-->
+								<div class="tweets_list_container"></div>
+							</div>
+							<!--contact info-->
+							<div class="col-lg-3 col-md-3 col-sm-3 m_bottom_15 m_xs_bottom_30">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Contact Us</h5>
+								<hr class="divider_bg m_bottom_25">
+								<p class="second_font m_bottom_15">8901 Marmora Road, Glasgow, D04</p>
+								<ul class="second_font vr_list_type_2">
+									<li><i class="fa fa-phone color_dark fs_large"></i>800-599-65-80</li>
+									<li class="w_break" data-icon=""><i class="fa fa-envelope color_dark"></i><a href="mailto:#" class="sc_hover d_inline_b">info@companyname.com</a></li>
+								</ul>
+							</div>
+							<!--stay connected-->
+							<div class="col-lg-3 col-md-3 col-sm-3 m_bottom_15 m_xs_bottom_0">
+								<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Stay Connected</h5>
+								<hr class="divider_bg m_bottom_30">
+								<!--social buttons-->
+								<ul class="hr_list">
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-facebook fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Facebook</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-twitter fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Twitter</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-google-plus fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Google Plus</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-rss fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">RSS</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-pinterest fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Pinterest</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-instagram fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Instagram</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-linkedin fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">LinkedIn</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-vimeo-square fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Vimeo</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-youtube-play fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Youtube</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-flickr fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Flickr</span></a>
+									</li>
+									<li class="m_right_3 m_bottom_3">
+										<a href="#" class="button_type_6 d_block grey state_2 tr_delay color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-envelope fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Contact Us</span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_13 m_sm_bottom_30">
+									<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Catalog</h5>
+									<hr class="divider_bg m_bottom_25">
+									<ul class="second_font vr_list_type_1 with_links">
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Living Rooms</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Bedrooms</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Dining Rooms</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Kids Rooms</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>New</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Sale</a></li>
+									</ul>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_13 m_sm_bottom_30">
+									<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">The Services</h5>
+									<hr class="divider_bg m_bottom_25">
+									<ul class="second_font vr_list_type_1 with_links">
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>My account</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Order history</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Wishlist</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Vendor contact</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Front page</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Categories</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_13 m_sm_bottom_30">
+									<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Information</h5>
+									<hr class="divider_bg m_bottom_25">
+									<ul class="second_font vr_list_type_1 with_links">
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>About us</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>New collection</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Best sellers</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Manufacturers</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Privacy policy</a></li>
+										<li class="m_bottom_14"><a href="#" class="sc_hover d_inline_b"><i class="fa fa-caret-right"></i>Terms &amp; condition</a></li>
+									</ul>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_13 m_sm_bottom_30">
+									<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Like Us On Facebook</h5>
+									<hr class="divider_bg m_bottom_15">
+									<div class="fb-page" data-href="https://www.facebook.com/kinokritik/" data-tabs="timeline" data-height="200px" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/kinokritik/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/kinokritik/">Кинокритик</a></blockquote></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr class="divider_black m_bottom_13">
+					<div class="d_table w_full d_xs_block t_xs_align_c">
+						<div class="col-lg-6 col-md-6 col-sm-6 color_light fw_light f_none d_table_cell v_align_m d_xs_block m_xs_bottom_10">
+							&copy; 2014 <a href="index.html" class="sc_hover">CosyOne</a>. All Rights Reserved.
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 t_align_r t_xs_align_c f_none d_table_cell v_align_m d_xs_block">
+							<ul class="hr_list d_inline_b">
+								<li class="m_right_5"><img src="images/payment_1.jpg" alt=""></li>
+								<li class="m_right_5"><img src="images/payment_2.jpg" alt=""></li>
+								<li class="m_right_5"><img src="images/payment_3.jpg" alt=""></li>
+								<li class="m_right_5"><img src="images/payment_4.jpg" alt=""></li>
+								<li class="m_right_5"><img src="images/payment_5.jpg" alt=""></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!--back to top-->
+		<button class="back_to_top animated button_type_6 grey state_2 d_block black_hover f_left vc_child tr_all"><i class="fa fa-angle-up d_inline_m"></i></button>
+
+		<!--libs include-->
+		<script src="plugins/jquery.appear.js"></script>
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5306f8f674bfda4c"></script>
+		<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+		<script src="plugins/twitter/jquery.tweet.min.js"></script><script src="plugins/flickr.js"></script>
+		<script src="plugins/afterresize.min.js"></script>
+		<script src="plugins/jackbox/js/jackbox-packed.min.js"></script>
+		<script src="js/retina.min.js"></script>
+		<script src="plugins/colorpicker/colorpicker.js"></script>
+		<script src="js/styleswitcher.js"></script>
+
+		<!--theme initializer-->
+		<script src="js/themeCore.js"></script>
+		<script src="js/theme.js"></script>
+	</body>
+</html>
