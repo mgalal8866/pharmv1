@@ -52,14 +52,15 @@
                             <div class="form-group" wire:ignore>
                                 <label>{{ __('tran.role') }}</label>
                                 <div class="select2-purple">
+                                    {{-- <select id="category-dropdown" class="form-control" multiple wire:model="category"> --}}
                                     <select id="role-dropdown" wire:model="role" class="select2 @error('role') is-invalid @enderror" multiple="multiple"
                                     data-placeholder="{{ __('tran.enter') . __('tran.role') }}"
-                                    data-dropdown-css-class="select2-purple" style="width: 100%;" autocomplete="off" >
+                                    data-dropdown-css-class="select2-purple" style="width: 100%;" autocomplete="off"  required>
                                     @foreach ( $roles as $item )
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
                                     @endforeach
                                     </select>
-                                    @error('role')
+                                    @error('role.*')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -68,6 +69,26 @@
                             </div>
                      </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>{{ __('tran.warehouses') }}</label>
+                            <select class="custom-select @error('warehouse') is-invalid @enderror"  wire:model="warehouseuser">
+                                <option value="">{{ __('tran.select') .  __('tran.warehouse') }}</option>
+                                @foreach ( $warehouses as $item )
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('warehouse')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                </div>
+
                      <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -91,7 +112,7 @@
                                 @enderror
                             </div>
                         </div>
-                   </div>
+                     </div>
                     <!-- /.card-body -->
 
             </div>
@@ -109,5 +130,17 @@
       </div>
 </div>
 @push('jslive')
+<script>
+    $(document).ready(function () {
+        $('#role-dropdown').select2();
+        $('#role-dropdown').on('change', function (e) {
+            let data = $(this).val();
+             @this.set('role', data);
+        });
+        // window.livewire.on('productStore', () => {
+        //     $('#category-dropdown').select2();
+        // });
+    });
+</script>
 
 @endpush

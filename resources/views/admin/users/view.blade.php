@@ -3,7 +3,6 @@
 Users
 @stop
 @section('css')
-<link rel="stylesheet" href="{{ URL::asset('assets/plugins/select2/css/select2.min.css')}}">
 
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ URL::asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -29,30 +28,12 @@ Users
 
 @section('js')
 
-<!-- DataTables  & Plugins -->
-
-
 
 @livewireScripts
 @stack('jslive')
  <!-- Select2 -->
- <script src="{{ URL::asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
-
-        $('#role-dropdown').select2();
-        $('#role-dropdown').on('change', function (e) {
-            let data = $(this).val();
-             this.set('role', data);
-
-        });
-        // $('.select2bs4').select2({
-        //             theme: 'bootstrap4'
-        //         })
-        // window.livewire.on('productStore', () => {
-        //     $('#role-dropdown').select2();
-        // });
-    // });
    var Toast = Swal.mixin({
       toast: true,
       position: 'top-end',

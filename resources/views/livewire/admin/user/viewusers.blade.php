@@ -28,8 +28,8 @@
                         <tr>
                             <th>#</th>
                             <th>{{ __('tran.name') }}</th>
-                            <th>{{ __('tran.rols') }}</th>
-                            <th>{{ __('tran.active') }}</th>
+                            <th>{{ __('tran.roles') }}</th>
+                            {{-- <th>{{ __('tran.active') }}</th> --}}
                             <th>{{ __('tran.regdate') }}</th>
                             <th>{{ __('tran.action') }}</th>
                         </tr>
@@ -47,17 +47,13 @@
                                     @endforeach
                                 @endif
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if ($item->active == 'مفعل')
-
                                         <div class="badge badge-success">{{ $item->active }}</div>
-
                                 @else
-
                                         <div class="badge badge-success">{{ $item->active }}</div>
-
                                 @endif
-                            </td>
+                            </td> --}}
                             <td>{{ $item->created_at }}</td>
                             <td>
                                 {{-- @can('edituser') --}}
@@ -110,25 +106,25 @@
 <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
   <!-- Page specific script -->
-    <script>
-        $(function() {
-            // $("#example1").DataTable({
-            //     "responsive": true,
-            //     "lengthChange": false,
-            //     "autoWidth": false,
-            //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-            // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            // $('#example1').DataTable({
-            //     "paging": false,
-            //     "lengthChange": false,
-            //     "searching": false,
-            //     "ordering": true,
-            //     "info": false,
-            //     "autoWidth": false,
-            //     "responsive": true,
-            //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-            // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-    </script>
+    {{-- <script>
+        $(function() { --}}
+             {{-- $("#example1").DataTable({
+                 "responsive": true,
+                 "lengthChange": false,
+                 "autoWidth": false,
+                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+             $('#example1').DataTable({
+                 "paging": false,
+                 "lengthChange": false,
+                 "searching": false,
+                 "ordering": true,
+                 "info": false,
+                 "autoWidth": false,
+                 "responsive": true,
+                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+         }); --}}
+    {{-- </script> --}}
     @endpush
 </div>

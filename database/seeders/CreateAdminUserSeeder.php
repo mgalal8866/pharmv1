@@ -30,7 +30,7 @@ $brandaccount = Brandaccount::create([
 
 
 
-$role = Role::create(['guard_name' => 'web','name' => 'Admin']);
+$role = Role::create(['guard_name' => 'web','name' => 'Super Admin']);
 $permissions = Permission::where('guard_name' , 'web')->pluck('id','id')->all();
 $role->syncPermissions($permissions);
 $user->assignRole([$role->id]);

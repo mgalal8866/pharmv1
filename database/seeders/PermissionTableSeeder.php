@@ -79,6 +79,7 @@ class PermissionTableseeder extends Seeder
             'editwarehouse',
             'deletewarehouse',
         ];
+        
         foreach ($permissions as $permission)
         {
             Permission::create(['guard_name' => 'web','name'=> $permission]);

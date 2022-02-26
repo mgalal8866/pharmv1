@@ -18,9 +18,13 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ URL::asset('assets/dist/css/adminlte.min.css') }}">
   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.1.0-alpha-1/css/AdminLTE-rtl.css"> --}}
+  <link rel="stylesheet" href="{{ URL::asset('assets/plugins/select2/css/select2.min.css')}}">
 
   {{-- <link rel="stylesheet" href="{{ URL::asset('assets/dist/css/adminlte-rtl.css') }}"> --}}
   <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{ URL::asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ URL::asset('assets/plugins/toastr/toastr.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ URL::asset('assets/plugins/daterangepicker/daterangepicker.css') }}">

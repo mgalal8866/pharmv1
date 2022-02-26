@@ -62,14 +62,7 @@ class Createproduct extends Component
 
         // return redirect()->back();
     }
-    public function mount(){
-
-        // $this->dismo = 0 ;
-        // $this->dispres =0 ;
-        // $this->price_sale =0 ;
-        // $this->price_buy = 0 ;
-    }
-
+  
     public function ww(){
         dd($this->dismo,$this->dispres,$this->price_sale,$this->price_buy,$this->warehouse_id,$this->category_id,$this->unit_id,$this->description,$this->code,$this->name);
     }

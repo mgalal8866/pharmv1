@@ -8,6 +8,7 @@ class Editusers extends Component
 {
     public function render()
     {
+        
         return view('livewire.admin.user.editusers');
     }
 }
