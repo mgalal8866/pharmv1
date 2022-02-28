@@ -17,6 +17,10 @@ class CreateWarehouseProductTable extends Migration {
 			$table->string('qty');
 			$table->string('price_sale');
 			$table->string('price_buy');
+            $table->boolean('discount')->default(0);
+            $table->string('discountprice')->nullable();
+            $table->string('startdate')->nullable();
+            $table->string('enddate')->nullable();
 			$table->text('image')->nullable();
 			$table->string('unit_id');
 			$table->string('category_id');

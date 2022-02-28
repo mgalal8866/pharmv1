@@ -13,6 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RolesController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
 use App\Http\Controllers\WarehouseController;
+use App\Http\Livewire\Front\Home;
 use App\Models\Brandaccount;
 use App\Models\Product;
 use App\Models\User;
@@ -32,11 +33,7 @@ Route::get('/ge', function () {
 
 });
 
-Route::get('/front', function () {
-
-  return view('front.layout.pagenew');
-});
-
+Route::get('/front',Home::class)->name('hm');
 Route::get('/get_role', function () {
 
     $permissions2 = Permission::where('guard_name' , 'web')->pluck('id','id')->all();

@@ -12,8 +12,10 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
 			$table->string('name', 250);
             $table->text('slug', 250);
-			$table->string('effective', 250);
-			$table->longText('description');
+			$table->string('origin', 250)->nullable();
+            $table->string('company', 250)->nullable();
+            $table->string('effective', 250)->nullable();
+			$table->longText('description')->nullable();
 			$table->timestamps();
 		});
 	}

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="d_table d_xs_block w_full">
                 <div class="col-lg-8 col-md-7 col-sm-8 f_none d_table_cell d_xs_block v_align_m t_xs_align_c m_xs_bottom_10">
-                    <div class="clearfix d_inline_m t_align_l">      
+                    <div class="clearfix d_inline_m t_align_l">
                             <!--language-->
                             <div class="f_right relative transform3d">
                                 <button class="tr_all second_font color_dark type_2" data-open-dropdown="#language">
@@ -23,10 +23,10 @@
                                             Arabic
                                         </a>
                                     </li>
-                                  
+
                                 </ul>
                             </div>
-                           
+
                     </div>
                         <div class="d_inline_m t_xs_align_c fw_light color_light fs_small">
                             {{-- <span class="scheme_color fw_medium">Free shipping</span> on orders over $100. Need Help? <span class="scheme_color fw_medium">866.526.3979</span> --}}
@@ -41,7 +41,7 @@
                             <li><a class="sc_hover tr_delay" href="wishlist.html">Wishlist</a></li>
                             <li><a class="sc_hover tr_delay" href="checkout.html">Checkout</a></li>
                         </ul>
-                    </nav>  
+                    </nav>
                     <div class=" d_inline_b f_right relative transform3d">
                         <button class="tr_all second_font color_dark type_2 m_sm_top_10 m_xs_top_0" data-open-dropdown="#login"><i class="fa fa-user d_inline_m m_right_5"></i> <span class="fs_small">Login</span></button>
                         <div id="login" data-show="fadeInUp" data-hide="fadeOutDown" class="dropdown bg_grey_light login_dropdown animated">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-              
+
             </div>
         </div>
     </div>
@@ -98,23 +98,19 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 d_table_cell d_xs_block f_none v_align_m t_align_r t_xs_align_c">
                     <ul class="hr_list si_list shop_list f_right f_sm_none d_sm_inline_b t_align_l">
                         <li>
-                            <a href="#" class="color_lbrown_hover vc_child">
-                                <span class="d_inline_m">
-                                    <i class="fa fa-heart fs_large"></i><sup class="color_dark">7</sup>
-                                </span>
-                            </a>
+                          <livewire:front.countwish/>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#" class="color_lbrown_hover vc_child">
                                 <span class="d_inline_m">
                                     <i class="fa fa-arrow-right fs_small"></i><i class="fa fa-arrow-left fs_small"></i><sup class="color_dark">2</sup>
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <!--shopping cart-->
                         <li class="relative open_mini_shopping_cart">
                             <button class="color_dark active_lbrown tr_all" data-open-dropdown="#shopping_cart">
-                                <i class="fa fa-shopping-cart fs_large"></i><sup>3</sup>
+                               <livewire:front.countcart/>
                                 <b class="second_font fs_small d_inline_b m_left_10">0</b>
                             </button>
                             <div id="shopping_cart" data-show="fadeInUp" data-hide="fadeOutDown" class="bg_grey_light dropdown animated">
@@ -175,25 +171,11 @@
             <nav role="navigation" class="d_xs_none t_align_c t_xs_align_l">
                 <ul class="main_menu hr_list d_inline_b d_xs_block t_sm_align_l relative second_font fs_medium t_align_l">
                     <li class="current">
-                        <a href="index.html" class="tt_uppercase tr_delay">Home <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5"></i></a>
-                        <!--sub menu (second level)-->
-                        <ul class="sub_menu bg_grey_light tr_all">
-                            <li><a href="index.html">Home v1</a></li>
-                            <li class="current"><a href="index_v2.html">Home v2</a></li>
-                            <li><a href="index_v3.html">Home v3</a></li>
-                            <li><a href="index_v4.html">Home v4</a></li>
-                        </ul>
+                        <a href="index.html" class="tt_uppercase tr_delay">{{ __('tran.home') }}</a>
                     </li>
                     <li>
-                                <a href="index.html" class="tt_uppercase tr_delay">Sliders <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
-                                <!--sub menu (second level)-->
-                                <ul class="sub_menu bg_grey_light tr_all">
-                                    <li><a href="index_v4.html">Revolution</a></li>
-                                    <li><a href="index_v3.html">Flex</a></li>
-                                    <li><a href="index.html">Layer</a></li>
-                                    <li><a href="index_v2.html">Royal</a></li>
-                                </ul>
-                            </li>
+                    <a href="index.html" class="tt_uppercase tr_delay">{{ __('tran.shop') }} </a>
+                    </li>
                     <li>
                         <a class="tt_uppercase tr_delay">Shop <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5"></i></a>
                         <div class="mega_menu bg_grey_light tr_all">
@@ -237,81 +219,6 @@
                                     </div>
                                 </div>
                     </li>
-                    <li>
-                                <a href="portfolio_1_column_with_sidebar.html" class="tt_uppercase tr_delay">Portfolio <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
-                                <!--sub menu (second level)-->
-                                <ul class="sub_menu bg_grey_light tr_all">
-                                    <li>
-                                        <a href="portfolio_1_column_with_sidebar.html">Grid</a>
-                                        <!--sub menu (third level)-->
-                                        <ul class="sub_menu bg_grey_light tr_all">
-                                            <li><a href="portfolio_1_column_with_sidebar.html">1 column with sidebar</a></li>
-                                            <li><a href="portfolio_2_columns.html">2 columns</a></li>
-                                            <li><a href="portfolio_3_columns.html">3 columns</a></li>
-                                            <li><a href="portfolio_3_columns_with_sidebar.html">3 columns with sidebar</a></li>
-                                            <li><a href="portfolio_4_columns.html">4 columns</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="portfolio_masonry.html">Masonry</a>
-                                        <!--sub menu (third level)-->
-                                        <ul class="sub_menu bg_grey_light tr_all">
-                                            <li><a href="portfolio_masonry.html">Masonry</a></li>
-                                            <li><a href="portfolio_masonry_full_width.html">Full width masonry</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="portfolio_single_project_v1.html">Single project pages</a>
-                                        <!--sub menu (third level)-->
-                                        <ul class="sub_menu bg_grey_light tr_all">
-                                            <li><a href="portfolio_single_project_v1.html">Single project page v1</a></li>
-                                            <li><a href="portfolio_single_project_v2.html">Single project page v2</a></li>
-                                            <li><a href="portfolio_single_project_v3.html">Single project page v3</a></li>
-                                            <li><a href="portfolio_single_project_video_list.html">Single project with video list</a></li>
-                                            <li><a href="portfolio_single_project_video_slider.html">Single project with video slider</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                    <li>
-                                <a href="pages_category_grid.html" class="tt_uppercase tr_delay">Pages <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
-                                <ul class="sub_menu bg_grey_light tr_all">
-                                    <li><a href="pages_category_grid.html">Category page v1</a></li>
-                                    <li><a href="pages_category_list.html">Category page v2</a></li>
-                                    <li><a href="pages_deals_of_the_day.html">Category page v3</a></li>
-                                    <li><a href="pages_product_v1.html">Product page v1</a></li>
-                                    <li><a href="pages_product_v2.html">Product page v2</a></li>
-                                    <li><a href="pages_product_v3.html">Product page v3</a></li>
-                                    <li><a href="pages_wishlist.html">Wishlist</a></li>
-                                    <li><a href="pages_compare_products.html">Compare</a></li>
-                                    <li><a href="pages_shopping_cart.html">Shopping cart</a></li>
-                                    <li><a href="pages_checkout.html">Checkout</a></li>
-                                    <li><a href="pages_manufacturers.html">Manufacturers</a></li>
-                                    <li><a href="pages_manufacturer.html">Manufacturer page</a></li>
-                                    <li><a href="pages_orders_list.html">Orders list</a></li>
-                                    <li><a href="pages_order_page.html">Order page</a></li>
-                                    <li><a href="pages_about.html">About us</a></li>
-                                    <li><a href="page_404.html">404 page</a></li>
-                                </ul>
-                            </li>
-                    {{-- <li>
-                                <a href="features_elements.html" class="tt_uppercase tr_delay">Features <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></button>
-                                <ul class="sub_menu bg_grey_light tr_all">
-                                    <li><a href="features_elements.html">Elements</a></li>
-                                    <li><a href="features_typography.html">Typography</a></li>
-                                    <li><a href="features_columns.html">Columns</a></li>
-                                    <li><a href="index_rtl.html">Rtl layout</a></li>
-                                </ul>
-                            </li> --}}
-                    {{-- <li>
-                                <a href="blog.html" class="tt_uppercase tr_delay">Blog <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5 m_md_left_2"></i></a>
-                                <ul class="sub_menu bg_grey_light tr_all">
-                                    <li><a href="blog.html">Blog page</a></li>
-                                    <li><a href="blog_post.html">Blog post</a></li>
-                                    <li><a href="blog_post_video.html">Blog video post</a></li>
-                                </ul>
-                            </li> --}}
-                    {{-- <li><a href="contact.html" class="tt_uppercase tr_delay">Contact</a></li> --}}
                 </ul>
             </nav>
         </div>
