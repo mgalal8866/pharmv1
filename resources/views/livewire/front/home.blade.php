@@ -97,20 +97,29 @@
                         <hr class="divider_bg m_bottom_23">
                         <ul class="categories_list second_font w_break">
                             @foreach ( $category as $item )
-                            <li class="relative"><a href="#" class="fs_large_0 d_inline_b">{{ $item->name }}</a>
-                                {{-- <button class="open_sub_categories fs_medium"></button> --}}
+                            <li class="relative">
+                                <a href="#" wire:click.prevent="productbycategory('{{$item->slug}}')" class="fs_large_0 d_inline_b">{{ $item->name }}</a>
+                                @isset($item->childrens)
+                                    <button class="open_sub_categories fs_medium"></button>
+                                    <ul class="d_none">
+                                    @foreach ( $item->childrens as $item2 )
                                 <!--second level-->
-                                {{-- <ul class="d_none">
-                                    <li class="relative"><a href="#" class="tr_delay d_inline_b">Beds</a></li>
-                                    <li class="relative"><a href="#" class="tr_delay d_inline_b">Dressers/Chests</a><button class="open_sub_categories fs_medium"></button>
-                                        <!--third level-->
-                                        <ul class="d_none fs_small categories_third_level_list">
-                                            <li><a href="#" class="tr_delay sc_hover bg_grey_light_2_hover">King Beds</a></li>
-                                            <li><a href="#" class="sc_hover bg_grey_light_2_hover">Queen Beds</a></li>
-                                        </ul>
-                                </li>
-                                    <li class="relative"><a href="#" class="tr_delay d_inline_b">Nightstands</a></li>
-                                </ul> --}}
+                                    <li class="relative"><a href="#" wire:click.prevent="productbycategory('{{$item2->slug}}')" class="tr_delay d_inline_b">{{ $item2->name }}</a>
+                                        @isset($item2->childrens)
+                                            <button class="open_sub_categories fs_medium"></button>
+                                            <!--third level-->
+                                            <ul class="d_none fs_small categories_third_level_list">
+                                                @foreach ( $item2->childrens as $item3)
+                                                 <li><a href="#" wire:click.prevent="productbycategory('{{$item3->slug}}')" class="tr_delay sc_hover bg_grey_light_2_hover">{{ $item3->name }}</a></li>
+                                                 @endforeach
+                                            </ul>
+                                        @endisset
+                                    </li>
+
+                                 @endforeach
+                                    </ul>
+                                @endisset
+
                             </li>
                             @endforeach
 
@@ -243,8 +252,9 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-5 col-md-5 color_light fs_large second_font t_align_r t_sm_align_c m_bottom_9">
-                                            <s>$1 302.00</s>
-                                            <b class="scheme_color d_block">$1 102.00</b>
+                                            {{($item->warehouse_product()->first()->special_price)?? "<s>".($item->warehouse_product()->first()->special_price)."</s>" }}
+                                           
+                                            <b class="scheme_color d_block">{{$item->warehouse_product()->first()->price_sale}}</b>
                                         </div>
                                     </div>
                                      <button  wire:click.prevent="store( {{$item->id}} , '{{$item->name}}' , 1)" data-popup="#add_to_cart_popup" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="button_type_2 m_bottom_9 d_block w_full t_align_c lbrown state_2 tr_all second_font fs_medium tt_uppercase"><i class="fa fa-shopping-cart d_inline_m m_right_9"></i>Add To Cart</button>

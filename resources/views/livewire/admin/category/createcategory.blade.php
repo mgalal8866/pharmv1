@@ -13,6 +13,7 @@
             <div class="modal-body">
                 <div class="card">
                     <div class="card-body">
+                 <div class="form-group">
                       <input class="form-control @error('name') is-invalid @enderror" type="text" wire:model="name" placeholder="{{ __('tran.name')  .   __('tran.category')}}" autofocus>
                       @error('name')
                       {{-- @if($errors->has('name')) --}}
@@ -20,7 +21,12 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-                    </div>
+                </div>  
+                <div class="form-group">
+                    {{-- <input wire:model="animal" name="animal" type="radio" value="0" checked /> رئيسي
+                    <input wire:model="animal" name="animal" type="radio" value="1" /> فرعى --}}
+                </div>    
+                </div>
                     <!-- /.card-body -->
                   </div>
             </div>

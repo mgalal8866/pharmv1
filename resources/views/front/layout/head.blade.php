@@ -17,5 +17,5 @@
 		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/front/css/style.css') }}">
         {{-- <link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/front/css/rtl.css') }}"> --}}
         <script src="{{ asset('assets/front/js/jquery-2.1.1.min.js') }}"></script>
-		<script src="{{ asset('assets/front/js/modernizr.js') }}"></script>
+		{{-- <script src="{{ asset('assets/front/js/modernizr.js') }}"></script> --}}
         @yield('css')

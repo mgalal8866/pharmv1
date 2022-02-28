@@ -18,7 +18,7 @@ class Category extends Model
             $this->attributes['slug'] = Str::slug($value);
         }
 
-        Public function scopeParent($query)
+Public function scopeParent($query)
 {
     return $query -> whereNull('parent_id');
 }

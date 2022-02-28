@@ -59,12 +59,12 @@ class Viewcategory extends Component
             }
     public function render()
     {
-        $categorys = Category::where('name','like', '%'. $this->searchtxt . '%')->parent()->select('id','name','slug')
-    ->with(['childrens' => function($q){ $q->select('id','parent_id','name','slug');
-        $q->with(['childrens' => function($qq){$qq->select('id','parent_id','name','slug');}]);
-    }])->orderBy('id','desc')->latest()->paginate(20);
-        // $categorys = Category::where('name','like', '%'. $this->searchtxt . '%')->orderBy('id','desc')->latest()->paginate(20);
-
+    //     $categorys = Category::where('name','like', '%'. $this->searchtxt . '%')->parent()->select('id','name','slug')
+    // ->with(['childrens' => function($q){ $q->select('id','parent_id','name','slug');
+    //     $q->with(['childrens' => function($qq){$qq->select('id','parent_id','name','slug');}]);
+    // }])->orderBy('id','desc')->latest()->paginate(20);
+    $categorys = Category::where('name','like', '%'. $this->searchtxt . '%')->orderBy('id','desc')->latest()->paginate(20);
+      
         return view('livewire.admin.category.viewcategory',['categorys'=>$categorys]);
     }
 }

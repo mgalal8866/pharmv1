@@ -28,15 +28,25 @@
                         <tr>
                             <th>#</th>
                             <th>{{ __('tran.name') }}</th>
+                            <th>{{ __('tran.type') }}</th>
                             <th>{{ __('tran.action') }}</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> 
                         @if ($categorys->count() != 0)
                         @foreach ($categorys as $item )
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->name }} 
+                               
+                            </td>
+                            <td>
+                                @if($item->parent_id)
+                                <div class="badge badge-success">فرعى</div>
+                                @else
+                                <div class="badge badge-success">رئيسي</div>
+                                @endif
+                            </td>
                             <td>
                                 {{-- @can('editcategory') --}}
                                 <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
