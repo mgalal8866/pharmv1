@@ -20,61 +20,67 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Livewire\Front\Singelproduct;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
 use App\Http\Controllers\WarehouseController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+    Route::get('/ge', function () {
 
-Route::get('/ge', function () {
+            return Warehouse_product::get()->groupBy('product_id');
+        // return Product::whereHas('warehouse_product', function($q){
 
-    return Warehouse_product::get()->groupBy('product_id');
-// return Product::whereHas('warehouse_product', function($q){
+        // })->with('warehouse_product', function($q){
+        //     $q->groupBy('product_id');
 
-// })->with('warehouse_product', function($q){
-//     $q->groupBy('product_id');
+        // })->get();
 
-// })->get();
+        });
+    Route::get('/sss', function(){
+        // return '#O' . str_pad('9', 8, "0", STR_PAD_LEFT);
+        //    Cart::instance('cart')->destroy();
+        return str_pad('9', 8, "0", STR_PAD_LEFT);
+
+        });
+    Route::get('/front',Home::class)->name('front');
+    Route::get('/front/{slug}',Home::class)->name('home');
+    Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
+    Route::get('/checkout',Checkout::class)->name('checkout');
+    Route::get('/singelproduct/{slug}',Singelproduct::class)->name('singelproduct');
+
+    Route::get('/get_role', function () {
+
+        $permissions2 = Permission::where('guard_name' , 'web')->pluck('id','id')->all();
+        return  $permissions2;
+            $user = Brandaccount::find(1);
+            $role = Role::find(2);
+            $permissions = Permission::where('guard_name' , 'brandaccount')->pluck('id','id')->all();
+            $role->syncPermissions($permissions);
+            $user->assignRole([$role->id]);
+
+
+        });
+
+    Route::get('/get_category', function () {
+        try {
+            DB::connection()->getPDO();
+            echo DB::connection()->getDatabaseName();
+            } catch (\Exception $e) {
+            echo 'None';
+        }
+        return SubCategory::parent()->select('id','name')
+        ->with(['childrens' => function($q){ $q->select('id','parent_id','name');
+            $q->with(['childrens' => function($qq){$qq->select('id','parent_id','name');}]);
+        }])->get();
+
+    });
 
 });
-Route::get('/sss', function(){
-    // return '#O' . str_pad('9', 8, "0", STR_PAD_LEFT);
-//    Cart::instance('cart')->destroy();
-return str_pad('9', 8, "0", STR_PAD_LEFT);
-
-});
-Route::get('/front',Home::class)->name('front');
-Route::get('/front/{slug}',Home::class)->name('home');
-Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
-Route::get('/checkout',Checkout::class)->name('checkout');
-Route::get('/singelproduct/{slug}',Singelproduct::class)->name('singelproduct');
-
-Route::get('/get_role', function () {
-
-    $permissions2 = Permission::where('guard_name' , 'web')->pluck('id','id')->all();
-return  $permissions2;
-    $user = Brandaccount::find(1);
-    $role = Role::find(2);
-    $permissions = Permission::where('guard_name' , 'brandaccount')->pluck('id','id')->all();
-    $role->syncPermissions($permissions);
-    $user->assignRole([$role->id]);
-
-
-});
-
-Route::get('/get_category', function () {
-    try {
-        DB::connection()->getPDO();
-        echo DB::connection()->getDatabaseName();
-        } catch (\Exception $e) {
-        echo 'None';
-    }
-    return SubCategory::parent()->select('id','name')
-    ->with(['childrens' => function($q){ $q->select('id','parent_id','name');
-        $q->with(['childrens' => function($qq){$qq->select('id','parent_id','name');}]);
-    }])->get();
-
-});
-
 Auth::routes();
 Route::group(
     [
@@ -113,6 +119,9 @@ Route::group(
         Route::get('/products',[ProductController::class,'index'])->name('product.view');
         Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
         //***********************  end Products***********************************//
+     //***********************  Start Order***********************************//
+        Route::get('/orders',[OrderController::class,'index'])->name('orders.view');
+        //***********************  end Order***********************************//
 
             Route::get('/unit/create',CreateUnit::class);
             Route::get('/', function () {return view('admin.dashborad');});

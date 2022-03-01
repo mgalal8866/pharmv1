@@ -1,10 +1,11 @@
 /* Global */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
 
 html{
 	overflow-x:hidden;
 }
 body{
-	font:400 14px/1.5em "Arial","sans-serif";
+	font:400 14px/1.5em "Cairo","sans-serif";
 	color:#595959;
 	background-attachment: fixed;
 }
@@ -20,7 +21,7 @@ body{
 .second_font,
 table td[data-cell-title]::before,
 [class*="first_letter"]:first-letter{
-	font-family: 'Montserrat', serif;
+	font-family: 'Cairo', serif;
 }
 ::selection{
 	background:#09a2b0;
@@ -163,7 +164,7 @@ blockquote.type_2::after{
 	display: block;
 	text-align: center;
 	font-weight: 600;
-	font-family: 'Montserrat', serif;
+	font-family: 'Cairo', serif;
 	margin: 10px 13px 0 0;
 }
 .first_letter_type_1 span{
@@ -198,7 +199,7 @@ blockquote.type_2::after{
 }
 .detect_scroll_width{
 	position:absolute;
-	top:-9999px;	
+	top:-9999px;
 	width:50px;
 	height:50px;
 	overflow:scroll;
@@ -222,13 +223,13 @@ a:not([class*="tr_"]){
 	-webkit-transition:color .75s ease, background-color .75s ease, border-color .75s ease;
 	-moz-transition:color .75s ease, background-color .75s ease, border-color .75s ease;
 	-o-transition:color .75s ease, background-color .75s ease, border-color .75s ease;
-	transition:color .75s ease, background-color .75s ease, border-color .75s ease;	
+	transition:color .75s ease, background-color .75s ease, border-color .75s ease;
 }
 .tr_delay:hover{
 	-webkit-transition:color .1s ease, background-color .1s ease, border-color .1s ease;
 	-moz-transition:color .1s ease, background-color .1s ease, border-color .1s ease;
 	-o-transition:color .1s ease, background-color .1s ease, border-color .1s ease;
-	transition:color .1s ease, background-color .1s ease, border-color .1s ease;	
+	transition:color .1s ease, background-color .1s ease, border-color .1s ease;
 }
 .tr_all{
 	-webkit-transition:all .4s ease;
@@ -240,7 +241,7 @@ a:not([class*="tr_"]){
 	-webkit-transition:inherit;
 	-moz-transition:inherit;
 	-o-transition:inherit;
-	transition:inherit	
+	transition:inherit
 }
 
 /* Typography */
@@ -256,7 +257,7 @@ h4,
 	font-size:1.4285em;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Cairo', sans-serif;
 	line-height: 1em;
 	letter-spacing: -1px;
 }
@@ -267,7 +268,7 @@ h1,h2,h3,h4,h5,h6{
 	font-weight:400;
 }
 .fw_light{
-	font-weight: 300;	
+	font-weight: 300;
 }
 .fw_medium{
 	font-weight: 500;
@@ -397,7 +398,7 @@ table th,table td{
 	color:#09a2b0;
 }
 .color_lbrown_h:hover{
-	color:#09a2b0 !important;	
+	color:#09a2b0 !important;
 }
 .bg_lbrown,
 .bg_lbrown_hover:hover,
@@ -441,7 +442,7 @@ a,
 .black_button_active,
 .black_hover:hover,
 .simple_slideshow .flex-direction-nav a:hover{
-	border-color:#08a52e !important;	
+	border-color:#08a52e !important;
 }
 .bg_color_dark,
 .divider_bg::before,
@@ -456,7 +457,7 @@ a,
 .black_button_active,
 .black_hover:hover,
 .simple_slideshow .flex-direction-nav a:hover{
-	background-color:#08a52e !important;	
+	background-color:#08a52e !important;
 }
 
 .color_dark.slider_button{

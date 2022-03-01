@@ -35,7 +35,7 @@
 
 
 /* important */
-
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
 @import "reset.css";
 
 @import "font-awesome.min.css";
@@ -48,12 +48,9 @@
 
 /* 1. Header */
 
-
-
 .header_top_part,.htp_offset{
 
 	padding:6px 0 7px;
-
 }
 
 .header_middle_part{
@@ -2112,7 +2109,7 @@ table td{
 
 	font-size:1.428em;
 
-	margin-bottom:1px;	
+	margin-bottom:1px;
 
 }
 
@@ -3852,7 +3849,7 @@ input[type="radio"] + label::after{
 
 	}
 
-	.comment_level_2 .comment_content{ 
+	.comment_level_2 .comment_content{
 
 		width:583px;
 
@@ -4038,7 +4035,7 @@ input[type="radio"] + label::after{
 
 	}
 
-	.comment_level_2 .comment_content{ 
+	.comment_level_2 .comment_content{
 
 		width:418px;
 
@@ -4278,7 +4275,7 @@ input[type="radio"] + label::after{
 
 	.post_excerpt.size_3{
 
-		width: calc(80% - 20px);	
+		width: calc(80% - 20px);
 
 	}
 

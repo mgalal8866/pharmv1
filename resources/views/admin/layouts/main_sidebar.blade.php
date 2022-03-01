@@ -136,6 +136,15 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('orders.view') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                {{ __('tran.order') }}
+                                <span class="right badge badge-danger"> 0 </span>
+                            </p>
+                        </a>
+                    </li>
                     {{-- <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>

@@ -8,10 +8,23 @@
                             <!--language-->
                             <div class="f_right relative transform3d">
                                 <button class="tr_all second_font color_dark type_2" data-open-dropdown="#language">
+                                    @if (App::getLocale() == 'ar')
+                                    {{ LaravelLocalization::getCurrentLocaleName() }}
+                                     <img src="{{ asset('assets/front/images/flag_eg.png')}}" alt="" class="d_inline_m m_right_10"><i class="fa fa-angle-down d_inline_m fs_small"></i>
+                                    @else
+                                    {{ LaravelLocalization::getCurrentLocaleName() }}
                                     <img src="{{ asset('assets/front/images/flag_en.jpg')}}" alt="" class="d_inline_m m_right_10"><i class="fa fa-angle-down d_inline_m fs_small"></i>
+                                    @endif
                                 </button>
                                 <ul id="language" data-show="wicket" data-hide="wicketout" class="sub_menu dropdown type_2 fs_medium bg_grey_light second_font animated">
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                     <li>
+                                    <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        {{ $properties['native'] }}
+                                    </a>
+                                </li>
+                                  @endforeach
+                                    {{-- <li>
                                         <a href="#" class="sc_hover">
                                             <img src="{{ asset('assets/front/images/flag_en.jpg')}}" alt="" class="d_inline_m m_right_7">
                                             English
@@ -22,7 +35,7 @@
                                             <img src="{{ asset('assets/front/images/flag_eg.png')}}" alt="" class="d_inline_m m_right_7">
                                             Arabic
                                         </a>
-                                    </li>
+                                    </li> --}}
 
                                 </ul>
                             </div>
@@ -34,7 +47,6 @@
                 <div class="col-lg-4 col-md-5 col-sm-4 f_none d_table_cell d_xs_block v_align_m t_align_r t_xs_align_c m_xs_bottom_10">
                     <!--shop nav-->
                     @if(Auth::guard('brandaccount')->check())
-
                     <nav class="d_inline_b">
                         <ul class="hr_list second_font si_list fs_small">
                             <li><a class="sc_hover tr_delay" href="account.html">My Account</a></li>
@@ -49,7 +61,7 @@
 
 
 
-                        <button class="tr_all second_font color_dark type_2 m_sm_top_10 m_xs_top_0" data-open-dropdown="#login"><i class="fa fa-user d_inline_m m_right_5"></i> <span class="fs_small">Login</span></button>
+                        <button class="tr_all second_font color_dark type_2 m_sm_top_10 m_xs_top_0" data-open-dropdown="#login"><i class="fa fa-user d_inline_m m_right_5"></i> <span class="fs_small">{{ __('tran.login') }}</span></button>
                         <div id="login" data-show="fadeInUp" data-hide="fadeOutDown" class="dropdown bg_grey_light login_dropdown animated">
                             <form class="m_bottom_15">
                                 <ul>
