@@ -43,6 +43,7 @@ return str_pad('9', 8, "0", STR_PAD_LEFT);
 
 });
 Route::get('/front',Home::class)->name('front');
+Route::get('/front/{slug}',Home::class)->name('home');
 Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
 Route::get('/checkout',Checkout::class)->name('checkout');
 Route::get('/singelproduct/{slug}',Singelproduct::class)->name('singelproduct');

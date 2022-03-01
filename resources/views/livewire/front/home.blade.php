@@ -104,13 +104,14 @@
                                     <ul class="d_none">
                                     @foreach ( $item->childrens as $item2 )
                                 <!--second level-->
-                                    <li class="relative"><a href="#" wire:click="productbycategory('{{$item2->slug}}')" class="tr_delay d_inline_b">{{ $item2->name }}</a>
+                                    <li class="relative"><a href="#" wire:click.prevent="productbycategory('{{$item2->slug}}')" class="tr_delay d_inline_b">{{ $item2->name }}</a>
                                         @isset($item2->childrens)
                                             <button class="open_sub_categories fs_medium"></button>
                                             <!--third level-->
+
                                             <ul class="d_none fs_small categories_third_level_list">
                                                 @foreach ( $item2->childrens as $item3)
-                                                 <li><a href="#" wire:model="productbycategory('{{$item3->slug}}')" class="tr_delay sc_hover bg_grey_light_2_hover">{{ $item3->name }}</a></li>
+                                                 <li><a href="#" wire:click="productbycategory('{{$item3->slug}}')" class="tr_delay sc_hover bg_grey_light_2_hover">{{ $item3->name }}</a></li>
                                                  @endforeach
                                             </ul>
                                         @endisset

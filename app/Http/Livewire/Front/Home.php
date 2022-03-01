@@ -9,12 +9,15 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class Home extends Component
 {
-    protected $listeners = ['home' => 'render'];
+    // protected $listeners = ['home' => 'render'];
     public $slug='',$bycat='';
     public function productbycategory($slug){
       $this->slug = $slug;
-            $this->emit('home');
+            // $this->emit('home');
+    }
 
+    public function mount($slug=null){
+        $this->slug = $slug;
     }
     public function addtowish($id,$name,$price)
     {
@@ -40,6 +43,7 @@ class Home extends Component
     public function render()
     {
         $ids= Category::where('slug',  $this->slug)->first();
+
         $this->bycat = (!empty($ids->id))? $ids->id :'';
 
         $category =  Category::parent()->select('id','name','slug')
