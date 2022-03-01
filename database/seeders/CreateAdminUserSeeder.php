@@ -42,7 +42,7 @@ class CreateAdminUserSeeder extends Seeder
         Category::create([
             'name' => 'ماسك',
             'parent_id' => 1
-            
+
         ]);
         Category::create([
             'name' => 'ماسك تفتيح',
@@ -60,7 +60,7 @@ class CreateAdminUserSeeder extends Seeder
             'company' => 'فارما',
             'effective' => 'الماده الفعاله',
             'description' => 'وصف المنتج'
-        ]); 
+        ]);
         Warehouse_product::create([
             'warehouse_id' => 1,
             'product_id' => 1,
@@ -70,9 +70,9 @@ class CreateAdminUserSeeder extends Seeder
             'price_sale' => '15.50',
             'price_buy' => '10.70',
             'code' => '878676546',
-        ]); 
+        ]);
 
-  
+
 
 
 

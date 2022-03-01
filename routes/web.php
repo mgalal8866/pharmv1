@@ -1,23 +1,27 @@
 <?php
 
+use App\Models\User;
+use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\Brandaccount;
+use App\Http\Livewire\Front\Home;
+use App\Models\Warehouse_product;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Livewire\Front\Checkout;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsersController;
+use App\Http\Livewire\Front\Placeorder;
 use Spatie\Permission\Models\Permission;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UnitsController;
+use App\Http\Controllers\UsersController;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Livewire\Front\Singelproduct;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RolesController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
 use App\Http\Controllers\WarehouseController;
-use App\Http\Livewire\Front\Home;
-use App\Models\Brandaccount;
-use App\Models\Product;
-use App\Models\User;
-use App\Models\Warehouse_product;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -32,8 +36,17 @@ Route::get('/ge', function () {
 // })->get();
 
 });
+Route::get('/sss', function(){
+    // return '#O' . str_pad('9', 8, "0", STR_PAD_LEFT);
+//    Cart::instance('cart')->destroy();
+return str_pad('9', 8, "0", STR_PAD_LEFT);
 
-Route::get('/front',Home::class)->name('hm');
+});
+Route::get('/front',Home::class)->name('front');
+Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
+Route::get('/checkout',Checkout::class)->name('checkout');
+Route::get('/singelproduct/{slug}',Singelproduct::class)->name('singelproduct');
+
 Route::get('/get_role', function () {
 
     $permissions2 = Permission::where('guard_name' , 'web')->pluck('id','id')->all();

@@ -1,13 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
+
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order_details extends Model 
+class Order_details extends Model
 {
+    public $timestamps = false;
+    protected $guarded = [];
 
-    protected $table = 'Order_details';
-    public $timestamps = true;
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 
 }

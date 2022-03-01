@@ -26,7 +26,6 @@
 
                                 </ul>
                             </div>
-
                     </div>
                         <div class="d_inline_m t_xs_align_c fw_light color_light fs_small">
                             {{-- <span class="scheme_color fw_medium">Free shipping</span> on orders over $100. Need Help? <span class="scheme_color fw_medium">866.526.3979</span> --}}
@@ -34,15 +33,22 @@
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-4 f_none d_table_cell d_xs_block v_align_m t_align_r t_xs_align_c m_xs_bottom_10">
                     <!--shop nav-->
+                    @if(Auth::guard('brandaccount')->check())
+
                     <nav class="d_inline_b">
                         <ul class="hr_list second_font si_list fs_small">
                             <li><a class="sc_hover tr_delay" href="account.html">My Account</a></li>
                             <li><a class="sc_hover tr_delay" href="orders_list.html">Orders List</a></li>
                             <li><a class="sc_hover tr_delay" href="wishlist.html">Wishlist</a></li>
-                            <li><a class="sc_hover tr_delay" href="checkout.html">Checkout</a></li>
+                            <li><a class="sc_hover tr_delay" href="{{ route('checkout') }}">Checkout</a></li>
                         </ul>
                     </nav>
+
+                    @endif
                     <div class=" d_inline_b f_right relative transform3d">
+
+
+
                         <button class="tr_all second_font color_dark type_2 m_sm_top_10 m_xs_top_0" data-open-dropdown="#login"><i class="fa fa-user d_inline_m m_right_5"></i> <span class="fs_small">Login</span></button>
                         <div id="login" data-show="fadeInUp" data-hide="fadeOutDown" class="dropdown bg_grey_light login_dropdown animated">
                             <form class="m_bottom_15">
@@ -108,12 +114,11 @@
                             </a>
                         </li> --}}
                         <!--shopping cart-->
-                        <li class="relative open_mini_shopping_cart">
+                        <li class="">
                             <button class="color_dark active_lbrown tr_all" data-open-dropdown="#shopping_cart">
                                <livewire:front.countcart/>
-                                <b class="second_font fs_small d_inline_b m_left_10">0</b>
                             </button>
-                            <div id="shopping_cart" data-show="fadeInUp" data-hide="fadeOutDown" class="bg_grey_light dropdown animated">
+                            <div id="shopping_cart" data-show="fadeInUp" data-hide="fadeOutDown" class="relative open_mini_shopping_cart bg_grey_light dropdown animated">
                                 <div class="sc_header fs_small fw_light">Recently added item(s)</div>
                                 <hr class="divider_white">
                                 <ul class="shopping_cart_list m_bottom_4">
@@ -174,8 +179,9 @@
                         <a href="index.html" class="tt_uppercase tr_delay">{{ __('tran.home') }}</a>
                     </li>
                     <li>
-                    <a href="index.html" class="tt_uppercase tr_delay">{{ __('tran.shop') }} </a>
+                        <a href="index.html" class="tt_uppercase tr_delay">{{ __('tran.shop') }} </a>
                     </li>
+
                     <li>
                         <a class="tt_uppercase tr_delay">Shop <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5"></i></a>
                         <div class="mega_menu bg_grey_light tr_all">
@@ -217,7 +223,7 @@
                                             </ul>
                                         </section>
                                     </div>
-                                </div>
+                        </div>
                     </li>
                 </ul>
             </nav>

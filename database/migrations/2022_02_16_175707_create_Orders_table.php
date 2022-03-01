@@ -10,7 +10,8 @@ class CreateOrdersTable extends Migration {
 	{
 		Schema::create('Orders', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('brand_id')->unsigned();
+			$table->unsignedInteger('brandacount_id');
+            $table->string('numberorder', 250);
 			$table->decimal('total', 8,2);
 			$table->string('date', 250);
 			$table->timestamps();

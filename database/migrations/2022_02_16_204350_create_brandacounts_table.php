@@ -14,7 +14,7 @@ class CreateBrandacountsTable extends Migration
     public function up()
     {
         Schema::create('brandaccounts', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->string('email',32)->unique();
             $table->string('password',255);
