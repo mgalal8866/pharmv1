@@ -1,7 +1,7 @@
 <div>
     <div class="page_section_offset">
         <div class="container numbered_title_init">
-            <h2 class="fw_light second_font color_dark m_bottom_27 tt_uppercase">Checkout</h2>
+            <h2 class="fw_light second_font color_dark m_bottom_27 tt_uppercase">{{ __('tran.checkout') }}</h2>
             <!--checkout method-->
                 {{-- <section class="m_bottom_35 m_xs_bottom_30">
                     <div class="d_table w_full m_bottom_5 second_font">
@@ -230,16 +230,16 @@
                 </section> --}}
             <!--order review-->
             <section class="second_font m_bottom_35 m_xs_bottom_30">
-                <h5 class="color_dark tt_uppercase second_font fw_light numbered_title d_inline_m m_bottom_5 ellipsis_mxs w_full">Order Review</h5>
+                <h5 class="color_dark tt_uppercase second_font fw_light numbered_title d_inline_m m_bottom_5 ellipsis_mxs w_full">{{ __('tran.orderreview') }}</h5>
                 <hr class="divider_bg m_bottom_30">
                 <table class="w_full second_font order_review_table m_bottom_38 m_xs_bottom_30">
                     <thead class="d_xs_none">
                         <tr class="bg_grey_light_2">
-                            <th><b>Product Name</b></th>
-                            <th><b>CODE</b></th>
-                            <th><b>Price</b></th>
-                            <th><b>Qty</b></th>
-                            <th><b>Total</b></th>
+                            <th><b>{{ __('tran.productname') }}</b></th>
+                            <th><b>{{ __('tran.code') }}</b></th>
+                            <th><b>{{ __('tran.price') }}</b></th>
+                            <th><b>{{ __('tran.qty') }}</b></th>
+                            <th><b>{{ __('tran.total') }}</b></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -252,16 +252,17 @@
                             <td data-cell-title="Product Name">
                                 <a href="#" class="sc_hover fs_large d_inline_b m_bottom_4">{{  $item->name }}</a>
                                 <ul class="fs_small color_light fw_light lh_small">
-                                    <li>Size: <span class="color_dark">2-Seat Sofa</span>,</li>
-                                    <li>Color: <span class="color_dark">Red</span></li>
+                                    {{-- <li>Size: <span class="color_dark">2-Seat Sofa</span>,</li>
+                                    <li>Color: <span class="color_dark">Red</span></li> --}}
                                 </ul>
                             </td>
                             <td data-cell-title="SKU">{{$item->model->warehouse_product()->first()->code}}</td>
                             <td data-cell-title="Price" class="fs_large">
                                 @if ($item->model->warehouse_product()->first()->special_price)
                                 <s class="color_light">{{ $item->model->warehouse_product()->first()->price_sale}}</s>
-                                @endif
                                 <br>
+                                @endif
+
                                 <span class="color_dark">{{($item->model->warehouse_product()->first()->special_price)?? $item->model->warehouse_product()->first()->price_sale}}</span>
 
 
@@ -271,9 +272,17 @@
                             <td data-cell-title="Total" class="fs_large"><span class="color_dark">{{$item->qty * ( ($item->model->warehouse_product()->first()->special_price)??$item->model->warehouse_product()->first()->price_sale) }}</span></td>
                         </tr>
                         @endforeach
+                        @else
+                        <tr>
+                            <td colspan="5">
+                             <CENTER>
+                                <b>No Product Here</b>
+                            </CENTER>
+                            </td>
+                        </tr>
                         @endif
                         <tr class="t_xs_align_c">
-                            <td colspan="4"><b>Subtotal</b></td>
+                            <td colspan="4"><b>{{ __('tran.subtotal') }}</b></td>
                             <td colspan="1" class="fs_large color_dark"><b>{{  Cart::instance('cart')->total()}}</b></td>
                         </tr>
                         {{-- <tr class="t_xs_align_c">
@@ -283,14 +292,14 @@
                     </tbody>
                     <tfoot class="t_xs_align_c">
                         <tr>
-                            <td colspan="4"><b class="scheme_color fs_ex_large">Grand Total</b></td>
+                            <td colspan="4"><b class="scheme_color fs_ex_large">{{ __('tran.grandtotal') }}</b></td>
                             <td colspan="1" class="v_align_m"><b class="scheme_color fs_big_4">{{  Cart::instance('cart')->total()}}</b></td>
                         </tr>
                         <tr class="bg_grey_light_2">
-                            <td colspan="3" class="br_none v_align_m">Forgot an item? <a href="#" class="sc_hover">Edit Your Cart</a></td>
+                            <td colspan="3" class="br_none v_align_m">Forgot an item? <a href="{{route('shopping.cart') }}" class="sc_hover">{{ __('tran.editcart') }}</a></td>
                             <td colspan="2" class="t_align_r t_xs_align_c">
-                                <a wire:click="sendorder()" href="#" class="button_type_2 tt_uppercase fs_medium second_font d_inline_b t_align_c lbrown tr_all">
-                                <span class="d_inline_b m_left_10 m_right_10">Place Order</span></a></td>
+                                <a @if(Cart::instance('cart')->count() > 0 )wire:click="sendorder()"@endif href="#" class="button_type_2 tt_uppercase fs_medium second_font d_inline_b t_align_c lbrown tr_all">
+                                <span class="d_inline_b m_left_10 m_right_10">{{ __('tran.placeorder') }}</span></a></td>
                         </tr>
                     </tfoot>
                 </table>

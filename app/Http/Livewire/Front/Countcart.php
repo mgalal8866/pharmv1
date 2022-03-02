@@ -10,6 +10,7 @@ class Countcart extends Component
     protected $listeners = ['updatecart' => 'render'];
     public function render()
     {
+     $this->emit('updatemenucart');
         return view('livewire.front.countcart',['cartcounter' => Cart::instance('cart')->content()->count()]);
     }
 }

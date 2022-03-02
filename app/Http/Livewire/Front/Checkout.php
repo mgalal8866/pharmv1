@@ -13,7 +13,7 @@ class Checkout extends Component
     public function sendorder(){
         $Car = Cart::instance('cart');
         $order = Order::create([
-        'brandacount_id' => 1,
+        'brandaccount_id' => 1,
         'numberorder'=>  str_pad('9', 8, "3", STR_PAD_LEFT),
         'total' => $Car->total(),
         'date' => Carbon::now(),
@@ -28,8 +28,8 @@ class Checkout extends Component
             ]);
         }
         Cart::instance('cart')->destroy();
+        $this->emit('updatecart');
         $this->emit('updatecartlist');
-        $this->emit('updateCart');
         redirect( route('placeorder',$order->numberorder));
 
     }

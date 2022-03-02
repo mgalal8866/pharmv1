@@ -18,6 +18,7 @@ class CreateBrandacountsTable extends Migration
             $table->string('name');
             $table->string('email',32)->unique();
             $table->string('password',255);
+            $table->text('remember_token')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

@@ -2,7 +2,7 @@
 <script src="{{ asset('assets/front/plugins/flexslider/jquery.flexslider-min.js') }}"></script>
 <script src="{{ asset('assets/front/plugins/jackbox/js/jackbox-packed.min.js') }}"></script>
 <script src="{{ asset('assets/front/plugins/owl-carousel/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('assets/front/plugins/twitter/jquery.tweet.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/front/plugins/twitter/jquery.tweet.min.js') }}"></script> --}}
 <script src="{{ asset('assets/front/plugins/flickr.js') }}"></script>
 <script src="{{ asset('assets/front/plugins/afterresize.min.js') }}"></script>
 <script src="{{ asset('assets/front/plugins/jquery.elevateZoom-3.0.8.min.js') }}"></script>

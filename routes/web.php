@@ -23,34 +23,27 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
 use App\Http\Controllers\WarehouseController;
+use App\Http\Livewire\Front\Cartshop;
+use App\Http\Livewire\Front\Contact;
+use App\Http\Livewire\Front\Orderlist;
+use App\Http\Livewire\Front\Wishlist;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){
-    Route::get('/ge', function () {
-
-            return Warehouse_product::get()->groupBy('product_id');
-        // return Product::whereHas('warehouse_product', function($q){
-
-        // })->with('warehouse_product', function($q){
-        //     $q->groupBy('product_id');
-
-        // })->get();
-
-        });
-    Route::get('/sss', function(){
-        // return '#O' . str_pad('9', 8, "0", STR_PAD_LEFT);
-        //    Cart::instance('cart')->destroy();
-        return str_pad('9', 8, "0", STR_PAD_LEFT);
-
-        });
+// Route::group(
+//     [
+//         'prefix' => LaravelLocalization::setLocale(),
+//         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+//     ], function(){
     Route::get('/front',Home::class)->name('front');
+    Route::post('/logoutfront',[UsersController::class,'logout'])->name('logoutfront');
+    Route::post('/logoin/front',[UsersController::class,'logon'])->name('logoncustmer');
     Route::get('/front/{slug}',Home::class)->name('home');
     Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
     Route::get('/checkout',Checkout::class)->name('checkout');
+    Route::get('/contact',Contact::class)->name('contact');
+    Route::get('/order-list',Orderlist::class)->name('orderlist');
+    Route::get('/wishlist',Wishlist::class)->name('wishlist');
+    Route::get('/shopping/cart',Cartshop::class)->name('shopping.cart');
     Route::get('/singelproduct/{slug}',Singelproduct::class)->name('singelproduct');
 
     Route::get('/get_role', function () {
@@ -78,9 +71,24 @@ Route::group(
             $q->with(['childrens' => function($qq){$qq->select('id','parent_id','name');}]);
         }])->get();
 
+        });
+    Route::get('/ge', function (){
+        return Warehouse_product::get()->groupBy('product_id');
+        // return Product::whereHas('warehouse_product', function($q){
+
+        // })->with('warehouse_product', function($q){
+        //     $q->groupBy('product_id');
+
+        // })->get();
+        });
+    Route::get('/sss', function(){
+        // return '#O' . str_pad('9', 8, "0", STR_PAD_LEFT);
+        //    Cart::instance('cart')->destroy();
+        return str_pad('9', 8, "0", STR_PAD_LEFT);
+
     });
 
-});
+// });
 Auth::routes();
 Route::group(
     [

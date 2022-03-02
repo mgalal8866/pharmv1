@@ -1,6 +1,5 @@
 <title>
     @yield('title', env('APP_NAME'))
-
 </title>
 
 		<!--include favicon-->

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Brandaccount;
 use App\Models\Category;
+use App\Models\companyinfo;
 use App\Models\Product;
 use App\Models\Unit;
 use App\Models\User;
@@ -34,7 +35,12 @@ class CreateAdminUserSeeder extends Seeder
             'email' => 'mgalalbrand@gmail.com',
             'password' => bcrypt('123456')
         ]);
-
+        companyinfo::create([
+            'name'=>'MG COMPANY',
+            'address'=>'Egypt - Alexandria',
+            'phone'=>'01024346011',
+            'email'=>'MGALAL8866@gmail.com',
+        ]);
         Category::create([
             'name' => 'مستلزمات تجميل'
         ]);
