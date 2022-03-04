@@ -45,7 +45,7 @@
                         @foreach ($products as $item )
                         <tr>
                             {{-- {{ dd($item->warehouse_product()->first()->image) }} --}}
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $loop->index+1 }}</td>
                             {{-- @if(!empty($item->warehouse_product()->first()->image)) --}}
                             {{-- <?php  $property_images = json_decode($item->warehouse_product()->first()->image);?> --}}
                             {{-- {{ dd($property_images[0]) }} --}}
@@ -62,10 +62,10 @@
                                 @else
 
                                 @endif
-                               
+
                             </td>
                             {{-- @endif --}}
-                                    
+
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->warehouse_product()->first()->code }}</td>
                             <td>{{ $item->effective }}</td>

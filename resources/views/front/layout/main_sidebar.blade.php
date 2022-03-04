@@ -1,227 +1,111 @@
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
-            <img src="{{ URL::asset('assets/pharm.png')}}" alt="Pharm Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">{{ env('APP_NAME') }}</span>
-        </a>
+<aside class="col-lg-3 col-md-3 col-sm-3">
+    <!--categories widget-->
+    <section class="m_bottom_30 animated hidden" data-animation="fadeInDown">
+        <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">{{ __('tran.categories') }}</h5>
+        <hr class="divider_bg m_bottom_23">
+        <ul class="categories_list second_font w_break">
+            @foreach ( $category as $item )
+            <li class="relative">
+                <a href="#" wire:click="productbycategory('{{$item->slug}}')" class="fs_large_0 d_inline_b">{{ $item->name }}</a>
+                @isset($item->childrens)
+                    <button class="open_sub_categories fs_medium"></button>
+                    <ul class="d_none">
+                    @foreach ( $item->childrens as $item2 )
+                <!--second level-->
+                    <li class="relative"><a href="#" wire:click.prevent="productbycategory('{{$item2->slug}}')" class="tr_delay d_inline_b">{{ $item2->name }}</a>
+                        @isset($item2->childrens)
+                            <button class="open_sub_categories fs_medium"></button>
+                            <!--third level-->
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ URL::asset('assets/img/profile.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                            <ul class="d_none fs_small categories_third_level_list">
+                                @foreach ( $item2->childrens as $item3)
+                                 <li><a href="#" wire:click="productbycategory('{{$item3->slug}}')" class="tr_delay sc_hover bg_grey_light_2_hover">{{ $item3->name }}</a></li>
+                                 @endforeach
+                            </ul>
+                        @endisset
+                    </li>
+
+                 @endforeach
+                    </ul>
+                @endisset
+
+            </li>
+            @endforeach
+
+        </ul>
+    </section>
+    <!--compare products widget-->
+    {{-- <section class="m_bottom_40 m_xs_bottom_30 animated hidden" data-animation="fadeInDown">
+        <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Compare Products</h5>
+        <hr class="divider_bg m_bottom_25">
+        <ul>
+            <li class="relative m_bottom_15 t_sm_align_c t_xs_align_l">
+                <div class="clearfix lh_small">
+                    <a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="{{ asset('assets/front/images/compare_img_1.jpg')}}" alt=""></a>
+                    <a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4 d_sm_inline_b d_xs_block p_top_4">Ut tellus dolor<br> dapibus</a>
                 </div>
-                <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-                        <span class="right badge badge-success">
-                            @if (!empty(Auth::user()->getRoleNames()))
-                                @foreach (Auth::user()->getRoleNames() as $v)
-                                    {{ $v }}
-                                @endforeach
-                            @endif
-                        </span>
+                <hr class="m_top_15 m_bottom_0">
+                <span class="close_widget fs_small color_light tr_all color_dark_hover fw_light">x</span>
+            </li>
+            <li class="relative">
+                <div class="clearfix lh_small t_sm_align_c t_xs_align_l">
+                    <a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="{{ asset('assets/front/images/compare_img_2.jpg')}}" alt=""></a>
+                    <a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4 d_sm_inline_b d_xs_block p_top_4">Elementum vel</a>
                 </div>
-            </div>
-
-            <!-- SidebarSearch Form -->
-            {{-- <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                          </button>
-                    </div>
+                <span class="close_widget fs_small color_light tr_all color_dark_hover fw_light">x</span>
+            </li>
+        </ul>
+        <a href="compare_products.html" class="button_type_2 d_block t_align_c grey state_2 tr_all second_font fs_medium tt_uppercase m_top_15"><i class="fa fa-arrow-right d_inline_m fs_"></i><i class="fa fa-arrow-left d_inline_m m_right_9 fs_"></i>Go To Compare</a>
+    </section> --}}
+    <!--Bestsellers widget-->
+    <section class="m_bottom_40 m_xs_bottom_30 animated hidden" data-animation="fadeInDown">
+        <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">Bestsellers</h5>
+        <hr class="divider_bg m_bottom_25">
+        <ul>
+            <li class="relative m_bottom_15 t_sm_align_c t_xs_align_l">
+                <div class="clearfix lh_small">
+                    <a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="{{ asset('assets/front/images/compare_img_1.jpg')}}" alt=""></a>
+                    <a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4 d_sm_inline_b d_xs_block p_top_4">Ut tellus dolor dapibus</a>
+                    <ul class="rating_list hr_list wrapper m_bottom_10 d_sm_inline_b d_xs_block">
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                    </ul>
+                    <b class="second_font scheme_color fs_medium d_sm_block d_xs_inline_b">$430.00</b>
                 </div>
-            </div> --}}
-
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-           with font-awesome or any other icon font library -->
-
-                    {{-- <li class="nav-item ">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Products
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>New Product</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Products</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>--}}
-                    <li class="nav-item">
-                        <a href="{{route('viewcategory') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{ __('tran.categories') }}
-                                <span class="right badge badge-danger"> 0 </span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('viewunit') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{__('tran.units')}}
-                                <span class="right badge badge-danger"> 0</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('viewwarehouses') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{ __('tran.warehouse') }}
-                                <span class="right badge badge-danger"> 0 </span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{ __('tran.product') }}
-                                {{-- <span class="right badge badge-danger"> 0 </span> --}}
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('product.view') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> {{ __('tran.view') . __('tran.product') }}</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('product.create') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> {{ __('tran.new') . __('tran.product') }}</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('roles.view') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{ __('tran.roles') }}
-                                <span class="right badge badge-danger"> 0 </span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('users.view') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{ __('tran.users') }}
-                                <span class="right badge badge-danger"> 0 </span>
-                            </p>
-                        </a>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Warehouse
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>New Warehouse</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Warehouse</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Orders
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Orders</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Warehouse</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Brands
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>New Brand</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Warehouse</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-header">EXAMPLES</li>
-                    <li class="nav-item">
-                        <a href="pages/calendar.html" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
-                            <p>
-                                Calendar
-                                <span class="badge badge-info right">2</span>
-                            </p>
-                        </a>
-                    </li> --}}
-
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
-    </aside>
+                <hr class="m_top_15 m_bottom_0">
+            </li>
+            <li class="relative m_bottom_15 t_sm_align_c t_xs_align_l">
+                <div class="clearfix lh_small">
+                    <a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="{{ asset('assets/front/images/compare_img_2.jpg')}}" alt=""></a>
+                    <a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4 d_sm_inline_b d_xs_block p_top_4">Elementum vel</a>
+                    <ul class="rating_list hr_list wrapper m_bottom_10 d_sm_inline_b d_xs_block">
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                    </ul>
+                    <b class="second_font scheme_color fs_medium d_sm_block d_xs_inline_b">$1 050.00</b>
+                </div>
+                <hr class="m_top_15 m_bottom_0">
+            </li>
+            <li class="relative t_sm_align_c t_xs_align_l">
+                <div class="clearfix lh_small">
+                    <a href="#" class="f_left m_right_15 d_block d_sm_inline_b f_sm_none m_sm_right_0 m_xs_right_15 f_xs_left d_xs_block m_sm_bottom_10 m_xs_bottom_0"><img src="{{ asset('assets/front/images/bestsellers_img_1.jpg')}}" alt=""></a>
+                    <a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4 d_sm_inline_b d_xs_block p_top_4">Pellentesque sed dolor</a>
+                    <ul class="rating_list hr_list wrapper m_bottom_10 d_sm_inline_b d_xs_block">
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                        <li class="color_lbrown"><i class="fa fa-star tr_all"></i></li>
+                    </ul>
+                    <b class="second_font scheme_color fs_medium d_sm_block d_xs_inline_b">$990.00</b>
+                </div>
+            </li>
+        </ul>
+    </section>
+</aside>

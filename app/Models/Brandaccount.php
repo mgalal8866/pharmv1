@@ -29,7 +29,10 @@ class Brandaccount extends Authenticatable
     //     $this->attributes['password'] = Hash::make($value);
     //     dd( $this->attributes['password']);
     // }
-
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
     public function scopeIsActive($query)
     {
         return $query->where('is_active',1);

@@ -61,6 +61,6 @@ class Viewunit extends Component
     public function render()
     {
         $units = Unit::where('name','like', '%'. $this->searchtxt . '%')->orderBy('id','desc')->latest()->paginate(20);
-        return view('livewire.admin.unit.viewunit',['units' => $units]);
+        return view('livewire.admin.unit.viewunit',['units' => $units])->layout('admin.layouts.master');
     }
 }

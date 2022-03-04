@@ -67,6 +67,6 @@ class Viewroles extends Component
         $permissions = Permission::where('guard_name' , 'web')->get();
         $roles = Role::where('guard_name' , 'web')->with('permissions')->paginate(500);
         // dd($roles->permissions);
-        return view('livewire.admin.roles.viewroles',['roles'=> $roles,'permissions' => $permissions]);
+        return view('livewire.admin.roles.viewroles',['roles'=> $roles,'permissions' => $permissions])->layout('admin.layouts.master');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -75,11 +76,13 @@ class Viewproduct extends Component
     {
         // $product = Product::where('active',1)->orderBy('id', 'desc')->
         //     whereHas('category', function($q){$q->where('active' ,1);})->latest()->paginate($this->limitPerPage);
-
+        if(Auth::guard('web')->user()->warehouse_id == null){
         $products = Product::whereHas('warehouse_product')->where('name','like', '%'. $this->searchtxt . '%')->orderBy('id','desc')->latest()->paginate(20);
-
+        }else{
+            $products = Product::whereHas('warehouse_product', function($q){$q->where('warehouse_id',Auth::guard('web')->user()->warehouse_id);})->where('name','like', '%'. $this->searchtxt . '%')->orderBy('id','desc')->latest()->paginate(20);
+        }
         // return view('livewire.admin.product.viewproduct',['products'=>$products]);
 
-        return view('livewire.admin.product.viewproduct',['products'=>$products]);
+        return view('livewire.admin.product.viewproduct',['products'=>$products])->layout('admin.layouts.master');
     }
 }

@@ -14,9 +14,8 @@
     <img class="animation__shake" src="{{ asset('assets/pharm.png')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
- @include('admin.layouts.main_headerbar')
-
-@include('admin.layouts.main_sidebar')
+    @include('admin.layouts.main_headerbar')
+    @include('admin.layouts.main_sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -38,15 +37,18 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+    <section class="content">
     @yield('content')
+        @isset($slot)
+        {{$slot}}
+        @endisset
+    </section>
+
     <!-- /.content -->
   </div>
 
 
-
-
     @include('admin.layouts.footer')
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->

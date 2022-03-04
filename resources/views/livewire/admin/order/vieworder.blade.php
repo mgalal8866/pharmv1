@@ -4,9 +4,7 @@
     @include('livewire.admin.order.editorder') --}}
     <div class="card">
         <div class="card-header" >
-              {{-- @can('neworder') --}}
-            <button class="btn btn-success" data-toggle="modal" data-target="#modal-create">{{ __('tran.new') . __('tran.order') }}</button>
-                {{-- @endcan --}}
+
             <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" wire:model="searchtxt" class="form-control float-right" placeholder="Search">
@@ -27,16 +25,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{ __('tran.image') }}</th>
-                            <th>{{ __('tran.name') }}</th>
-                            <th>{{ __('tran.code') }}</th>
-                            <th>{{ __('tran.effective') }}</th>
-                            <th>{{ __('tran.qty') }}</th>
-                            <th>{{ __('tran.price_buy') }}</th>
-                            <th>{{ __('tran.price_sale') }}</th>
-                            <th>{{ __('tran.warehouse') }}</th>
-                            <th>{{ __('tran.unit') }}</th>
-                            <th>{{ __('tran.category') }}</th>
+                            <th>{{ __('tran.numberorder') }}</th>
+                            <th>{{ __('tran.namebrand') }}</th>
+                            <th>{{ __('tran.date') }}</th>
+                            <th>{{ __('tran.items') }}</th>
+                            <th>{{ __('tran.total') }}</th>
                             <th>{{ __('tran.action') }}</th>
                         </tr>
                     </thead>
@@ -44,34 +37,24 @@
 
                         @if ($orders->count() != 0)
                         @foreach ($orders as $item )
-
                         <tr>
-                           <td>{{ $item->id }}</td>
-                            <td>
-                                @if(!empty($item->warehouse_order()->first()->image))
-                                <img src="{{ $item->warehouse_order()->first()->image }}"
-                                style="width:100px; height:100px;">
-                                @else
-                                @endif
-                            </td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->warehouse_order()->first()->code }}</td>
-                            <td>{{ $item->effective }}</td>
-                            <td>{{ $item->warehouse_order()->first()->qty}}</td>
-                            <td>{{ $item->warehouse_order()->first()->price_buy }}</td>
-                            <td>{{ $item->warehouse_order()->first()->price_sale }}</td>
-                            <td>{{ $item->warehouse_order()->first()->warehouse->name }}</td>
-                            <td>{{ $item->warehouse_order()->first()->unit->name }}</td>
-                            <td>{{ $item->warehouse_order()->first()->category->name }}</td>
+                            <td>{{ $loop->index+1 }}</td>
+                            <td>{{ $item->numberorder}}</td>
+                            <td>{{ $item->brandaccount->namebrand}}</td>
+                            <td>{{ $item->date}}</td>
+                            <td>{{ $item->order_details()->count() }}</td>
+                            <td>{{ $item->order_details()->sum('total') }}</td>
                             <td>
                                 {{-- @can('editorder') --}}
-                                <button class="btn btn-info  btn-sm"   data-toggle="modal" data-target="#modal-edit" wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
+                                <a href="{{ route('detailsorder.view',['ordernumber' => $item->numberorder]) }}" class="btn btn-info  btn-sm"
+                                ><i class="fas fa-pencil-alt"></i>{{ __('tran.view') }}</a>
                                 {{-- @endcan --}}
                                 {{-- @can('delorder') --}}
-                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
+                                {{-- <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button> --}}
                                 {{-- @endcan --}}
                             </td>
                         </tr>
+
                         @endforeach
                         @else
                         <tr>

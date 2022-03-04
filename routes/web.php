@@ -1,50 +1,170 @@
 <?php
 
-use App\Models\User;
-use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Brandaccount;
 use App\Http\Livewire\Front\Home;
 use App\Models\Warehouse_product;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use App\Http\Livewire\Front\Contact;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Livewire\Front\Cartshop;
 use App\Http\Livewire\Front\Checkout;
+use App\Http\Livewire\Front\Wishlist;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Front\Bycategoy;
+use App\Http\Livewire\Front\Orderlist;
 use App\Http\Livewire\Front\Placeorder;
+use Illuminate\Support\Facades\Artisan;
 use Spatie\Permission\Models\Permission;
-use App\Http\Controllers\RolesController;
-use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\UsersController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Livewire\Front\Singelproduct;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\OrderController;
 use App\Http\Livewire\Admin\Unit\CreateUnit;
-use App\Http\Controllers\WarehouseController;
-use App\Http\Livewire\Front\Cartshop;
-use App\Http\Livewire\Front\Contact;
-use App\Http\Livewire\Front\Orderlist;
-use App\Http\Livewire\Front\Wishlist;
+use App\Http\Livewire\Admin\Category\Viewcategory;
+use App\Http\Livewire\Admin\Order\Viewdetailsorder;
+use App\Http\Livewire\Admin\Order\Vieworder;
+use App\Http\Livewire\Admin\Product\Createproduct;
+use App\Http\Livewire\Admin\Product\Viewproduct;
+use App\Http\Livewire\Admin\Roles\Viewroles;
+use App\Http\Livewire\Admin\Setting\Setting;
+use App\Http\Livewire\Admin\Unit\Viewunit;
+use App\Http\Livewire\Admin\User\Viewusers;
+use App\Http\Livewire\Admin\Warehouse\Viewwarehouse;
+use App\Models\Order;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-// Route::group(
-//     [
-//         'prefix' => LaravelLocalization::setLocale(),
-//         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-//     ], function(){
-    Route::get('/front',Home::class)->name('front');
-    Route::post('/logoutfront',[UsersController::class,'logout'])->name('logoutfront');
-    Route::post('/logoin/front',[UsersController::class,'logon'])->name('logoncustmer');
-    Route::get('/front/{slug}',Home::class)->name('home');
+
+
+
+    Route::group(['prefix' => 'maintenance'], function(){
+        Route::get('clear_cache', function () {
+            Artisan::call('cache:clear');
+            dd("Cache is cleared");
+        });
+        Route::get('config_clear', function () {
+            Artisan::call('config:clear');
+            dd("config is cleared");
+        });
+        Route::get('runseed', function () {
+            Artisan::call('db:seed');
+            dd("seed done");
+        });
+        Route::get('migrate', function () {
+            Artisan::call('migrate');
+            Artisan::call('db:seed');
+            dd("migrate done");
+        });
+        Route::get('freshmigrate', function () {
+            Artisan::call('migrate:fresh');
+            artisan::call('db:seed');
+            dd("migrate done");
+        });
+
+    });
+    Route::group(['prefix' => 'admin'], function(){Auth::routes(); });
+
+    Route::group(
+        [
+            'prefix' => LaravelLocalization::setLocale(),
+            'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ,'auth:web']
+        ], function(){
+
+    Route::group(
+            [
+                'prefix' => 'admin',
+            ], function(){
+
+                     //***********************  Start Unit***********************************//
+            Route::get('/view_unit',Viewunit::class)->name('viewunit');
+            //***********************  end Unit***********************************//
+
+            //***********************  Start Category***********************************//
+            Route::get('/view_category',Viewcategory::class)->name('viewcategory');
+            //***********************  end Category***********************************//
+
+            //***********************  Start UNITS***********************************//
+            Route::get('/warehouses',Viewwarehouse::class)->name('viewwarehouses');
+            //***********************  end UNITS***********************************//
+
+            //***********************  Start USERS***********************************//
+            Route::get('/users',Viewusers::class)->name('users.view');
+            //***********************  end USERS***********************************//
+            //***********************  Start Roles***********************************//
+            Route::get('/roles',Viewroles::class)->name('roles.view');
+            //***********************  end Roles***********************************//
+
+            //***********************  Start Products***********************************//
+            Route::get('/products',Viewproduct::class)->name('product.view');
+            Route::get('/product/create',Createproduct::class)->name('product.create');
+            //***********************  end Products***********************************//
+
+            //***********************  Start Order***********************************//
+            Route::get('/orders',Vieworder::class)->name('orders.view');
+            Route::get('/order/detailsorder/{ordernumber}',Viewdetailsorder::class)->name('detailsorder.view');
+            //***********************  end Order***********************************//
+            Route::get('/unit/create',CreateUnit::class);
+            Route::get('/', function () {return view('admin.dashborad');});
+            Route::get('/getusers',[UserController::class,'index']);
+
+            Route::get('/setting',Setting::class)->name('setting.view');
+            //     //***********************  Start Unit***********************************//
+            // Route::get('/view_unit',[UnitsController::class,'index'])->name('viewunit');
+            // //***********************  end Unit***********************************//
+
+            // //***********************  Start Category***********************************//
+            // Route::get('/view_category',[CategoryController::class,'index'])->name('viewcategory');
+            // //***********************  end Category***********************************//
+
+            // //***********************  Start UNITS***********************************//
+            // Route::get('/warehouses',[WarehouseController::class,'index'])->name('viewwarehouses');
+            // //***********************  end UNITS***********************************//
+
+            // //***********************  Start USERS***********************************//
+            // Route::get('/users',[UsersController::class,'livewireindex'])->name('users.view');
+            // //***********************  end USERS***********************************//
+
+            // //***********************  Start Roles***********************************//
+            // Route::get('/roles',[RolesController::class,'index'])->name('roles.view');
+            // //***********************  end Roles***********************************//
+
+            // //***********************  Start Products***********************************//
+            // Route::get('/products',[ProductController::class,'index'])->name('product.view');
+            // Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
+            // //***********************  end Products***********************************//
+
+            // //***********************  Start Order***********************************//
+            // Route::get('/orders',[OrderController::class,'index'])->name('orders.view');
+            // Route::get('/order/detailsorder',[OrderController::class,'vieworder'])->name('detailsorder.view');
+            // //***********************  end Order***********************************//
+            // Route::get('/unit/create',CreateUnit::class);
+            // Route::get('/', function () {return view('admin.dashborad');});
+            // Route::get('/getusers',[UserController::class,'index']);
+            // });
+        });
+
+    });
+
+    Route::group(
+        [
+            'prefix' => LaravelLocalization::setLocale(),
+            'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        ], function(){
+
+    Route::get('/',Home::class)->name('front');
+    // Route::get('/{slug}',Home::class)->name('home');
+    Route::post('/front/logout',[UsersController::class,'logout'])->name('logoutfront');
+    Route::post('/front/login',[UsersController::class,'logon'])->name('logoncustmer');
     Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
-    Route::get('/checkout',Checkout::class)->name('checkout');
-    Route::get('/contact',Contact::class)->name('contact');
-    Route::get('/order-list',Orderlist::class)->name('orderlist');
-    Route::get('/wishlist',Wishlist::class)->name('wishlist');
+    Route::get('/category/{slug}',Bycategoy::class)->name('category');
+    Route::get('/shopping/checkout',Checkout::class)->name('checkout');
+    Route::get('/shop/contact',Contact::class)->name('contact');
+    Route::get('/order/order-list',Orderlist::class)->name('orderlist');
+    Route::get('/shopping/wishlist',Wishlist::class)->name('wishlist');
     Route::get('/shopping/cart',Cartshop::class)->name('shopping.cart');
     Route::get('/singelproduct/{slug}',Singelproduct::class)->name('singelproduct');
+
+
 
     Route::get('/get_role', function () {
 
@@ -87,54 +207,5 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         return str_pad('9', 8, "0", STR_PAD_LEFT);
 
     });
+});
 
-// });
-Auth::routes();
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ,'auth']
-    ], function(){
-
-        // Route::group(
-        //     [
-        //         'prefix' => 'admin',
-        //     ], function(){
-
-            //***********************  Start Unit***********************************//
-        Route::get('/view_unit',[UnitsController::class,'index'])->name('viewunit');
-        //***********************  end Unit***********************************//
-
-        //***********************  Start Category***********************************//
-        Route::get('/view_category',[CategoryController::class,'index'])->name('viewcategory');
-        //***********************  end Category***********************************//
-
-        //***********************  Start UNITS***********************************//
-        Route::get('/warehouses',[WarehouseController::class,'index'])->name('viewwarehouses');
-        //***********************  end UNITS***********************************//
-
-
-        //***********************  Start USERS***********************************//
-        Route::get('/users',[UsersController::class,'livewireindex'])->name('users.view');
-        //***********************  end USERS***********************************//
-
-        //***********************  Start Roles***********************************//
-        Route::get('/roles',[RolesController::class,'index'])->name('roles.view');
-        //***********************  end Roles***********************************//
-
-
-        //***********************  Start Products***********************************//
-        Route::get('/products',[ProductController::class,'index'])->name('product.view');
-        Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
-        //***********************  end Products***********************************//
-     //***********************  Start Order***********************************//
-        Route::get('/orders',[OrderController::class,'index'])->name('orders.view');
-        //***********************  end Order***********************************//
-
-            Route::get('/unit/create',CreateUnit::class);
-            Route::get('/', function () {return view('admin.dashborad');});
-            Route::get('/getusers',[UserController::class,'index']);
-        // });
-    });
-
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

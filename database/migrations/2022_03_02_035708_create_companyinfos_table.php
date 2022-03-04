@@ -15,10 +15,13 @@ class CreateCompanyinfosTable extends Migration
     {
         Schema::create('companyinfos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 250);
-            $table->string('phone', 250);
-            $table->string('email', 250);
-            $table->string('address', 250);
+            $table->string('name', 250)->nullable();
+            $table->string('phone', 250)->nullable();
+            $table->string('email', 250)->nullable();
+            $table->string('address', 250)->nullable();
+            $table->integer('tax', 10)->nullable();
+            $table->integer('service', 10)->nullable();
+            $table->integer('delivery', 10)->nullable();
             $table->timestamps();
         });
     }

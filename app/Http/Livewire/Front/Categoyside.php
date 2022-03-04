@@ -7,9 +7,10 @@ use App\Models\Category;
 
 class Categoyside extends Component
 {
+    public $slug;
     public function productbycategory($slug){
         $this->slug = $slug;
-              // $this->emit('home');
+        redirect( route('category',$slug));
       }
     public function render()
     {

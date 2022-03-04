@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 
 class Viewwarehouse extends Component
 {
-  
+
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
@@ -76,6 +76,6 @@ class Viewwarehouse extends Component
     {
         $warehouses = Warehouse::where('name','like', '%'. $this->searchtxt . '%')->orderBy('id','desc')->latest()->paginate(20);
 
-        return view('livewire.admin.warehouse.viewwarehouse',['warehouses'=>$warehouses]);
+        return view('livewire.admin.warehouse.viewwarehouse',['warehouses'=>$warehouses])->layout('admin.layouts.master');
     }
 }

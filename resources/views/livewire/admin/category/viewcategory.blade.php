@@ -32,13 +32,13 @@
                             <th>{{ __('tran.action') }}</th>
                         </tr>
                     </thead>
-                    <tbody> 
+                    <tbody>
                         @if ($categorys->count() != 0)
                         @foreach ($categorys as $item )
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->name }} 
-                               
+                            <td>{{ $loop->index+1 }}</td>
+                            <td>{{ $item->name }}
+
                             </td>
                             <td>
                                 @if($item->parent_id)

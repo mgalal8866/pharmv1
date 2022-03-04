@@ -37,7 +37,7 @@
                         @if ($warehouses->count() != 0)
                         @foreach ($warehouses as $item )
                         <tr>
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $loop->index+1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->address }}</td>

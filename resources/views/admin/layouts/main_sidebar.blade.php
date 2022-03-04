@@ -72,7 +72,7 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 {{ __('tran.categories') }}
-                                <span class="right badge badge-danger"> 0 </span>
+                                <span class="right badge badge-danger"> {{\App\models\category::count()}} </span>
                             </p>
                         </a>
                     </li>
@@ -81,7 +81,7 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 {{__('tran.units')}}
-                                <span class="right badge badge-danger"> 0</span>
+                                <span class="right badge badge-danger">{{\App\models\Unit::count()}}</span>
                             </p>
                         </a>
                     </li>
@@ -90,7 +90,7 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 {{ __('tran.warehouse') }}
-                                <span class="right badge badge-danger"> 0 </span>
+                                <span class="right badge badge-danger"> {{\App\models\Warehouse::count()}} </span>
                             </p>
                         </a>
                     </li>
@@ -99,7 +99,7 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 {{ __('tran.product') }}
-                                {{-- <span class="right badge badge-danger"> 0 </span> --}}
+                                <span class="right badge badge-danger"> {{\App\models\Product::count()}} </span>
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -123,7 +123,7 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 {{ __('tran.roles') }}
-                                <span class="right badge badge-danger"> 0 </span>
+                                {{-- <span class="right badge badge-danger"> {{\App\models\Rolse::count()}} </span> --}}
                             </p>
                         </a>
                     </li>
@@ -132,7 +132,7 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 {{ __('tran.users') }}
-                                <span class="right badge badge-danger"> 0 </span>
+                                <span class="right badge badge-danger"> {{\App\models\User::count()}} </span>
                             </p>
                         </a>
                     </li>
@@ -141,10 +141,20 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 {{ __('tran.order') }}
-                                <span class="right badge badge-danger"> 0 </span>
+                                <span class="right badge badge-danger"> {{\App\models\Order::count()}}  </span>
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('setting.view') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                {{ __('tran.settingfront') }}
+                     
+                            </p>
+                        </a>
+                    </li>
+
                     {{-- <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>

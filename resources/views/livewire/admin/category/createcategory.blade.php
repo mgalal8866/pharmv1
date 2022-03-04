@@ -11,24 +11,32 @@
         <form wire:submit.prevent="create">
             @csrf
             <div class="modal-body">
-                <div class="card">
-                    <div class="card-body">
-                 <div class="form-group">
-                      <input class="form-control @error('name') is-invalid @enderror" type="text" wire:model="name" placeholder="{{ __('tran.name')  .   __('tran.category')}}" autofocus>
-                      @error('name')
-                      {{-- @if($errors->has('name')) --}}
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>  
-                <div class="form-group">
-                    {{-- <input wire:model="animal" name="animal" type="radio" value="0" checked /> رئيسي
-                    <input wire:model="animal" name="animal" type="radio" value="1" /> فرعى --}}
-                </div>    
-                </div>
+                {{-- <div class="card"> --}}
+                 {{-- <div class="card-body"> --}}
+                        <div class="form-group">
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" wire:model="name" placeholder="{{ __('tran.name')  .   __('tran.category')}}" autofocus>
+                            @error('name')
+                            {{-- @if($errors->has('name')) --}}
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+
+                            <div  class="icheck-success d-inline">
+                                <input wire:model="section" type="radio" checked name="section" id="radioSuccess3">
+                                <label for="radioSuccess3"> رائيسي  </label>
+                            </div>
+                            <div class="icheck-success d-inline" >
+                                <input wire:model="section" type="radio" name="section" id="radioSuccess1">
+                                <label for="radioSuccess1"> فرعى  </label>
+                            </div>
+
+                        </div>
+                {{-- </div> --}}
                     <!-- /.card-body -->
-                  </div>
+                  {{-- </div> --}}
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('tran.close') }}</button>

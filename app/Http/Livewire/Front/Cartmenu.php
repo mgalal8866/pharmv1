@@ -10,8 +10,8 @@ class Cartmenu extends Component
     protected $listeners = ['updatemenucart' => 'render'];
     public function destroy($rowId){
         Cart::instance('cart')->remove($rowId);
+        $this->emit('updatecart');
         $this->emit('updatecartlist');
-        $this->emit('updateCart');
     }
     public function render()
     {

@@ -29,24 +29,39 @@ class Warehouse_product extends Model
 
             }
        }
+    public function getSpecialPriceAttribute($val){
 
-    public function product()
+            if($this->attributes['special_type'] == 'percentage'){
+                return    (number_format( $this->attributes['price_sale'] ,0) * (1 -  number_format($this->attributes['special_price'],0) /100));
+            }
+            else{
+            return $val;
+
+            }
+
+
+        }
+     public function product()
     {
         return $this->belongsTo(Product::class);
     }
-    
+
     public function unit()
     {
         return $this->belongsTo(Unit::class);
     }
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    
+
     public function warehouse()
     {
         return $this->belongsTo(Warehouse::class);
+    }
+    public function order_details()
+    {
+        return $this->belongsTo(Order_details::class);
     }
 }

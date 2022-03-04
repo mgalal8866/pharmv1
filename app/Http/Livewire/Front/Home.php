@@ -2,14 +2,16 @@
 
 namespace App\Http\Livewire\Front;
 
+use App\Models\banner;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class Home extends Component
 {
-    // protected $listeners = ['home' => 'render'];
+    protected $listeners = ['home' => 'render'];
     public $slug='',$bycat='';
     public function productbycategory($slug){
       $this->slug = $slug;
@@ -52,11 +54,23 @@ class Home extends Component
          }])->get();
 
 
-            $product = Product::whereHas('warehouse_product', function($q){
-                $q->where('category_id','like', '%'. $this->bycat . '%'); })->get();
+         $product = Product::whereHas('warehouse_product', function($q){
+            $q->where('category_id','like', '%'. $this->bycat . '%'); })->get();
 
+            $banner = banner::get();
 
-        return view('livewire.front.home',[ 'category' => $category  , 'product' =>$product ])->layout('front.layout.master');
+            $newproduct = Product::whereHas('warehouse_product')->orderBy('id', 'desc')->take(10)->get();
+            $flashproduct = Product::whereHas('warehouse_product',function($q){
+                $q->where('special_enddate','!=' , null);})->orderBy('id', 'desc')->take(40)->get();
+
+            return view('livewire.front.home',[
+            'category' => $category,
+            'product' =>$product,
+            'banner' =>$banner,
+            
+            'newproduct'=>  $newproduct,
+            'flashproduct' => $flashproduct
+        ])->layout('front.layout.master');
     }
 
 }

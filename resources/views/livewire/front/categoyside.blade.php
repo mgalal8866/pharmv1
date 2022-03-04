@@ -1,26 +1,29 @@
-<div>
+<div wire:ignore>
     <aside class="col-lg-3 col-md-3 col-sm-3 p_top_4">
         <!--categories widget-->
         <section class="m_bottom_30 animated hidden" data-animation="fadeInDown">
             <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">{{ __('tran.categories') }}</h5>
             <hr class="divider_bg m_bottom_23">
             <ul class="categories_list second_font w_break">
+
                 @foreach ( $category as $item )
+
                 <li class="relative">
-                    <a href="#" wire:click="productbycategory('{{$item->slug}}')" class="fs_large_0 d_inline_b">{{ $item->name }}</a>
+                    {{-- wire:click="productbycategory('{{$item->slug}}')" --}}
+                    <a href="{{ route('category',$item->slug) }}"   class="fs_large_0 d_inline_b">{{ $item->name }}</a>
                     @isset($item->childrens)
                         <button class="open_sub_categories fs_medium"></button>
                         <ul class="d_none">
                         @foreach ( $item->childrens as $item2 )
                     <!--second level-->
-                        <li class="relative"><a href="#" wire:click.prevent="productbycategory('{{$item2->slug}}')" class="tr_delay d_inline_b">{{ $item2->name }}</a>
+                        <li class="relative"><a href="{{ route('category',$item2->slug) }}" class="tr_delay d_inline_b">{{ $item2->name }}</a>
                             @isset($item2->childrens)
                                 <button class="open_sub_categories fs_medium"></button>
                                 <!--third level-->
 
                                 <ul class="d_none fs_small categories_third_level_list">
                                     @foreach ( $item2->childrens as $item3)
-                                     <li><a href="#" wire:click="productbycategory('{{$item3->slug}}')" class="tr_delay sc_hover bg_grey_light_2_hover">{{ $item3->name }}</a></li>
+                                     <li><a href="{{ route('category',$item3->slug) }}" class="tr_delay sc_hover bg_grey_light_2_hover">{{ $item3->name }}</a></li>
                                      @endforeach
                                 </ul>
                             @endisset

@@ -8,9 +8,11 @@ Dashborad
 @endsection
 
 @section('page')
+Dashborad  
 @endsection
 
 @section('page1')
+
 @endsection
 
 @section('page2')

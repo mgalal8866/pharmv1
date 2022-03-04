@@ -16,6 +16,10 @@ class CreateBrandacountsTable extends Migration
         Schema::create('brandaccounts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('namebrand')->nullable();
+            $table->string('warehouse_id')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->string('email',32)->unique();
             $table->string('password',255);
             $table->text('remember_token')->nullable();

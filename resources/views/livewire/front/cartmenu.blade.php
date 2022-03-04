@@ -1,5 +1,5 @@
 <div>
-    <div id="shopping_cart" data-show="fadeInUp" data-hide="fadeOutDown" class="relative open_mini_shopping_cart bg_grey_light dropdown animated">
+    <div id="shopping_cart" data-show="fadeInUp" data-hide="fadeOutDown" class=" bg_grey_light dropdown animated">
         <div class="sc_header fs_small fw_light">{{ __('tran.recentadd') }})</div>
         <hr class="divider_white">
         <ul class="shopping_cart_list m_bottom_4">

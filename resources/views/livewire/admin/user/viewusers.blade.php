@@ -38,7 +38,7 @@
                         @if ($users->count() != 0)
                         @foreach ($users as $item )
                         <tr>
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $loop->index+1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td>
                                 @if (!empty($item->getRoleNames()))

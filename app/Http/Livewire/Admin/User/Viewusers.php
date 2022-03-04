@@ -85,6 +85,6 @@ public function delete()
         $warehouses = Warehouse::all();
         $roles = Role::where('guard_name' , 'web')->get();
         $data = User::orderBy('id','DESC')->paginate(500);
-        return view('livewire.admin.user.viewusers',['users' => $data,'roles'=> $roles,'warehouses' =>$warehouses]);
+        return view('livewire.admin.user.viewusers',['users' => $data,'roles'=> $roles,'warehouses' =>$warehouses])->layout('admin.layouts.master');
     }
 }

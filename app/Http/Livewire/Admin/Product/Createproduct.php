@@ -62,7 +62,7 @@ class Createproduct extends Component
 
         // return redirect()->back();
     }
-  
+
     public function ww(){
         dd($this->dismo,$this->dispres,$this->price_sale,$this->price_buy,$this->warehouse_id,$this->category_id,$this->unit_id,$this->description,$this->code,$this->name);
     }
@@ -71,6 +71,6 @@ class Createproduct extends Component
         $units = Unit::all();
         $warehouse = Warehouse::all();
         $catrgory = Category::all();
-        return view('livewire.admin.product.createproduct',['units'=>$units , 'category'=>$catrgory,'warehouse'=>$warehouse]);
+        return view('livewire.admin.product.createproduct',['units'=>$units , 'category'=>$catrgory,'warehouse'=>$warehouse])->layout('admin.layouts.master');
     }
 }
