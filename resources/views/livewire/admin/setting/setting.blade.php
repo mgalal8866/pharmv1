@@ -1,4 +1,8 @@
 <div>
+
+@section('page2')
+Setting
+@stop
      <div class="row">
         <div class="col-md-6">
             <div class="card card-info">

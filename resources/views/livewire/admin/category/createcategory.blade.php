@@ -14,6 +14,7 @@
                 {{-- <div class="card"> --}}
                  {{-- <div class="card-body"> --}}
                         <div class="form-group">
+                         <label>Name Category</label>
                             <input class="form-control @error('name') is-invalid @enderror" type="text" wire:model="name" placeholder="{{ __('tran.name')  .   __('tran.category')}}" autofocus>
                             @error('name')
                             {{-- @if($errors->has('name')) --}}
@@ -32,7 +33,15 @@
                                 <input wire:model="section" type="radio" name="section" id="radioSuccess1">
                                 <label for="radioSuccess1"> فرعى  </label>
                             </div>
-
+                        </div>
+                        <div class="form-group">
+                            <label>Select</label>
+                            <select   wire:model="parent" class="form-control">
+                             <option value="">{{__('tran.select')}}</option>
+                            @foreach($categorys as $item)
+                               <option value="{{$item->slug}}">{{$item->name}}</option>
+                            @endforeach
+                            </select>
                         </div>
                 {{-- </div> --}}
                     <!-- /.card-body -->

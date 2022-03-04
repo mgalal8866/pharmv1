@@ -19,9 +19,9 @@ class CreateCompanyinfosTable extends Migration
             $table->string('phone', 250)->nullable();
             $table->string('email', 250)->nullable();
             $table->string('address', 250)->nullable();
-            $table->integer('tax', 10)->nullable();
-            $table->integer('service', 10)->nullable();
-            $table->integer('delivery', 10)->nullable();
+            $table->integer('tax')->nullable();
+            $table->integer('service')->nullable();
+            $table->integer('delivery')->nullable();
             $table->timestamps();
         });
     }

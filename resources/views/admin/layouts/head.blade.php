@@ -31,3 +31,4 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ URL::asset('assets/plugins/summernote/summernote-bs4.min.css') }}">
 @yield('css')
+@livewireStyles

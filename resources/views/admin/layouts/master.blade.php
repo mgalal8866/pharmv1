@@ -27,7 +27,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="admin/dashborad"> @yield('page1','Dashbord')</a></li>
+              <li class="breadcrumb-item"><a href="@yield('link','/admin')"> @yield('page1','Dashbord')</a></li>
               <li class="breadcrumb-item active"> @yield('page2','Home')</li>
             </ol>
           </div><!-- /.col -->

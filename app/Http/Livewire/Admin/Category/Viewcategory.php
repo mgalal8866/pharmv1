@@ -11,18 +11,18 @@ class Viewcategory extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-             public $slug, $name ,$searchtxt,$section;
+             public $slug, $name ,$searchtxt,$section,$parent;
 
-
+     
 
             protected $rules = [
                 'name' => 'required|unique:categorys',
             ];
-            public function updated($propertyName,$propertySection)
+            public function updated($propertyName,$propertyParent)
             {
                 $this->validateOnly($propertyName);
 
-                dd( $this->section);
+                // dd($propertyParent);
             }
 
             public function view($slug){
@@ -44,13 +44,14 @@ class Viewcategory extends Component
                 $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Delete Done']);
             }
             public function create()
-            {
-                $this->validate();
-                Category::create([
-                    'name' => $this->name,
-                ]);
-                $this->dispatchBrowserEvent('closeModal');
-                $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
+            {$this->reset();
+                // dd($this->parent);
+                // $this->validate();
+                // Category::create([
+                //     'name' => $this->name,
+                // ]);
+                // $this->dispatchBrowserEvent('closeModal');
+                // $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
             }
             public function update()
             {

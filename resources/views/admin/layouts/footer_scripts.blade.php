@@ -56,3 +56,4 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ URL::asset('assets/dist/js/pages/dashboard.js') }}"></script> --}}
 @yield('js')
+@livewireScripts
