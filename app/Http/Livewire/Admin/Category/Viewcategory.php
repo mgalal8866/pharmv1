@@ -13,7 +13,7 @@ class Viewcategory extends Component
 
              public $slug, $name ,$searchtxt,$section,$parent;
 
-     
+
 
             protected $rules = [
                 'name' => 'required|unique:categorys',
@@ -44,14 +44,15 @@ class Viewcategory extends Component
                 $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Delete Done']);
             }
             public function create()
-            {$this->reset();
-                // dd($this->parent);
-                // $this->validate();
-                // Category::create([
-                //     'name' => $this->name,
-                // ]);
-                // $this->dispatchBrowserEvent('closeModal');
-                // $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
+            {
+
+                $this->validate();
+                Category::create([
+                    'name' => $this->name,
+                ]);
+                $this->dispatchBrowserEvent('closeModal');
+                $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
+                $this->reset();
             }
             public function update()
             {
