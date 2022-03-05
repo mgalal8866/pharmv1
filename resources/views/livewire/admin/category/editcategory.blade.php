@@ -10,14 +10,25 @@
             </button>
           </div>
           <div class="modal-body">
-              <input type="hidden" wire:model="slug">
-              <input class="form-control @error('name') is-invalid @enderror" type="text" wire:model="name" placeholder="{{ __('tran.name')  .   __('tran.category')}}" autofocus>
-              @error('name')
-              {{-- @if($errors->has('name')) --}}
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+            <label>Name Category</label>
+            <div class="form-group">
+                <input type="hidden" wire:model="slug">
+                <input class="form-control @error('name') is-invalid @enderror" type="text" wire:model="name" placeholder="{{ __('tran.name')  .   __('tran.category')}}" autofocus>
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+             </div>
+            <div class="form-group">
+                <label>Parent Select</label>
+                <select   wire:model="parent" class="form-control">
+                 <option value="">{{__('tran.select')}}</option>
+                @foreach($categorys as $item)
+                   <option value="{{$item->slug}}">{{$item->name}}</option>
+                @endforeach
+                </select>
+            </div>
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-outline-light" data-dismiss="modal">{{ __('tran.close') }}</button>

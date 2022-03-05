@@ -12,11 +12,12 @@ class banner extends Model
         protected $guarded = [];
 
         public function getImageAttribute($val){
-            $path = public_path('assets/images/banners/'. $val);
+            $path = base_path('public/assets/images/banner/'. $val);
+        
             if(File::exists($path)) {
-                return ($val !== null ) ? asset('assets/images/banners/' . $val) : asset('assets/images/banners/noimage.png');
+                return ($val !== null ) ? asset('assets/images/banner/' . $val) : asset('assets/images/banner/noimage.png');
             }else{
-                return asset('assets/images/banners/noimage.png');
+                return asset('assets/images/banner/noimage.png');
 
             }
            }

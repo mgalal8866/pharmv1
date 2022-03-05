@@ -7,7 +7,11 @@ use App\Models\Category;
 
 class Categoyside extends Component
 {
-    public $slug;
+    public $slug , $contact,$cat;
+        public function Q(){
+            
+        }
+
     public function productbycategory($slug){
         $this->slug = $slug;
         redirect( route('category',$slug));

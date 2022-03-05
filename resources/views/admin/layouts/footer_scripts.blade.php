@@ -30,7 +30,8 @@
   <script src="{{ URL::asset('assets/dist/js/adminlte.js') }}"></script>
   <script src="{{ URL::asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
   <script src="{{ URL::asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
-
+<!-- bs-custom-file-input -->
+<script src="{{ URL::asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 <!-- Toastr -->
         <script src="{{ URL::asset('assets/plugins/toastr/toastr.min.js') }}"></script>
   <script>
@@ -51,9 +52,34 @@
         .addClass('active');
 });
   </script>
+  {{-- <script>
+    $(function () {
+      bsCustomFileInput.init();
+    });
+    </script> --}}
   <!-- AdminLTE for demo purposes -->
   {{-- <script src="{{ URL::asset('assets/dist/js/demo.js') }}"></script> --}}
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ URL::asset('assets/dist/js/pages/dashboard.js') }}"></script> --}}
 @yield('js')
 @livewireScripts
+<script>
+    var Toast = Swal.mixin({
+       toast: true,
+       position: 'top-end',
+       showConfirmButton: false,
+       timer: 3000
+     });
+ window.addEventListener('closeModal', event=> {
+ $('#modal-create').modal('hide');
+ $('#modal-delete').modal('hide');
+ $('#modal-edit').modal('hide');
+ })
+ 
+ window.addEventListener('Toast' , (e)=> {
+       Toast.fire({icon: (e.detail.ev),
+         title: (e.detail.msg)
+       });
+     //   toastr.success( (e.detail.msg))
+     })
+ </script>

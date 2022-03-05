@@ -16,7 +16,7 @@ class Viewcategory extends Component
 
 
             protected $rules = [
-                'name' => 'required|unique:categorys',
+                'name' => 'required|unique:categorys,name',
             ];
             public function updated($propertyName,$propertyParent)
             {
@@ -27,14 +27,24 @@ class Viewcategory extends Component
 
             public function view($slug){
                 $this->slug = $slug;
+             
             }
 
-            public function edit($slug)
+            public function edit($slug,$parent)
             {
                 $this->slug = $slug;
                 $category = Category::where('slug', $slug )->first();
+                if($parent){
+                     $parent = Category::where('slug',  $parent)->first();  
+                      $this->parent = $parent->slug;
+                }else{
+                    $this->parent='';
+                }
+               
                 $this->slug = $slug;
                 $this->name = $category->name;
+             
+            
             }
             public function delete()
             {
@@ -47,8 +57,10 @@ class Viewcategory extends Component
             {
 
                 $this->validate();
+                $parent = Category::where('slug',  $this->parent)->first();
                 Category::create([
                     'name' => $this->name,
+                    'parent_id'=>  ($parent->id)??null
                 ]);
                 $this->dispatchBrowserEvent('closeModal');
                 $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
@@ -56,11 +68,15 @@ class Viewcategory extends Component
             }
             public function update()
             {
-                $this->validate();
+                // $this->validate();
+              
                 $category = Category::where('slug',  $this->slug)->first();
+                $parent = Category::where('slug',  $this->parent)->first(); 
                 $category->update([
                     'name' => $this->name,
+                    'parent_id' =>   ($parent->id)??null
                 ]);
+                $this->reset();
                 $this->dispatchBrowserEvent('closeModal');
                 $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'update '.$this->name.' Done']);
             }

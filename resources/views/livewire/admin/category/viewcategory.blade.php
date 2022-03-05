@@ -38,18 +38,17 @@
                         <tr>
                             <td>{{ $loop->index+1 }}</td>
                             <td>{{ $item->name }}
-
                             </td>
                             <td>
                                 @if($item->parent_id)
-                                <div class="badge badge-success">فرعى</div>
+                                <div class="badge badge-success"> فرعى   من  {{ $categorys->where('id',$item->parent_id)->first()->name }}</div>
                                 @else
                                 <div class="badge badge-success">رئيسي</div>
                                 @endif
                             </td>
                             <td>
                                 {{-- @can('editcategory') --}}
-                                <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
+                                <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->slug }}','{{ ($categorys->where('id',$item->parent_id)->first()->slug)??null }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
                                 {{-- @endcan --}}
                                 {{-- @can('delcategory') --}}
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>

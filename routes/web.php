@@ -31,6 +31,7 @@ use App\Http\Livewire\Admin\Setting\Setting;
 use App\Http\Livewire\Admin\Unit\Viewunit;
 use App\Http\Livewire\Admin\User\Viewusers;
 use App\Http\Livewire\Admin\Warehouse\Viewwarehouse;
+use App\Http\Livewire\Front\Shop;
 use App\Models\Order;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -162,6 +163,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     Route::get('/order/order-list',Orderlist::class)->name('orderlist');
     Route::get('/shopping/wishlist',Wishlist::class)->name('wishlist');
     Route::get('/shopping/cart',Cartshop::class)->name('shopping.cart');
+    Route::get('/shopping/product',Shop::class)->name('shopping.product');
     Route::get('/singelproduct/{slug}',Singelproduct::class)->name('singelproduct');
 
 

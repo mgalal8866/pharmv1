@@ -43,7 +43,13 @@ return [
         ],
          'product' => [
             'driver' => 'local',
-            'root' => base_path('assets/images/product'),
+            'root' => base_path('public/assets/images/product'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+         ],
+         'banner' => [
+            'driver' => 'local',
+            'root' => base_path('public/assets/images/banner'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
          ],

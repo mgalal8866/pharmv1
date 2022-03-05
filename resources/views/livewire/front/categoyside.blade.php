@@ -1,10 +1,15 @@
-<div wire:ignore>
+  <div wire:ignore>
     <aside class="col-lg-3 col-md-3 col-sm-3 p_top_4">
         <!--categories widget-->
         <section class="m_bottom_30 animated hidden" data-animation="fadeInDown">
             <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">{{ __('tran.categories') }}</h5>
             <hr class="divider_bg m_bottom_23">
             <ul class="categories_list second_font w_break">
+
+                <li class="relative">
+                    <a href="#" wire:model="cat='maskd'" class="tr_delay d_inline_b">0000000</a>
+                        <button class="open_sub_categories fs_medium"></button>
+                </li>
 
                 @foreach ( $category as $item )
 
@@ -62,3 +67,4 @@
         </section> --}}
     </aside>
 </div>
+

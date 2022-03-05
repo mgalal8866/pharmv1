@@ -23,7 +23,7 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
 
                             <div  class="icheck-success d-inline">
                                 <input wire:model="section" type="radio" checked name="section" id="radioSuccess3">
@@ -33,9 +33,9 @@
                                 <input wire:model="section" type="radio" name="section" id="radioSuccess1">
                                 <label for="radioSuccess1"> فرعى  </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
-                            <label>Select</label>
+                            <label>Parent Select</label>
                             <select   wire:model="parent" class="form-control">
                              <option value="">{{__('tran.select')}}</option>
                             @foreach($categorys as $item)

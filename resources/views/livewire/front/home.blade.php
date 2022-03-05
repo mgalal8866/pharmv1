@@ -197,11 +197,13 @@
                                         }
                                     }
                                 }'>
+                        @foreach ($banner->where('type','brand') as $itembrand)
                         <div class="animated hidden" data-animation="fadeInDown" data-animation-delay="200">
-                            <a href="#" class="d_block frame_container">
-                                <img src="{{ asset('assets/front/images/client_img_1.jpg')}}" alt="">
+                            <a href="{{ $itembrand->link}}" class="d_block frame_container">
+                                <img src="{{ $itembrand->image}}" alt="">
                             </a>
                         </div>
+                        @endforeach
 
                     </div>
                 </div>
