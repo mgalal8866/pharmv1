@@ -25,3 +25,12 @@ if(!function_exists('Uploadimage'))
         return  $filename;
         }
 }
+// if(!function_exists('Uploadfile'))
+// {
+//     function uploadimages($folder,$image)
+//         {
+//         $image->store('/',$folder);
+//         $filename = $image->hashName();
+//         return  $filename;
+//         }
+// }

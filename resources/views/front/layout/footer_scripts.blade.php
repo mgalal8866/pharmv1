@@ -19,6 +19,7 @@
 <script src="{{ asset('assets/front/plugins/jquery.easytabs.min.js') }}"></script>
 <script src="{{ asset('assets/front/plugins/countdown/jquery.plugin.min.js') }}"></script>
  <script src="{{ asset('assets/front/plugins/countdown/jquery.countdown.min.js') }}"></script>
+
  @yield('js')
  @stack('scripts')
  <script src="{{ asset('assets/front/plugins/jquery-ui.min.js')}}"></script>
@@ -26,8 +27,16 @@
 <!--theme initializer-->
 <script src="{{ asset('assets/front/js/themeCore.js') }}"></script>
 <script src="{{ asset('assets/front/js/theme.js') }}"></script>
-
+@jquery
+@toastr_js
+@toastr_render
 	<script>
+
+
+          window.addEventListener('Toast' , (e)=> {
+            toastr.options.timeOut = 15000;
+            toastr.success(e.detail.msg,'Alert');
+            });
 
             $(function () {
               var url = window.location;
@@ -36,20 +45,21 @@
                   return this.href == url;
               }).parents('li').addClass('current');
 
-            //   $('ul.categories_list a').filter(function () {
-            //       return this.href == url;
-            //   }).addClass('fw_bold scheme_color bg_grey_light_2');
+                //   $('ul.categories_list a').filter(function () {
+                //       return this.href == url;
+                //   }).addClass('fw_bold scheme_color bg_grey_light_2');
 
-              // for sidebar menu and treeview
-            //   $('ul.d_none a').filter(function () {
-            //       return this.href == url;
-            //   }).parentsUntil(".categories_list > .d_none")
-            //       .css({'display': 'block'})
-            //       .addClass('button').prev('button')
-            //       .addClass('active').prev('a')
-            //       .addClass('active');
-          });
-            </script>
+                // for sidebar menu and treeview
+                //   $('ul.d_none a').filter(function () {
+                //       return this.href == url;
+                //   }).parentsUntil(".categories_list > .d_none")
+                //       .css({'display': 'block'})
+                //       .addClass('button').prev('button')
+                //       .addClass('active').prev('a')
+                //       .addClass('active');
+             });
+
+ </script>
             {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
 
 

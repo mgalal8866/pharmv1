@@ -17,13 +17,13 @@ class CreateBrandacountsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('namebrand')->nullable();
-            $table->string('warehouse_id')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('email',32)->unique();
+            $table->string('license')->nullable();
             $table->string('password',255);
             $table->text('remember_token')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

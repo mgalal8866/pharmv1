@@ -34,6 +34,7 @@ use App\Http\Livewire\Admin\Category\Viewcategory;
 use App\Http\Livewire\Admin\Product\Createproduct;
 use App\Http\Livewire\Admin\Order\Viewdetailsorder;
 use App\Http\Livewire\Admin\Warehouse\Viewwarehouse;
+use App\Http\Livewire\Front\Signup;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -156,7 +157,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     Route::get('/',Home::class)->name('front');
     // Route::get('/{slug}',Home::class)->name('home');
     Route::post('/front/logout',[UsersController::class,'logout'])->name('logoutfront');
-    Route::post('/front/login',[UsersController::class,'logon'])->name('logoncustmer');
+    Route::post('/front/login',[UsersController::class,'logon'])->middleware('statusMiddleware')->name('logoncustmer');
+    Route::get('/Signup',Signup::class)->name('signeup');
     Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
     Route::get('/category',Bycategory::class)->name('category');
     Route::get('/shopping/checkout',Checkout::class)->name('checkout');

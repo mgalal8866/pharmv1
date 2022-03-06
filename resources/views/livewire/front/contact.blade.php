@@ -36,25 +36,25 @@
 									<h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">{{ __('tran.contactform') }}</h5>
 									<hr class="divider_bg m_bottom_25">
 									<p class="second_font m_bottom_14">Send an email. All fields with an <span class="color_red">*</span> are required.</p>
-									<form id="contactform" class="b_default_layout">
+									<form id="contactform" class="b_default_layout" wire:submit.prevent="send">
 										<ul>
 											<li class="row">
 												<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_15">
 													<label class="second_font required d_inline_b m_bottom_5 clickable" for="cf_name">{{ __('tran.firstname') }}</label><br>
-													<input type="text" name="cf_name" id="cf_name" class="tr_all w_full fw_light">
+													<input wire:model="name" type="text" name="cf_name" id="cf_name" class="tr_all w_full fw_light">
 												</div>
 												<div class="col-lg-6 col-md-6 col-sm-6 m_bottom_15">
 													<label class="second_font required d_inline_b m_bottom_5 clickable" for="cf_email">{{ __('tran.email') }}</label><br>
-													<input type="email" name="cf_email" id="cf_email" class="tr_all w_full fw_light">
+													<input wire:model="email"  type="email" name="cf_email" id="cf_email" class="tr_all w_full fw_light">
 												</div>
 											</li>
 											<li class="m_bottom_15">
 												<label class="second_font d_inline_b m_bottom_5 clickable" for="cf_telephone">{{ __('tran.phone') }}</label><br>
-												<input type="text" name="cf_telephone" id="cf_telephone" class="tr_all w_full fw_light">
+												<input wire:model="phone" type="text" name="cf_telephone" id="cf_telephone" class="tr_all w_full fw_light">
 											</li>
 											<li class="m_bottom_5">
 												<label class="second_font d_inline_b m_bottom_5 clickable" for="cf_message">{{ __('tran.message') }}</label><br>
-												<textarea id="cf_message" name="cf_message" rows="6" class="tr_all w_full fw_light"></textarea>
+												<textarea wire:model="message"  id="cf_message" name="cf_message" rows="6" class="tr_all w_full fw_light"></textarea>
 											</li>
 											<li>
 												<button class="button_type_2 black state_2 tr_all second_font fs_medium tt_uppercase d_inline_b"><span class="m_left_10 m_right_10 d_inline_b">{{ __('tran.submit') }}</span></button>

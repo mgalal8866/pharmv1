@@ -52,6 +52,11 @@ return [
             'root' => base_path('public/assets/images/banner'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+         ],'license' => [
+            'driver' => 'local',
+            'root' => base_path('public/assets/files/license'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
          ],
         's3' => [
             'driver' => 's3',

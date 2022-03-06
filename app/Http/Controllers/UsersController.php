@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use toastr;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -96,9 +97,11 @@ class UsersController extends Controller
                     'password.exists' => 'الباسورد غير صحيح '
                      ]);
 
-                if( Auth::guard('brandaccount')->attempt(['email' => $request->email,'password'=>$request->password],$request->remember_me)){
+                if( Auth::guard('brandaccount')->attempt(['email' => $request->email,'password'=>$request->password,'is_active'=> 1],$request->remember_me)){
                     return redirect()->route('front');
-                    }
+                }else{
+                    toastr()->error('الايميل غير مفعل يرجى التواصل مع الادارة', 'Alert',['timeOut' => 15000]);
+                    return redirect()->route('front');   }
 
                 if($validator->fails()){
                 return redirect()->back()->withErrors($validator)->withInput($request->all());

@@ -48,7 +48,7 @@
                     @if(Auth::guard('brandaccount')->check())
                     <nav class="d_inline_b">
                         <ul class="hr_list second_font si_list fs_small">
-                            {{-- <li><a class="sc_hover tr_delay" href="account.html">{{ __('tran.myaccount') }}</a></li> --}}
+                             {{-- <li><a class="sc_hover tr_delay" href="account.html">{{ __('tran.myaccount') }}</a>{{ Auth::guard('brandaccount')->user()->name }}</li> --}}
                             <li><a class="sc_hover tr_delay" href="{{ route('orderlist') }}">{{ __('tran.orderlist') }}</a></li>
                             <li><a class="sc_hover tr_delay" href="{{ route('wishlist') }}">{{ __('tran.wishlist') }}</a></li>
                             <li><a class="sc_hover tr_delay" href="{{ route('checkout') }}">{{ __('tran.checkout') }}</a></li>
@@ -90,12 +90,12 @@
                                     </li>
                                 </ul>
                             </form>
-                            <div class="m_bottom_14 t_align_c">
+                            {{-- <div class="m_bottom_14 t_align_c">
                                 <a href="#" class="second_font sc_hover fs_small">{{ __('tran.forgotyourpassword') }}</a>
-                            </div>
+                            </div> --}}
                             <hr class="divider_white m_bottom_25">
                             <h5 class="color_dark tt_uppercase second_font t_align_c m_bottom_15 fw_light">{{ __('tran.newcust') }}</h5>
-                            <a href="#" role="button" class="button_type_2 tt_uppercase fs_medium second_font d_block t_align_c black state_2">{{ __('tran.createaccount') }}</a>
+                            <a href="{{ route('signeup') }}" role="button" class="button_type_2 tt_uppercase fs_medium second_font d_block t_align_c black state_2">{{ __('tran.createaccount') }}</a>
                         </div>
                     </div>
                     @endif

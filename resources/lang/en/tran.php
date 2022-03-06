@@ -4,7 +4,12 @@ return [
 
 
 'shop'=>'Shop',
-
+'license'=>'License',
+'confirmepassword'=>'Confirme Password',
+'pharm' => 'Pharmacy Name',
+'signup' => 'Signup',
+'regist' => 'Register',
+'requiredfields' => 'Required Fields',
     'msglogin' => 'Login system',
     'contactform'=>'Contact Form',
     'message'=>'Message',
