@@ -6,6 +6,7 @@ use App\Models\banner;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Warehouse_product;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -23,7 +24,7 @@ class Home extends Component
     }
     public function addtowish($id,$name,$price)
     {
-            Cart::instance('wishlist')->add($id,$name,1,$price)->associate('App\Models\Product');
+            Cart::instance('wishlist')->add($id,$name,1,$price)->associate('App\Models\Warehouse_product');
             $this->emit('refreshwish');
     }
     public function removewish($id)
@@ -37,7 +38,7 @@ class Home extends Component
     }
     public function store($id,$name,$price)
     {
-        Cart::instance('cart')->add($id,$name, 1,$price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($id,$name, 1,$price)->associate('App\Models\Warehouse_product');
         $this->emit('updatecart');
         $this->emit('updatecartlist');
     }
@@ -59,7 +60,7 @@ class Home extends Component
 
             $banner = banner::get();
 
-            $newproduct = Product::whereHas('warehouse_product')->orderBy('id', 'desc')->take(10)->get();
+            $newproduct = Warehouse_product::whereHas('product')->orderBy('id', 'desc')->take(10)->get();
             $flashproduct = Product::whereHas('warehouse_product',function($q){
                 $q->where('special_enddate','!=' , null);})->orderBy('id', 'desc')->take(40)->get();
 
@@ -67,7 +68,7 @@ class Home extends Component
             'category' => $category,
             'product' =>$product,
             'banner' =>$banner,
-            
+
             'newproduct'=>  $newproduct,
             'flashproduct' => $flashproduct
         ])->layout('front.layout.master');

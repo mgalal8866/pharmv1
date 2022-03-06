@@ -28,7 +28,8 @@ class Wishlist extends Component
 
     public function addtocart($rowId){
         $product = Cart::instance('wishlist')->get($rowId);
-        Cart::instance('cart')->add($product->id,$product->name, $product->qty,$product->price)->associate('App\Models\Product');
+       
+        Cart::instance('cart')->add($product->id,$product->name, $product->qty,$product->price)->associate('App\Models\Warehouse_product');
         $this->emit('updatecart');
         $this->emit('updatecartlist');
     }

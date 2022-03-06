@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Order;
 use App\Models\SubCategory;
 use App\Models\Brandaccount;
 use App\Http\Livewire\Front\Home;
+use App\Http\Livewire\Front\Shop;
 use App\Models\Warehouse_product;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -14,25 +16,24 @@ use App\Http\Livewire\Front\Wishlist;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Front\Bycategoy;
 use App\Http\Livewire\Front\Orderlist;
+use App\Http\Livewire\Front\Bycategory;
 use App\Http\Livewire\Front\Placeorder;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\UsersController;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Livewire\Admin\Unit\Viewunit;
 use App\Http\Livewire\Front\Singelproduct;
-use App\Http\Livewire\Admin\Unit\CreateUnit;
-use App\Http\Livewire\Admin\Category\Viewcategory;
-use App\Http\Livewire\Admin\Order\Viewdetailsorder;
+use App\Http\Livewire\Admin\User\Viewusers;
 use App\Http\Livewire\Admin\Order\Vieworder;
-use App\Http\Livewire\Admin\Product\Createproduct;
-use App\Http\Livewire\Admin\Product\Viewproduct;
 use App\Http\Livewire\Admin\Roles\Viewroles;
 use App\Http\Livewire\Admin\Setting\Setting;
-use App\Http\Livewire\Admin\Unit\Viewunit;
-use App\Http\Livewire\Admin\User\Viewusers;
+use App\Http\Livewire\Admin\Unit\CreateUnit;
+use App\Http\Livewire\Admin\Product\Viewproduct;
+use App\Http\Livewire\Admin\Category\Viewcategory;
+use App\Http\Livewire\Admin\Product\Createproduct;
+use App\Http\Livewire\Admin\Order\Viewdetailsorder;
 use App\Http\Livewire\Admin\Warehouse\Viewwarehouse;
-use App\Http\Livewire\Front\Shop;
-use App\Models\Order;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -157,7 +158,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     Route::post('/front/logout',[UsersController::class,'logout'])->name('logoutfront');
     Route::post('/front/login',[UsersController::class,'logon'])->name('logoncustmer');
     Route::get('/place-order/{codeorder}',Placeorder::class)->name('placeorder');
-    Route::get('/category/{slug}',Bycategoy::class)->name('category');
+    Route::get('/category',Bycategory::class)->name('category');
     Route::get('/shopping/checkout',Checkout::class)->name('checkout');
     Route::get('/shop/contact',Contact::class)->name('contact');
     Route::get('/order/order-list',Orderlist::class)->name('orderlist');

@@ -3,6 +3,8 @@
 return [
 
 
+'shop'=>'Shop',
+
     'msglogin' => 'Login system',
     'contactform'=>'Contact Form',
     'message'=>'Message',

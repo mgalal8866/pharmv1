@@ -26,19 +26,19 @@
                             @if (Cart::instance('wishlist')->count() > 0)
                             @foreach (Cart::instance('wishlist')->content() as  $item)
                             <tr>
-                                <td data-cell-title="Product Image"><img src="{{ $item->model->warehouse_product()->first()->image}}" alt="" width="100" height="100"></td>
+                                <td data-cell-title="Product Image"><img src="{{ $item->model->image}}" alt="" width="100" height="100"></td>
                                 <td data-cell-title="Product Name and Category">
                                     <div class="lh_small m_bottom_7">
                                         <a href="#" class="sc_hover second_font d_inline_b m_bottom_5 fs_large">{{  $item->name }}</a><br>
-                                        <a href="#" class="fw_light color_light sc_hover">{{ $item->model->warehouse_product()->first()->category->name}}</a>
+                                        <a href="#" class="fw_light color_light sc_hover">{{ $item->model->category->name}}</a>
                                     </div>
                                 </td>
                                 <td data-cell-title="Price" class="second_font fs_large">
-                                    @if ($item->model->warehouse_product()->first()->special_price)
-                                    <s class="color_light">{{  $item->model->warehouse_product()->first()->price_sale }}</s><br>
+                                    @if ($item->model->special_price)
+                                    <s class="color_light">{{  $item->model->price_sale }}</s><br>
                                     @endif
 
-                                    <b class="scheme_color">{{($item->model->warehouse_product()->first()->special_price)?? $item->model->warehouse_product()->first()->price_sale}}</b>
+                                    <b class="scheme_color">{{($item->model->special_price)?? $item->model->price_sale}}</b>
                                 </td>
                                 <td data-cell-title="Quantity">
                                     <div class="quantity clearfix t_align_c">

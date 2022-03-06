@@ -7,9 +7,10 @@
                 @foreach (Cart::instance('cart')->content() as  $item)
                 <li class="relative">
                     <div class="clearfix lh_small">
-                        <a href="#" class="f_left m_right_10 d_block"><img src="{{ $item->model->warehouse_product()->first()->image}}" alt="" width="60" height="60"></a>
+
+                        <a href="#" class="f_left m_right_10 d_block"><img src="{{ $item->model->image }}" alt="" width="60" height="60"></a>
                         <a href="#" class="fs_medium second_font color_dark sc_hover d_block m_bottom_4">{{  $item->name }}</a>
-                        <p class="fs_medium">{{  $item->qty }} x <b class="color_dark">{{($item->model->warehouse_product()->first()->special_price)?? $item->model->warehouse_product()->first()->price_sale}}</b></p>
+                        <p class="fs_medium">{{  $item->qty }} x <b class="color_dark">{{($item->model->special_price)?? $item->model->price_sale}}</b></p>
                     </div>
                     <hr class="divider_white m_top_15 m_bottom_0">
                     <span wire:click.prevent="destroy('{{$item->rowId}}')" class="close fs_small color_light tr_all color_dark_hover fw_light">x</span>

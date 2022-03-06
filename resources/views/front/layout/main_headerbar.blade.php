@@ -48,7 +48,7 @@
                     @if(Auth::guard('brandaccount')->check())
                     <nav class="d_inline_b">
                         <ul class="hr_list second_font si_list fs_small">
-                            <li><a class="sc_hover tr_delay" href="account.html">{{ __('tran.myaccount') }}</a></li>
+                            {{-- <li><a class="sc_hover tr_delay" href="account.html">{{ __('tran.myaccount') }}</a></li> --}}
                             <li><a class="sc_hover tr_delay" href="{{ route('orderlist') }}">{{ __('tran.orderlist') }}</a></li>
                             <li><a class="sc_hover tr_delay" href="{{ route('wishlist') }}">{{ __('tran.wishlist') }}</a></li>
                             <li><a class="sc_hover tr_delay" href="{{ route('checkout') }}">{{ __('tran.checkout') }}</a></li>
@@ -113,7 +113,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 d_table_cell d_xs_block f_none v_align_m m_xs_bottom_15">
                     <!--searchform-->
                     <livewire:front.searchfront/>
-                    {{-- @include('livewire.front.searchfront') --}}
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 d_table_cell t_align_c d_xs_block f_none v_align_m m_xs_bottom_15">
                     <!--logo-->
@@ -126,14 +126,6 @@
                         <li>
                             <livewire:front.countwish/>
                         </li>
-                        {{--
-                        <li>
-                            <a href="#" class="color_lbrown_hover vc_child">
-                                <span class="d_inline_m">
-                                    <i class="fa fa-arrow-right fs_small"></i><i class="fa fa-arrow-left fs_small"></i><sup class="color_dark">2</sup>
-                                </span>
-                            </a>
-                        </li> --}}
                         <!--shopping cart-->
                         <li class="">
                             <button class="color_dark active_lbrown tr_all" data-open-dropdown="#shopping_cart">
@@ -156,57 +148,14 @@
                     <li class="n">
                         <a href="{{ route('front') }}" class="tt_uppercase tr_delay">{{ __('tran.home') }}</a>
                     </li>
-                    {{--
-                    <li class="n">
-                        <a href="{{ route('front') }}" class="tt_uppercase tr_delay">{{ __('tran.shop') }} </a>
-                    </li> --}}
+
                     <li class="n">
                         <a href="{{ route('contact') }}" class="tt_uppercase tr_delay">{{ __('tran.contact') }} </a>
                     </li>
-                    {{--
                     <li class="n">
-                        <a class="tt_uppercase tr_delay">Shop <i class="fa fa-caret-down tr_inherit d_inline_m m_left_5"></i></a>
-                        <div class="mega_menu bg_grey_light tr_all">
-                            <div class="row">
-                                <section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
-                                    <h6 class="color_dark m_bottom_13"><b class="second_font ">Living Rooms</b></h6>
-                                    <img src="{{ asset('assets/front/images/mega_menu_img_1.jpg')}}" alt="" class="m_bottom_3">
-                                    <ul class="mega_menu_list">
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Sofas</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Chairs</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Ottomans</a></li>
-                                    </ul>
-                                </section>
-                                <section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
-                                    <h6 class="color_dark m_bottom_13"><b class="second_font ">Bedrooms</b></h6>
-                                    <img src="{{ asset('assets/front/images/mega_menu_img_2.jpg')}}" alt="" class="m_bottom_3">
-                                    <ul class="mega_menu_list">
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Beds</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Dressers/Chests</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Nightstands</a></li>
-                                    </ul>
-                                </section>
-                                <section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
-                                    <h6 class="color_dark m_bottom_13"><b class="second_font ">Dining Rooms</b></h6>
-                                    <img src="{{ asset('assets/front/images/mega_menu_img_3.jpg')}}" alt="" class="m_bottom_3">
-                                    <ul class="mega_menu_list">
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Tables</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Dining Chairs</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">China Cabinets</a></li>
-                                    </ul>
-                                </section>
-                                <section class="col-lg-3 col-md-3 col-sm-3 m_xs_bottom_15">
-                                    <h6 class="color_dark m_bottom_13"><b class="second_font ">Home Office</b></h6>
-                                    <img src="{{ asset('assets/front/images/mega_menu_img_4.jpg')}}" alt="" class="m_bottom_3">
-                                    <ul class="mega_menu_list">
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Desks &amp; Tables</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Office Chairs</a></li>
-                                        <li><a href="#" class="d_block sc_hover tr_delay">Workspace Storage</a></li>
-                                    </ul>
-                                </section>
-                            </div>
-                        </div>
-                    </li> --}}
+                        <a href="{{ route('category') }}" class="tt_uppercase tr_delay">{{ __('tran.shop') }} </a>
+                    </li>
+
                 </ul>
             </nav>
         </div>

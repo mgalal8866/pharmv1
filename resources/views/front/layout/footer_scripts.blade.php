@@ -11,25 +11,23 @@
 <script src="{{ asset('assets/front/plugins/jquery.elevateZoom-3.0.8.min.js') }}"></script>
 <script src="{{ asset('assets/front/plugins/fancybox/jquery.fancybox.pack.js') }}"></script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-622115a6c40d8d44"></script>
+{{-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-622115a6c40d8d44"></script> --}}
 
-{{-- <script src="{{ asset('assets/front/js/retina.min.js') }}"></script> --}}
+<script src="{{ asset('assets/front/js/retina.min.js') }}"></script>
 <script src="{{ asset('assets/front/plugins/colorpicker/colorpicker.js') }}"></script>
 <script src="{{ asset('assets/front/js/styleswitcher.js') }}"></script>
-
+<script src="{{ asset('assets/front/plugins/jquery.easytabs.min.js') }}"></script>
+<script src="{{ asset('assets/front/plugins/countdown/jquery.plugin.min.js') }}"></script>
+ <script src="{{ asset('assets/front/plugins/countdown/jquery.countdown.min.js') }}"></script>
+ @yield('js')
+ @stack('scripts')
+ <script src="{{ asset('assets/front/plugins/jquery-ui.min.js')}}"></script>
+<script src="{{ asset('assets/front/plugins/isotope.pkgd.min.js')}}"></script>
 <!--theme initializer-->
 <script src="{{ asset('assets/front/js/themeCore.js') }}"></script>
 <script src="{{ asset('assets/front/js/theme.js') }}"></script>
 
-
-        <script src="{{ asset('assets/front/plugins/jquery.appear.js') }}"></script>
-		<script src="{{ asset('assets/front/plugins/jquery.easytabs.min.js') }}"></script>
-		<script src="{{ asset('assets/front/plugins/twitter/jquery.tweet.min.js') }}"></script>
-
-		<script src="{{ asset('assets/front/plugins/jackbox/js/jackbox-packed.min.js') }}"></script>
-        <script src="{{ asset('assets/front/plugins/countdown/jquery.plugin.min.js') }}"></script>
-        <script src="{{ asset('assets/front/plugins/countdown/jquery.countdown.min.js') }}"></script>
-        <script>
+	<script>
 
             $(function () {
               var url = window.location;
@@ -52,5 +50,6 @@
             //       .addClass('active');
           });
             </script>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          @yield('js')
+            {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
+
+

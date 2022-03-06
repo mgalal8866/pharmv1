@@ -101,7 +101,7 @@
                                 <div class="offer_container">
                                     <div class="d_block m_bottom_15 relative">
                                         <img src="{{$itemflash->warehouse_product()->first()->image}}" alt="" class="c_image_1 tr_all">
-                                        <a data-popup="#quick_view" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="tr_all color_white second_font qv_style_button quick_view tt_uppercase t_align_c d_block clickable d_xs_none"><i class="fa fa-eye d_inline_m m_right_10"></i><span class="fs_medium">Quick View</span></a>
+                                        {{-- <a data-popup="#quick_view" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="tr_all color_white second_font qv_style_button quick_view tt_uppercase t_align_c d_block clickable d_xs_none"><i class="fa fa-eye d_inline_m m_right_10"></i><span class="fs_medium">Quick View</span></a> --}}
                                     </div>
                                     <!--offer-->
                                     <div class="offer color_white lh_small hidden">
@@ -135,7 +135,7 @@
 
                                            <div class="clearfix d_inline_b">
 
-                                                <button @if($itemflash->warehouse_product()->first()->qty == 0 ) disabled @endif wire:click.prevent="addtowish( {{$itemflash->id}} , '{{$itemflash->name}}' , 1)"  class="button_type_8 grey state_2 tr_delay color_dark t_align_c vc_child f_left m_right_3 tooltip_container relative"><i class="fa fa-heart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Wishlist</span></button>
+                                                <button @if($itemflash->warehouse_product()->first()->qty == 0 ) disabled @endif wire:click.prevent="addtowish( {{$itemflash->id}} , '{{$itemflash->name}}' ,  {{($itemflash->warehouse_product()->first()->special_price)?? $itemflash->warehouse_product()->first()->price_sale}} )"  class="button_type_8 grey state_2 tr_delay color_dark t_align_c vc_child f_left m_right_3 tooltip_container relative"><i class="fa fa-heart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Wishlist</span></button>
                                                 <button {{ ($itemflash->warehouse_product()->first()->qty == 0 )? 'disabled' :'' }} wire:click.prevent="store( {{$itemflash->warehouse_product()->first()->id}} , '{{$itemflash->name}}' , {{($itemflash->warehouse_product()->first()->special_price)?? $itemflash->warehouse_product()->first()->price_sale}}  )"  data-popup="#add_to_cart_popup" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="button_type_8 tr_all lbrown state_2 f_left color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-shopping-cart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Cart</span></button>
 
                                             </div>
@@ -250,28 +250,29 @@
                         <!--owl item-->
 
                             @foreach ($newproduct as $itemnewprod)
+
                                 <div class="animated hidden" data-animation="fadeInDown" data-animation-delay="200">
                                     <!--product-->
                                     <figure class="relative r_image_container c_image_container qv_container">
                                         <div class="product_label fs_ex_small circle color_white bg_scheme_color t_align_c vc_child tt_uppercase"><i class="d_inline_m">New!</i></div>
                                         <div class="d_block m_bottom_15 relative">
-                                            <img src="{{$itemnewprod->warehouse_product()->first()->image}}" alt="" class="c_image_1 tr_all">
+                                            <img src="{{$itemnewprod->image}}" alt="" class="c_image_1 tr_all">
                                             {{-- <img src="{{ asset('assets/front/images/new_img_8.jpg')}}" alt="" class="c_image_2 tr_all"> --}}
-                                            <a data-popup="#quick_view" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="tr_all color_white second_font qv_style_button quick_view tt_uppercase t_align_c d_block clickable d_xs_none"><i class="fa fa-eye d_inline_m m_right_10"></i><span class="fs_medium">Quick View</span></a>
+                                            {{-- <a data-popup="#quick_view" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="tr_all color_white second_font qv_style_button quick_view tt_uppercase t_align_c d_block clickable d_xs_none"><i class="fa fa-eye d_inline_m m_right_10"></i><span class="fs_medium">Quick View</span></a> --}}
                                         </div>
                                         <figcaption class="t_align_c">
                                             <ul>
-                                                <li><a href="{{ route('singelproduct',['slug'=> $itemnewprod->slug]) }}" class="second_font sc_hover">{{ $itemnewprod->name }}</a></li>
-                                                <li class="m_bottom_7"><a href="{{ route('category',$itemnewprod->warehouse_product()->first()->category->slug) }}" class="color_light sc_hover fw_light d_inline">{{ $itemnewprod->warehouse_product()->first()->category->name }}</a></li>
+                                                <li><a href="{{ route('singelproduct',['slug'=> $itemnewprod->product->slug]) }}" class="second_font sc_hover">{{ $itemnewprod->product->name }}</a></li>
+                                                <li class="m_bottom_7"><a href="{{ route('category',$itemnewprod->category->slug) }}" class="color_light sc_hover fw_light d_inline">{{ $itemnewprod->category->name }}</a></li>
                                                 <li class="m_bottom_16">
                                                     <div class="col-lg-5 col-md-5 color_light fs_large second_font  t_sm_align_c m_bottom_9">
-                                                        @if ($itemnewprod->warehouse_product()->first()->special_price)
-                                                            <s>{{$itemnewprod->warehouse_product()->first()->price_sale}}</s></br>
+                                                        @if ($itemnewprod->special_price)
+                                                            <s>{{$itemnewprod->price_sale}}</s></br>
                                                         @endif
-                                                            <b class="fs_large second_font scheme_color">{{($itemnewprod->warehouse_product()->first()->special_price)?? $itemnewprod->warehouse_product()->first()->price_sale}}</b>
+                                                            <b class="fs_large second_font scheme_color">{{($itemnewprod->special_price)?? $itemnewprod->price_sale}}</b>
                                                     </div>
                                                 {{-- <div class="">
-                                                    @if ($itemnewprod->warehouse_product()->first()->special_price)
+                                                    @if ($itemnewprod->special_price)
                                                         <s>{{$itemnewprod->warehouse_product()->first()->price_sale}}</s>
                                                     @endif
                                                         <b class="fs_large second_font scheme_color">{{($itemnewprod->warehouse_product()->first()->special_price)?? $itemnewprod->warehouse_product()->first()->price_sale}}</b>
@@ -280,15 +281,16 @@
                                             </li>
                                                 <li>
                                                     <div class="clearfix d_inline_b">
-                                                        <button wire:click.prevent="addtowish( {{$itemnewprod->id}} , '{{$itemnewprod->name}}' , 1)"  class="button_type_8 grey state_2 tr_delay color_dark t_align_c vc_child f_left m_right_3 tooltip_container relative"><i class="fa fa-heart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Wishlist</span></button>
-                                                        <button  wire:click.prevent="store( {{$itemnewprod->warehouse_product()->first()->id}} , '{{$itemnewprod->name}}' , {{($itemnewprod->warehouse_product()->first()->special_price)?? $itemnewprod->warehouse_product()->first()->price_sale}}  )" data-popup="#add_to_cart_popup" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="button_type_8 tr_all lbrown state_2 f_left color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-shopping-cart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Cart</span></button>
+                                                        <button wire:click.prevent="addtowish( {{$itemnewprod->id}} , '{{$itemnewprod->product->name}}' , {{($itemnewprod->special_price)?? $itemnewprod->price_sale}} )"  class="button_type_8 grey state_2 tr_delay color_dark t_align_c vc_child f_left m_right_3 tooltip_container relative"><i class="fa fa-heart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Wishlist</span></button>
+                                                        <button  wire:click.prevent="store( {{$itemnewprod->id}} , '{{$itemnewprod->product->name}}' , {{($itemnewprod->special_price)?? $itemnewprod->price_sale}}  )" data-popup="#add_to_cart_popup" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="button_type_8 tr_all lbrown state_2 f_left color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-shopping-cart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Cart</span></button>
                                                     </div>
                                                 </li>
                                             </ul>
                                         </figcaption>
                                     </figure>
                                 </div>
-                            @endforeach
+
+                             @endforeach
 
                     </div>
                 </div>
