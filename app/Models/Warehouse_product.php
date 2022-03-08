@@ -21,7 +21,7 @@ class Warehouse_product extends Model
     //     }
 
     public function getImageAttribute($val){
-        $path = base_path('assets/images/product/'. $val);
+        $path = base_path('public/assets/images/product/'. $val);
             if(File::exists($path)) {
                 return ($val !== null ) ? asset('assets/images/product/' . $val) : asset('assets/images/product/noimage.jpg');
             }else{
@@ -31,11 +31,14 @@ class Warehouse_product extends Model
        }
     public function getSpecialPriceAttribute($val){
 
+        // dd($this->attributes['price_sale'],$this->attributes['special_price']);
+
             if($this->attributes['special_type'] == 'percentage'){
-                return    (number_format( $this->attributes['price_sale'] ,0) * (1 -  number_format($this->attributes['special_price'],0) /100));
+             return  (number_format( $this->attributes['price_sale'] ,0) * (1- number_format($this->attributes['special_price'],0) /100));
             }
             else{
-            return $val;
+            return (number_format( $this->attributes['price_sale'] ,0) - (number_format($this->attributes['special_price'],0)));
+            ;
 
             }
 

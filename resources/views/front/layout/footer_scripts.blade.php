@@ -27,7 +27,7 @@
 <!--theme initializer-->
 <script src="{{ asset('assets/front/js/themeCore.js') }}"></script>
 <script src="{{ asset('assets/front/js/theme.js') }}"></script>
-@jquery
+{{-- @jquery --}}
 @toastr_js
 @toastr_render
 	<script>

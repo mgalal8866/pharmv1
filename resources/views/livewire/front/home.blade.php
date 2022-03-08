@@ -1,5 +1,5 @@
 <div wire:ignore >
-    @empty(!$banner->where('type','header'))
+    @if($banner->where('type','header')->count() !=0)
         <div class="container">
             <!--flexslider-->
             <div class="flexslider" >
@@ -17,10 +17,9 @@
             </div>
 
         </div>
-    @endempty
-
+    @endif
     <!--main content-->
-    @empty(!$banner->where('type','offer'))
+    @if($banner->where('type','offer')->count() !=0)
         <section class="section_offset">
             <div class="container">
                 <div class="row">
@@ -47,15 +46,15 @@
                 </div>
             </div>
         </section>
-    @endempty
+    @endif
 
     <!--bestsellers-->
-    @empty(!$flashproduct)
+    @if($flashproduct->count() !=0)
         <div class="section_offset p_bottom_0 p_top_0">
             <div class="container">
                 <div class="d_table m_bottom_5 w_full animated hidden" data-animation="fadeInDown">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 v_align_m d_table_cell f_none">
-                        <h5 class="second_font color_dark tt_uppercase fw_light d_inline_m m_bottom_4">Bestsellers</h5>
+                        <h5 class="second_font color_dark tt_uppercase fw_light d_inline_m m_bottom_4">Flash Sell</h5>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 t_align_r d_table_cell f_none">
                         <!--carousel navigation-->
@@ -91,7 +90,7 @@
                         <div class="animated hidden offer_wrap" data-animation="fadeInDown" data-animation-delay="500">
                             <!--product-->
                             <figure class="relative r_image_container c_image_container qv_container">
-                                    @if($itemflash->warehouse_product()->first()->qty  == 0 )
+                                    @if($itemflash->qty  == 0 )
                                     <div class="product_label fs_ex_small circle color_white bg_grey t_align_c vc_child tt_uppercase lh_small"><i class="d_inline_m">Out Of<br>Stock!</i></div>
                                     @else
                                     <div class="product_label fs_ex_small circle color_white bg_blue t_align_c vc_child tt_uppercase"><i class="d_inline_m">Offer</i></div>
@@ -100,43 +99,43 @@
 
                                 <div class="offer_container">
                                     <div class="d_block m_bottom_15 relative">
-                                        <img src="{{$itemflash->warehouse_product()->first()->image}}" alt="" class="c_image_1 tr_all">
+                                        <img src="{{$itemflash->image}}" alt="" class="c_image_1 tr_all">
                                         {{-- <a data-popup="#quick_view" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="tr_all color_white second_font qv_style_button quick_view tt_uppercase t_align_c d_block clickable d_xs_none"><i class="fa fa-eye d_inline_m m_right_10"></i><span class="fs_medium">Quick View</span></a> --}}
                                     </div>
                                     <!--offer-->
                                     <div class="offer color_white lh_small hidden">
                                         <p class="fs_small fw_light m_bottom_2">{{ __('tran.expiresin') }}</p>
                                         <div class="second_font">
-                                            <div class="countdown" data-year="  {{ date('Y', strtotime($itemflash->warehouse_product()->first()->special_enddate));   }}"
-                                            data-month="  {{ date('m', strtotime($itemflash->warehouse_product()->first()->special_enddate))   }}"
-                                            data-day="  {{ date('d', strtotime($itemflash->warehouse_product()->first()->special_enddate))  }}"
+                                            <div class="countdown" data-year="  {{ date('Y', strtotime($itemflash->special_enddate));   }}"
+                                            data-month="  {{ date('m', strtotime($itemflash->special_enddate))   }}"
+                                            data-day="  {{ date('d', strtotime($itemflash->special_enddate))  }}"
                                                 data-hours="0"
                                             data-minutes="0"
                                             >
                                             </div>
                                         </div>
                                         <hr class="divider_light_2 m_top_7 m_bottom_6">
-                                        <p class="fs_medium fw_light">Hurry! Only <b>{{ $itemflash->warehouse_product()->first()->qty }} item(s) left!</b></p>
+                                        <p class="fs_medium fw_light">Hurry! Only <b>{{ $itemflash->qty }} item(s) left!</b></p>
                                     </div>
                                 </div>
                                 <figcaption class="t_align_c">
                                     <ul>
 
-                                        <li><a href="{{ route('singelproduct',['slug'=> $itemflash->slug]) }}" class="second_font sc_hover">{{ $itemflash->name }}</a></li>
-                                        <li class="m_bottom_7"><a href="{{ route('category',$itemflash->warehouse_product()->first()->category->slug) }}" class="color_light sc_hover fw_light d_inline">{{ $itemflash->warehouse_product()->first()->category->name }}</a></li>
+                                        <li><a href="{{ route('singelproduct',['slug'=> $itemflash->product->slug]) }}" class="second_font sc_hover">{{ $itemflash->product->name }}</a></li>
+                                        <li class="m_bottom_7"><a href="{{ route('category',$itemflash->category->slug) }}" class="color_light sc_hover fw_light d_inline">{{ $itemflash->category->name }}</a></li>
                                         <li class="m_bottom_16"> <div class="col-lg-5 col-md-5 color_light fs_large second_font  t_sm_align_c m_bottom_9">
-                                            @if ($itemflash->warehouse_product()->first()->special_price)
-                                                <s>{{$itemflash->warehouse_product()->first()->price_sale}}</s></br>
+                                            @if ($itemflash->special_price)
+                                                <s>{{$itemflash->price_sale}}</s></br>
                                             @endif
-                                                <b class="fs_large second_font scheme_color">{{($itemflash->warehouse_product()->first()->special_price)?? $itemflash->warehouse_product()->first()->price_sale}}</b>
+                                                <b class="fs_large second_font scheme_color">{{($itemflash->special_price)?? $itemflash->price_sale}}</b>
                                         </div>
                                     </li>
                                         <li>
 
                                            <div class="clearfix d_inline_b">
 
-                                                <button @if($itemflash->warehouse_product()->first()->qty == 0 ) disabled @endif wire:click.prevent="addtowish( {{$itemflash->id}} , '{{$itemflash->name}}' ,  {{($itemflash->warehouse_product()->first()->special_price)?? $itemflash->warehouse_product()->first()->price_sale}} )"  class="button_type_8 grey state_2 tr_delay color_dark t_align_c vc_child f_left m_right_3 tooltip_container relative"><i class="fa fa-heart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Wishlist</span></button>
-                                                <button {{ ($itemflash->warehouse_product()->first()->qty == 0 )? 'disabled' :'' }} wire:click.prevent="store( {{$itemflash->warehouse_product()->first()->id}} , '{{$itemflash->name}}' , {{($itemflash->warehouse_product()->first()->special_price)?? $itemflash->warehouse_product()->first()->price_sale}}  )"  data-popup="#add_to_cart_popup" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="button_type_8 tr_all lbrown state_2 f_left color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-shopping-cart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Cart</span></button>
+                                                <button @if($itemflash->qty == 0 ) disabled @endif wire:click.prevent="addtowish( {{$itemflash->id}} , '{{$itemflash->name}}' ,  {{($itemflash->special_price)?? $itemflash->price_sale}} )"  class="button_type_8 grey state_2 tr_delay color_dark t_align_c vc_child f_left m_right_3 tooltip_container relative"><i class="fa fa-heart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Wishlist</span></button>
+                                                <button {{ ($itemflash->qty == 0 )? 'disabled' :'' }} wire:click.prevent="store( {{$itemflash->id}} , '{{$itemflash->name}}' , {{($itemflash->special_price)?? $itemflash->price_sale}}  )"  data-popup="#add_to_cart_popup" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="button_type_8 tr_all lbrown state_2 f_left color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-shopping-cart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Cart</span></button>
 
                                             </div>
 
@@ -152,10 +151,10 @@
                 </div>
             </div>
         </div>
-    @endempty
+    @endif
 
     <!--brands carousel-->
-    @empty(!$banner->where('type','brand'))
+    @if($banner->where('type','brand')->count() !=0)
         <div class="section_offset p_top_0 p_bottom_0 m_bottom_27">
             <section class="container m_bottom_10">
                 <div class="d_table m_bottom_5 w_full animated hidden" data-animation="fadeInDown">
@@ -209,10 +208,10 @@
                 </div>
             </section>
         </div>
-    @endempty
+    @endif
 
     <!--new products-->
-    @empty(!$newproduct)
+    @if($newproduct->count() !=0)
         <div wire:ignore class="section_offset p_bottom_0 m_bottom_27">
             <div class="container">
                 <div class="d_table m_bottom_5 w_full animated hidden" data-animation="fadeInDown">
@@ -273,7 +272,7 @@
                                                     </div>
                                                 {{-- <div class="">
                                                     @if ($itemnewprod->special_price)
-                                                        <s>{{$itemnewprod->warehouse_product()->first()->price_sale}}</s>
+                                                        <s>{{$itemnewprod->price_sale}}</s>
                                                     @endif
                                                         <b class="fs_large second_font scheme_color">{{($itemnewprod->warehouse_product()->first()->special_price)?? $itemnewprod->warehouse_product()->first()->price_sale}}</b>
                                                 </div> --}}
@@ -296,5 +295,5 @@
                 </div>
             </div>
         </div>
-    @endempty
+    @endif
 </div>

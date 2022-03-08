@@ -62,6 +62,7 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ URL::asset('assets/dist/js/pages/dashboard.js') }}"></script> --}}
 @yield('js')
+@stack('scripts')
 @livewireScripts
 <script>
     var Toast = Swal.mixin({
@@ -70,15 +71,15 @@
        showConfirmButton: false,
        timer: 3000
      });
- window.addEventListener('closeModal', event=> {
- $('#modal-create').modal('hide');
- $('#modal-delete').modal('hide');
- $('#modal-edit').modal('hide');
- })
- 
- window.addEventListener('Toast' , (e)=> {
-       Toast.fire({icon: (e.detail.ev),
-         title: (e.detail.msg)
+        window.addEventListener('closeModal', event=> {
+        $('#modal-create').modal('hide');
+        $('#modal-delete').modal('hide');
+        $('#modal-edit').modal('hide');
+        })
+
+        window.addEventListener('Toast' , (e)=> {
+            Toast.fire({icon: (e.detail.ev),
+                title: (e.detail.msg)
        });
      //   toastr.success( (e.detail.msg))
      })

@@ -59,10 +59,9 @@ class Home extends Component
             $q->where('category_id','like', '%'. $this->bycat . '%'); })->get();
 
             $banner = banner::get();
-
-            $newproduct = Warehouse_product::whereHas('product')->orderBy('id', 'desc')->take(10)->get();
-            $flashproduct = Product::whereHas('warehouse_product',function($q){
-                $q->where('special_enddate','!=' , null);})->orderBy('id', 'desc')->take(40)->get();
+            
+            $newproduct = Warehouse_product::whereHas('product')->latest()->limit(20)->get();
+            $flashproduct = Warehouse_product::whereHas('product')->where('special_enddate','!=' , null)->latest()->take(40)->get();
 
             return view('livewire.front.home',[
             'category' => $category,

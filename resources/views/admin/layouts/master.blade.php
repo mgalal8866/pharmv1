@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="@yield('link','/admin')"> @yield('page1','Dashbord')</a></li>
+              <li class="breadcrumb-item"><a href="@yield('link', '/admin/dashborad')"> @yield('page1','Dashborad')</a></li>
               <li class="breadcrumb-item active"> @yield('page2','Home')</li>
             </ol>
           </div><!-- /.col -->

@@ -54,7 +54,6 @@ public function register()
      $this->reset();
 
      $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'تم انشاء الحساب بنجاج . يرجى انتظار تاكيد البيانات و تفعيل الايميل']);
-    // toastr()->success('تم انشاء الحساب بنجاج . يرجى انتظار تاكيد البيانات و تفعيل الايميل', 'Alert',['timeOut' => 15000]);
 
 }
 

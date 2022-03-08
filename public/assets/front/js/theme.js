@@ -33,7 +33,7 @@
             this.events.openSearchForm();
             this.owlCarousel();
             this.simpleSlideshow();
-            this.events.contactForm();
+            // this.events.contactForm();
             this.events.newsletter();
             this.events.quantity();
             this.events.reset();
@@ -161,71 +161,71 @@
                 });
             },
 
-            contactForm: function() {
+            // contactForm: function() {
 
-                var cf = $('#contactform');
-                cf.append('<div class="message_container d_none m_top_20"></div>');
-                var message = cf.children('.message_container');
+            //     var cf = $('#contactform');
+            //     cf.append('<div class="message_container d_none m_top_20"></div>');
+            //     var message = cf.children('.message_container');
 
-                cf.on("submit", function(event) {
-                    event.preventDefault();
-                    if (message.hasClass('opened')) return;
-                    var self = $(this),
-                        text;
+            //     cf.on("submit", function(event) {
+            //         event.preventDefault();
+            //         if (message.hasClass('opened')) return;
+            //         var self = $(this),
+            //             text;
 
-                    var request = $.ajax({
-                        url: "php/mail.php",
-                        type: "post",
-                        data: self.serialize()
-                    });
+            //         var request = $.ajax({
+            //             url: "php/mail.php",
+            //             type: "post",
+            //             data: self.serialize()
+            //         });
 
-                    request.then(function(data) {
-                        if (data == "1") {
-                            message.addClass('opened');
-                            text = "Your message has been sent successfully!";
+            //         request.then(function(data) {
+            //             if (data == "1") {
+            //                 message.addClass('opened');
+            //                 text = "Your message has been sent successfully!";
 
-                            cf.find('input:not([type="submit"]),textarea').val('');
+            //                 cf.find('input:not([type="submit"]),textarea').val('');
 
-                            $('.message_container').html('<div class="alert_box r_corners color_green success"><p>' + text + '</p></div>')
-                                .delay(150)
-                                .slideDown(300)
-                                .delay(4000)
-                                .slideUp(300, function() {
-                                    $(this).html("");
-                                    message.removeClass('opened');
-                                });
+            //                 $('.message_container').html('<div class="alert_box r_corners color_green success"><p>' + text + '</p></div>')
+            //                     .delay(150)
+            //                     .slideDown(300)
+            //                     .delay(4000)
+            //                     .slideUp(300, function() {
+            //                         $(this).html("");
+            //                         message.removeClass('opened');
+            //                     });
 
-                        } else {
-                            message.addClass('opened');
-                            if (cf.find('textarea').val().length < 20) {
-                                text = "Message must contain at least 20 characters!"
-                            }
-                            if (cf.find('input').val() == "") {
-                                text = "All required fields must be filled!";
-                            }
-                            $('.message_container').html('<div class="alert_box error relative m_bottom_10 fw_light"><p>' + text + '</p></div>')
-                                .delay(150)
-                                .slideDown(300)
-                                .delay(4000)
-                                .slideUp(300, function() {
-                                    $(this).html("");
-                                    message.removeClass('opened');
-                                });
-                        }
-                    }, function() {
-                        message.addClass('opened');
-                        $('.message_container').html('<div class="alert_box error relative m_bottom_10 fw_light"><p>Connection to server failed!</p></div>')
-                            .delay(150)
-                            .slideDown(300)
-                            .delay(4000)
-                            .slideUp(300, function() {
-                                $(this).html("");
-                                message.removeClass('opened');
-                            });
-                    });
-                });
+            //             } else {
+            //                 message.addClass('opened');
+            //                 if (cf.find('textarea').val().length < 20) {
+            //                     text = "Message must contain at least 20 characters!"
+            //                 }
+            //                 if (cf.find('input').val() == "") {
+            //                     text = "All required fields must be filled!";
+            //                 }
+            //                 $('.message_container').html('<div class="alert_box error relative m_bottom_10 fw_light"><p>' + text + '</p></div>')
+            //                     .delay(150)
+            //                     .slideDown(300)
+            //                     .delay(4000)
+            //                     .slideUp(300, function() {
+            //                         $(this).html("");
+            //                         message.removeClass('opened');
+            //                     });
+            //             }
+            //         }, function() {
+            //             message.addClass('opened');
+            //             $('.message_container').html('<div class="alert_box error relative m_bottom_10 fw_light"><p>Connection to server failed!</p></div>')
+            //                 .delay(150)
+            //                 .slideDown(300)
+            //                 .delay(4000)
+            //                 .slideUp(300, function() {
+            //                     $(this).html("");
+            //                     message.removeClass('opened');
+            //                 });
+            //         });
+            //     });
 
-            },
+            // },
 
             newsletter: function() {
                 var subscribe = $('.newsletter');

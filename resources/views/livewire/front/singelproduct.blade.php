@@ -138,7 +138,7 @@
                 <hr class="divider_bg m_bottom_15">
                 <div class="row">
                     <!--carousel-->
-                    <div class="owl-carousel m_bottom_20 m_xs_bottom_0" data-nav="rp_" data-owl-carousel-options='{
+                    <div wire:ignore class="owl-carousel m_bottom_20 m_xs_bottom_0" data-nav="rp_" data-owl-carousel-options='{
                         "stagePadding" : 15,
                         "margin" : 30,
                         "responsive" : {
@@ -158,8 +158,8 @@
                         }'>
                         @foreach ( $productlikethis as $item )
                         <figure class="relative r_image_container c_image_container qv_container">
-                            <div class="relative m_bottom_15">
-                                <div>
+                            <div wire:ignore class="relative m_bottom_15">
+                                <div >
                                     <img class="c_image_1 tr_all" alt="" src="{{ $item->warehouse_product()->first()->image }}">
                                     <img class="c_image_2 tr_all" alt="" src="images/bestsellers_large_img_8.jpg">
                                 </div>

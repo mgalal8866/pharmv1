@@ -3,20 +3,29 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use App\Models\Unit;
-use Livewire\Component;
-use Facades\App\Helper\Helper;
-use App\Models\Category;
 use App\Models\Product;
+use Livewire\Component;
+use App\Models\Category;
 use App\Models\Warehouse;
 use Livewire\WithFileUploads;
+use Facades\App\Helper\Helper;
+use Illuminate\Support\Carbon;
 use phpDocumentor\Reflection\Types\Null_;
 
 class Createproduct extends Component
 {
     use WithFileUploads;
-    public $qty=0,$dismo=0.00,$dispres=0,$price_sale=0.00,$price_buy=0.00,$warehouse_id=null,$category_id=null,$unit_id=null,$description=null,$code=null,$name=null;
-    // public $images = [];
-    public $images ;
+    public $qty=0,$dismo=0.00,$dispres=false,$price_sale=0.00,$price_buy=0.00,
+    $warehouse_id=null,$category_id=null,$unit_id=null,$description=null,$code=null,$name=null;
+    public $datepk,$origin,$effective,$activesubstance;
+    public $inputFile ;
+
+    public function updated($propertyQty)
+    {
+        // $this->validateOnly($propertyName);
+        //   dd(     \Carbon\Carbon::parse($arr)->format('Y-m-d'));
+    }
+
     public function save()
     {
         $this->validate([
@@ -26,21 +35,18 @@ class Createproduct extends Component
             'unit_id' => 'required',
             'category_id' => 'required',
             'price_sale' => 'required',
-            'images.*' => 'image|max:1024', // 1MB Max
+            'inputFile.*' => 'image|max:2048', // 1MB Max
         ]);
 
-        // if(!empty($this->images)){
-        // foreach ($this->images as $key => $image) {
-        //     $this->images[$key] = uploadimages('product',$this->images);
-        // }
-        // $this->images = json_encode($this->images);
-        //  }
-        if(!empty($this->images)){
-         $this->images = uploadimages('product',$this->images);
+        $arr  = explode('-',$this->datepk);
+        if(!empty($this->inputFile)){
+         $this->inputFile = uploadimages('product',$this->inputFile);
         }
         $product = Product::create([
         'name' => $this->name,
-        'effective' => '$this->effective',
+        'origin' => $this->origin,
+        // 'company'=>
+        'effective' => $this->activesubstance,
         'description' => $this->description
         ]);
         $product->warehouse_product()->create([
@@ -51,12 +57,16 @@ class Createproduct extends Component
             'price_buy'	   => $this->price_buy,
             'unit_id'	   => $this->unit_id,
             'category_id'  => $this->category_id,
-            'image'        => (!empty($this->images))?$this->images:Null
+            'image'        => (!empty($this->inputFile))?$this->inputFile:Null,
+            'special_price' => ($this->dismo)??Null,
+            'special_type'=>  ($this->dispres ==false)?'fixed':'percentage',
+            'special_startdate'=> (Carbon::parse($arr[0])->format('Y-m-d'))??Null,
+            'special_enddate' =>(Carbon::parse($arr[1])->format('Y-m-d'))??Null,
         ]);
         $this->dispatchBrowserEvent('closeModal');
         $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
-
-        // Image::create(['image' => $this->images]);
+        $this->reset();
+        // Image::create(['image' => $this->inputFile]);
 
         // session()->flash('success', 'Images has been successfully Uploaded.');
 
