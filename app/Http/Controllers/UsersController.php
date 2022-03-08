@@ -88,24 +88,26 @@ class UsersController extends Controller
 
     public function logon(Request $request)
     {
-
                     $validator =  Validator::make($request->all(),[
                         'email' => 'required|email|exists:brandaccounts,email',
                         'password' => 'required|exists:brandaccounts,password',
-                    ],[
-                    'email.required' => 'مطلوب'  ,
-                    'password.exists' => 'الباسورد غير صحيح '
+                    ],
+                    [
+                        'email.required' => 'مطلوب'  ,
+                        'password.exists' => 'الباسورد غير صحيح '
                      ]);
 
                 if( Auth::guard('brandaccount')->attempt(['email' => $request->email,'password'=>$request->password,'is_active'=> 1],$request->remember_me)){
                     return redirect()->route('front');
                 }else{
-                    toastr()->error('الايميل غير مفعل يرجى التواصل مع الادارة', 'Alert',['timeOut' => 15000]);
-                    return redirect()->route('front');   }
 
                 if($validator->fails()){
-                return redirect()->back()->withErrors($validator)->withInput($request->all());
-                    }
+                    return redirect()->back()->withErrors($validator)->withInput($request->all());
+                }
+                    toastr()->error('الايميل غير مفعل يرجى التواصل مع الادارة', 'Alert',['timeOut' => 15000]);
+                    return redirect()->route('front');
+                }
+
 
     }
 

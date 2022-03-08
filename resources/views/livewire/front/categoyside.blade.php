@@ -6,9 +6,6 @@
             <h5 class="color_dark tt_uppercase second_font fw_light m_bottom_13">{{ __('tran.categories') }}</h5>
             <hr class="divider_bg m_bottom_23">
             <ul class="categories_list second_font w_break">
-
-
-
                 @foreach ( $category as $item )
                 <li class="relative">
                     {{-- wire:click="productbycategory('{{$item->slug}}')" --}}

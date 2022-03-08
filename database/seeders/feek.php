@@ -17,7 +17,7 @@ class feek extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach(range(1,2) as $index){
+        foreach(range(1,50) as $index){
             $pro = Product::create([
                 'name'=> $faker->name,
                 'slug' => Str::slug($faker->sentence(2)),
@@ -26,7 +26,7 @@ class feek extends Seeder
                 'effective' => $faker->sentence(2),
                 'description' => $faker->sentence(9),
             ]);
-            foreach(range(1,2) as $index){
+            foreach(range(1,1) as $index){
             $pro->warehouse_product()->create([
                 'warehouse_id' => 1,
                 'category_id' => 1,
