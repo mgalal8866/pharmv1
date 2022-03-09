@@ -3,17 +3,6 @@
     <div  class="page_section_offset p_top_0">
         <div class="container ">
 
-            <select wire:model="pagesize">
-                <option value="20">95</option>
-                <option value="50">8</option>
-                <option value="7">7</option>
-                <option value="6">6</option>
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1</option>
-            </select>
             <div class="row">
 
                 @include('livewire.front.categoyside')
@@ -79,18 +68,25 @@
                  <div   class="d_table w_full m_bottom_5">
                         <div class="col-lg-6 col-md-6 col-sm-6 d_xs_block v_align_m d_table_cell f_none fs_medium color_light fw_light m_xs_bottom_5">
                             <div class="d_inline_m m_right_5">Sort by:</div>
-                            <div class="styled_select relative d_inline_m m_right_2">
+                            {{-- <div class="styled_select relative d_inline_m m_right_2"> --}}
 
                                 <div class="select_title type_3 fs_medium fw_light color_light relative d_none tr_all">Product name</div>
                                 <select wire:model="sortmin">
-                                        <option value="Min Price">Min Price</option>
+                                        <option selected value="Min Price">Min Price</option>
                                         <option value="Max Price">Max Price</option>
                                         <option value="The most recent">The most recent</option>
                                         <option value="The Oldest">The Oldest</option>
                                 </select>
-                                <ul class="options_list d_none tr_all hidden bg_grey_light_2"></ul>
-                            </div>
-                            <button class="button_type_4 grey state_2 tr_all second_font tt_uppercase vc_child black_hover"><i class="fa fa-sort-amount-asc d_inline_m m_top_0"></i></button>
+                                <div class="d_inline_m m_right_8">Show:</div>
+                                     <select wire:model="pagesize">
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                {{-- <ul class="options_list d_none tr_all hidden bg_grey_light_2"></ul> --}}
+                            {{-- </div> --}}
+                            {{-- <button class="button_type_4 grey state_2 tr_all second_font tt_uppercase vc_child black_hover"><i class="fa fa-sort-amount-asc d_inline_m m_top_0"></i></button> --}}
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 d_xs_block v_align_m d_table_cell f_none t_align_r t_xs_align_l p_xs_left_0">
                             <p class="fw_light fs_medium d_inline_m m_right_5 color_light">View as:</p>
@@ -102,38 +98,18 @@
                  </div>
                     <hr class="divider_light m_bottom_5">
                     <div class="d_table w_full m_bottom_15">
-                        <div class="col-lg-6 col-md-6 col-sm-6 d_xs_block v_align_m d_table_cell f_none fs_medium color_light fw_light m_xs_bottom_5">
+                        {{-- <div class="col-lg-6 col-md-6 col-sm-6 d_xs_block v_align_m d_table_cell f_none fs_medium color_light fw_light m_xs_bottom_5">
                             <div class="d_inline_m m_right_17">Results 1 - 5 of 45</div>
-                            <div class="d_inline_m m_right_8">Show:</div>
-                            <div class="styled_select relative d_inline_m">
-                                <div class="select_title type_2 fs_medium fw_light color_light relative d_none tr_all">9</div>
-                                <select wire:model="pagesize">
-                                    <option value="20">95</option>
-                                    <option value="50">8</option>
-                                    <option value="7">7</option>
-                                    <option value="6">6</option>
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-                                </select>
-                                <ul class="options_list d_none tr_all hidden bg_grey_light_2"></ul>
-                            </div>
-                        </div>
+
+                        </div> --}}
                         <div class="col-lg-6 col-md-6 col-sm-6 d_xs_block v_align_m d_table_cell f_none t_align_r t_xs_align_l p_xs_left_0">
                             <!--pagination-->
-                            <nav class="d_inline_b">
-                                <ul class="hr_list">
-                                    <li class="m_right_3"><a href="#" class="button_type_4 tr_delay grey state_2 d_block vc_child t_align_c fs_ex_small"><i class="fa fa-angle-left d_inline_m"></i></a></li>
-                                    <li class="m_right_3"><a href="#" class="button_type_4 tr_delay grey state_2 d_block vc_child t_align_c border_black"><span class="d_inline_m fs_small">1</span></a></li>
-                                    <li class="m_right_3"><a href="#" class="button_type_4 tr_delay grey state_2 d_block vc_child t_align_c"><span class="d_inline_m fs_small">2</span></a></li>
-                                    <li class="m_right_3"><a href="#" class="button_type_4 tr_delay grey state_2 d_block vc_child t_align_c"><span class="d_inline_m fs_small">3</span></a></li>
-                                    <li class="m_right_3"><a href="#" class="button_type_4 tr_delay grey state_2 d_block vc_child t_align_c fs_ex_small"><i class="fa fa-angle-right d_inline_m"></i></a></li>
-                                </ul>
-                            </nav>
+
+                                {!! $product->links('livewire.pag') !!}
+
                         </div>
                     </div>
+                    <hr class="divider_light m_bottom_5">
                     <!--isotope-->
                     <div id="can_change_layout" class="category_isotope_container three_columns wrapper m_bottom_10 m_xs_bottom_0" data-isotope-options='{
                             "itemSelector": ".category_isotope_item",
@@ -167,7 +143,7 @@
                                                 <a class="fw_light color_light sc_hover">{{ $item->category->name }}</a>
                                             </div>
                                             <hr class="d_none divider_light m_bottom_15">
-                                            <p class="fw_light d_none m_bottom_14 color_grey">{{$item->description}}</p>
+                                            <p class="fw_light d_none m_bottom_14 color_grey">{{$item->product->description}}</p>
                                             <hr class="d_none divider_light m_bottom_15">
                                         </div>
                                         <div class="col-lg-5 col-md-5 color_light fs_large second_font t_align_r t_sm_align_c m_bottom_9">
@@ -190,10 +166,15 @@
                          @endforeach
 
                     </div>
-                    <hr class="m_bottom_5 divider_light">
-                    <div >
-                        {!! $product->links() !!}
+                    <hr class="divider_light m_bottom_5">
+                    <div class="d_table w_full m_bottom_15">
+                        <div class="col-lg-6 col-md-6 col-sm-6 d_xs_block v_align_m d_table_cell f_none t_align_r t_xs_align_l p_xs_left_0">
+                            <!--pagination-->
+                                {!! $product->links('livewire.pag') !!}
+                        </div>
                     </div>
+                    <hr class="divider_light m_bottom_5">
+
                 </main>
 
             </div>

@@ -133,14 +133,7 @@
                         </a>
                     </li>
                     <li class="nav-header">{{ __('tran.settings') }}</li>
-                    {{-- <li class="nav-item">
-                        <a href="{{route('setting.info') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{ __('tran.maininfo') }}
-                            </p>
-                        </a>
-                    </li> --}}
+
                     <li class="nav-item">
                         <a href="{{route('setting.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -149,7 +142,6 @@
                             </p>
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a href="{{route('dddddd') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -158,10 +150,6 @@
                             </p>
                         </a>
                     </li>
-
-
-
-
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

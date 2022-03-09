@@ -86,7 +86,7 @@
                                     }'>
                         <!--owl item-->
 
-                        @foreach ($flashproduct as $itemflash)
+                        @foreach ($flashproduct->where('special_enddate', '>',  date('Y-m-d')) as $itemflash)
                         <div class="animated hidden offer_wrap" data-animation="fadeInDown" data-animation-delay="500">
                             <!--product-->
                             <figure class="relative r_image_container c_image_container qv_container">
@@ -133,10 +133,8 @@
                                         <li>
 
                                            <div class="clearfix d_inline_b">
-
                                                 <button @if($itemflash->qty == 0 ) disabled @endif wire:click.prevent="addtowish( {{$itemflash->id}} , '{{$itemflash->name}}' ,  {{($itemflash->special_price)?? $itemflash->price_sale}} )"  class="button_type_8 grey state_2 tr_delay color_dark t_align_c vc_child f_left m_right_3 tooltip_container relative"><i class="fa fa-heart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Wishlist</span></button>
                                                 <button {{ ($itemflash->qty == 0 )? 'disabled' :'' }} wire:click.prevent="store( {{$itemflash->id}} , '{{$itemflash->name}}' , {{($itemflash->special_price)?? $itemflash->price_sale}}  )"  data-popup="#add_to_cart_popup" data-popup-transition-in="bounceInUp" data-popup-transition-out="bounceOutUp" class="button_type_8 tr_all lbrown state_2 f_left color_dark t_align_c vc_child tooltip_container relative"><i class="fa fa-shopping-cart fs_large d_inline_m"></i><span class="tooltip top fs_small color_white hidden animated" data-show="fadeInDown" data-hide="fadeOutUp">Add to Cart</span></button>
-
                                             </div>
 
                                         </li>

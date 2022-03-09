@@ -9,7 +9,7 @@
 			<div class="page_section_offset">
 				<div class="container">
 					<div class="row">
-                            <livewire:front.categoyside/>
+                            {{-- <livewire:front.categoyside/> --}}
 						<div class="col-lg-9 col-md-9 col-sm-9 m_bottom_30 m_xs_bottom_10">
 							{{-- <h2 class="fw_light second_font color_dark tt_uppercase m_bottom_27">Our Location</h2>
 							<div class="iframe_map_container m_bottom_38 m_xs_bottom_30">
