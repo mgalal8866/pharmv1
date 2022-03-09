@@ -111,17 +111,16 @@
                     </div>
                     <hr class="divider_light m_bottom_5">
                     <!--isotope-->
-                    <div id="can_change_layout" class="category_isotope_container three_columns wrapper m_bottom_10 m_xs_bottom_0" data-isotope-options='{
+                    <div id="can_change_layout" style="" class="category_isotope_container three_columns wrapper m_bottom_10 m_xs_bottom_0" data-isotope-options='{
                             "itemSelector": ".category_isotope_item",
-                              "layoutMode": "fitRows"
-                        }'>
+                              "layoutMode": "fitRows" }'>
                         <!--isotope item-->
                         {{-- <div data-instance="{{ $iteration }}"> --}}
 
 
                         {{-- </div> --}}
                          @foreach ( $product as  $item)
-                        <div  class="category_isotope_item">
+                        <div  class="category_isotope_item" style="">
 
                             <figure    class="product_item type_2 c_image_container relative frame_container t_sm_align_c r_image_container qv_container">
                                 <!--image & buttons & label-->
@@ -150,7 +149,6 @@
                                             @if ($item->special_price)
                                                 <s>{{$item->price_sale}}</s>
                                             @endif
-
                                                  <b class="scheme_color d_block">{{($item->special_price)?? $item->price_sale}}</b>
                                         </div>
                                     </div>
@@ -183,7 +181,29 @@
     </section>
 </div>
 
-{{--
-@push('scripts')
 
-@endpush --}}
+@push('scripts')
+<script>
+$(function () {
+
+    var url = window.location;
+
+    $('ul.main_menu a').filter(function () {
+        return this.href == url;
+    }).parents('li').addClass('current');
+
+         $('ul.categories_list a').filter(function () {
+             return this.href == url;
+         }).addClass('fw_bold scheme_color bg_grey_light_2');
+
+
+         $('ul.d_none a').filter(function () {
+             return this.href == url;
+         }).parentsUntil(".categories_list > .d_none")
+             .css({'display': 'block'})
+             .addClass('button').prev('button')
+             .addClass('active').prev('a')
+             .addClass('active');
+   });
+</script>
+@endpush

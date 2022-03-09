@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front;
 
 use App\Models\Product;
+use App\Models\Warehouse_product;
 use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -37,10 +38,10 @@ class Singelproduct extends Component
     public function render()
     {
 
-                $product = Product::where('slug',$this->slug)->with('warehouse_product')->first();
+                $product = Warehouse_product::whereHas('product', function($q){
+                    $q->where('slug',$this->slug); })->first();
                $this->product =  $product;
-                $productlikethis = Product::whereHas('warehouse_product', function($q){
-                    $q->where('category_id', $this->product->warehouse_product()->first()->category_id); })->inRandomOrder()->take(4)->get();
+                $productlikethis = Warehouse_product::whereHas('product')->where('category_id', $this->product->category_id)->inRandomOrder()->take(4)->get();
 
         return view('livewire.front.singelproduct',['product'=> $product,'productlikethis'=> $productlikethis])->layout('front.layout.master');
     }

@@ -38,27 +38,13 @@
             </div> --}}
 
             <!-- Sidebar Menu -->
+
+
+
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    {{-- @can('menuproduct') --}}
                     <li class="nav-header">{{ __('tran.products') }}</li>
-                    <li class="nav-item">
-                        <a href="{{route('viewcategory') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{ __('tran.categories') }}
-                                {{-- <span class="right badge badge-danger"> {{\App\models\category::count()}} </span> --}}
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('viewunit') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                {{__('tran.units')}}
-                                {{-- <span class="right badge badge-danger">{{\App\models\Unit::count()}}</span> --}}
-                            </p>
-                        </a>
-                    </li>
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -84,7 +70,32 @@
                             </li>
                         </ul>
                     </li>
+                    {{-- @endcan --}}
 
+                    {{-- @can('menucategory') --}}
+                    <li class="nav-item">
+                        <a href="{{route('viewcategory') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                {{ __('tran.categories') }}
+                                {{-- <span class="right badge badge-danger"> {{\App\models\category::count()}} </span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    {{-- @endcan --}}
+                    {{-- @can('menuunit') --}}
+                    <li class="nav-item">
+                        <a href="{{route('viewunit') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                {{__('tran.units')}}
+                                {{-- <span class="right badge badge-danger">{{\App\models\Unit::count()}}</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    {{-- @endcan --}}
+
+                    {{-- @can('menuorder') --}}
                     <li class="nav-item">
                         <a href="{{route('orders.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -94,6 +105,8 @@
                             </p>
                         </a>
                     </li>
+                    {{-- @endcan
+                    @can('menuwarehouse') --}}
                     <li class="nav-header">{{ __('tran.warehouse') }}</li>
                     <li class="nav-item">
                         <a href="{{route('viewwarehouses') }}" class="nav-link">
@@ -104,6 +117,8 @@
                             </p>
                         </a>
                     </li>
+                    {{-- @endcan
+                    @can('menuaccount') --}}
                     <li class="nav-header">{{ __('tran.accounts') }}</li>
                     <li class="nav-item">
                         <a href="{{route('users.view') }}" class="nav-link">
@@ -114,6 +129,8 @@
                             </p>
                         </a>
                     </li>
+                    {{-- @endcan
+                    @can('menubrand') --}}
                     <li class="nav-item">
                         <a href="{{route('brand.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -123,6 +140,8 @@
                             </p>
                         </a>
                     </li>
+                    {{-- @endcan
+                    @can('menuroles') --}}
                     <li class="nav-item">
                         <a href="{{route('roles.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -132,6 +151,8 @@
                             </p>
                         </a>
                     </li>
+                    {{-- @endcan
+                    @can('menusetting') --}}
                     <li class="nav-header">{{ __('tran.settings') }}</li>
 
                     <li class="nav-item">
@@ -150,6 +171,8 @@
                             </p>
                         </a>
                     </li>
+                    {{-- @endcan --}}
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

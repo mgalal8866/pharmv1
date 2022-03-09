@@ -146,8 +146,6 @@
                     },
                     create: function(event, ui) {
                         var $this = $(this);
-
-
                         $this.next().children('.range_min').val("$" + $this.slider("values", 0))
                             .next().val("$" + $this.slider("values", 1));
                         $this.attr({
@@ -158,37 +156,7 @@
 
                     }
                   });
-                //   slid.slider.on('update',function(value){
-
-
-                //   })
     });
 
-
-        //  var slid = document.getElementsByClassName('range_slider');
-
-
-        // slid.slider({
-        //             range: true,
-        //             min: 0,
-        //             max: 5400,
-        //             values: [0, 5250],
-        //             slide: function(event, ui) {
-        //                 $(this).next().children('.range_min').val("$" + ui.values[0])
-        //                     .next().val("$" + ui.values[1]);
-        //             },
-        //             create: function(event, ui) {
-        //                 var $this = $(this);
-        //                 $this.next().children('.range_min').val("$" + $this.slider("values", 0))
-        //                     .next().val("$" + $this.slider("values", 1));
-        //                 $this.attr({
-        //                     'data-first-value': $this.slider("values", 0),
-        //                     'data-second-value': $this.slider("values", 1)
-        //                 });
-        //             }
-        //         });
-
-
-            //  });
              </script>
 @endpush

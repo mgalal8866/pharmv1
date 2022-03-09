@@ -256,20 +256,20 @@
                                     <li>Color: <span class="color_dark">Red</span></li> --}}
                                 </ul>
                             </td>
-                            <td data-cell-title="SKU">{{$item->model->warehouse_product()->first()->code}}</td>
+                            <td data-cell-title="SKU">{{$item->model->code}}</td>
                             <td data-cell-title="Price" class="fs_large">
-                                @if ($item->model->warehouse_product()->first()->special_price)
-                                <s class="color_light">{{ $item->model->warehouse_product()->first()->price_sale}}</s>
+                                @if ($item->model->special_price)
+                                <s class="color_light">{{ $item->model->price_sale}}</s>
                                 <br>
                                 @endif
 
-                                <span class="color_dark">{{($item->model->warehouse_product()->first()->special_price)?? $item->model->warehouse_product()->first()->price_sale}}</span>
+                                <span class="color_dark">{{($item->model->special_price)?? $item->model->price_sale}}</span>
 
 
 
                             </td>
                             <td data-cell-title="Qty">{{$item->qty}}</td>
-                            <td data-cell-title="Total" class="fs_large"><span class="color_dark">{{$item->qty * ( ($item->model->warehouse_product()->first()->special_price)??$item->model->warehouse_product()->first()->price_sale) }}</span></td>
+                            <td data-cell-title="Total" class="fs_large"><span class="color_dark">{{$item->qty * ( ($item->model->special_price)??$item->model->price_sale) }}</span></td>
                         </tr>
                         @endforeach
                         @else
