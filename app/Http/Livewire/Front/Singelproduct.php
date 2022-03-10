@@ -9,6 +9,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class Singelproduct extends Component
 {
+    
     public $slug,$product;
      public array $qty = [];
     public function mount($slug){

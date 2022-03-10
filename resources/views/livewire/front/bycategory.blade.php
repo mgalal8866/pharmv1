@@ -1,3 +1,6 @@
+@push('csss')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
 <div>
     <section class="section_offset">
     <div  class="page_section_offset p_top_0">

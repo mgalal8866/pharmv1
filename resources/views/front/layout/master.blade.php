@@ -5,9 +5,11 @@
     <!--add responsive layout support-->
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!--meta info-->
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
+  @stack('csss')
   @include('front.layout.head')
   @livewireStyles
 </head>
