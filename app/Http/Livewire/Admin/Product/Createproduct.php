@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Product;
 
+use App\Models\attribute_values;
 use App\Models\Unit;
 use App\Models\Product;
 use Livewire\Component;
@@ -24,28 +25,29 @@ class Createproduct extends Component
     public $attr;
     public $inputs=[];
     public $attribute_arr=[],$attribute_values;
+
 public function add(){
-    if(!in_array($this->attr,$this->attribute_arr))
-    {
-        array_push($this->inputs, $this->attr);
-        array_push($this->attribute_arr,$this->attr);
+    if($this->attr != 0){
+        if(!in_array($this->attr,$this->attribute_arr))
+        {
+            array_push($this->inputs, $this->attr);
+            array_push($this->attribute_arr,$this->attr);
+        }
     }
 }
- public function remove($attrr){
-    //
+public function remove($attrr){
     unset($this->inputs[$attrr]);
     unset($this->attribute_arr[$attrr]);
-
 }
-   public function updated($propertyQty)
-    {
+public function updated($propertyQty)
+{
         // $this->validateOnly($propertyName);
         //   dd(     \Carbon\Carbon::parse($arr)->format('Y-m-d'));
-    }
+}
 
-    public function save()
-    {
-        $this->validate([
+public function save()
+{
+  $this->validate([
             'name' => 'required|unique:products',
             'warehouse_id' => 'required',
             'qty' => 'required',
@@ -77,16 +79,26 @@ public function add(){
             'image'        => (!empty($this->inputFile))?$this->inputFile:Null,
             'special_price' => ($this->dismo)??Null,
             'special_type'=>  ($this->dispres ==false)?'fixed':'percentage',
-            'special_startdate'=> (Carbon::parse($arr[0])->format('Y-m-d'))??Null,
-            'special_enddate' =>(Carbon::parse($arr[1])->format('Y-m-d'))??Null,
+            'special_startdate'=> (Carbon::parse(($arr[0])??'')->format('Y-m-d'))??Null,
+            'special_enddate' =>(Carbon::parse(($arr[1])??'')->format('Y-m-d'))??Null,
         ]);
+
+        foreach($this->attribute_values as $key=>$attribute_value){
+            $avalues =explode(",",$attribute_value);
+            foreach($avalues as $avalue){
+                $attr_value = new attribute_values();
+                $attr_value->product_attribute_id =$key;
+                $attr_value->value = $avalue;
+                $attr_value->product_id =  $product->id;
+                $attr_value->save();
+            }
+        }
+
         $this->dispatchBrowserEvent('closeModal');
         $this->dispatchBrowserEvent('Toast',['ev' => 'success','msg' => 'Created '.$this->name.' Done']);
         $this->reset();
         // Image::create(['image' => $this->inputFile]);
-
         // session()->flash('success', 'Images has been successfully Uploaded.');
-
         // return redirect()->back();
     }
 

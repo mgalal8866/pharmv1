@@ -20,5 +20,9 @@ class Product extends Model
         {
             return $this->hasMany(Warehouse_product::class);
         }
+        public function attributevalues()
+        {
+            return $this->hasMany(attributevalues::class,'product_id');
+        }
 
 }

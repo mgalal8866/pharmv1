@@ -18,9 +18,9 @@ class PermissionTableseeder extends Seeder
 //************* UNIT*************************** */
             'menu unit',
             'view unit',
-            'newunit',
-            'editunit',
-            'deleteunit',
+            'new unit',
+            'edit unit',
+            'delete unit',
 //************* CATEGORY*************************** */
             'menu category',
             'view category',
@@ -54,7 +54,7 @@ class PermissionTableseeder extends Seeder
             'view admin',
             'edit admin',
             'delete admin',
-            
+
             'menu brand',
             'view brand',
 //********************Permission************************************ */

@@ -35,7 +35,9 @@ use App\Http\Livewire\Admin\Product\Viewproduct;
 use App\Http\Livewire\Admin\Category\Viewcategory;
 use App\Http\Livewire\Admin\Product\Createproduct;
 use App\Http\Livewire\Admin\Order\Viewdetailsorder;
+use App\Http\Livewire\Admin\Product\Editproduct;
 use App\Http\Livewire\Admin\Setting\Info;
+use App\Http\Livewire\Admin\Unit\Editunit;
 use App\Http\Livewire\Admin\Warehouse\Viewwarehouse;
 use App\Http\Livewire\Front\Signup;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -89,7 +91,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
             Route::get('/view_category',Viewcategory::class)->name('viewcategory')->middleware(['permission:view category']);
             //***********************  end Category***********************************//
             //***********************  Start UNITS***********************************//
-            Route::get('/warehouses',Viewwarehouse::class)->name('viewwarehouses')->middleware(['permission:view warehouses']);
+            Route::get('/warehouses',Viewwarehouse::class)->name('viewwarehouses')->middleware(['permission:view warehouse']);
             //***********************  end UNITS***********************************//
             //***********************  Start USERS***********************************//
             Route::get('/users',Viewusers::class)->name('users.view')->middleware(['permission:view admin']);
@@ -101,6 +103,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
             //***********************  Start Products***********************************//
             Route::get('/products',Viewproduct::class)->name('product.view')->middleware(['permission:view product']);
             Route::get('/product/create',Createproduct::class)->name('product.create')->middleware(['permission:new product']);
+            Route::get('/product/edit/{slug}',Editproduct::class)->name('product.edit')->middleware(['permission:edit product']);
             //***********************  end Products***********************************//
             //***********************  Start Order***********************************//
             Route::get('/orders',Vieworder::class)->name('orders.view')->middleware(['permission:view order']);

@@ -1,7 +1,10 @@
 <?php
 
 return [
-
+    'attribute' =>  ' Attribute ',
+    'attr'=> ' Attribute ',
+    'remove'=> ' Remove ',
+    'add' => 'Add',
     'properties'=>'Properties',
     'discount'=>'Discount',
     'brand'=>'Brand',
