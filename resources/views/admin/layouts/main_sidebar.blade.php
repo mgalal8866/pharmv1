@@ -43,7 +43,7 @@
 
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    {{-- @can('menuproduct') --}}
+                    @can('menu product')
                     <li class="nav-header">{{ __('tran.products') }}</li>
 
                     <li class="nav-item">
@@ -70,9 +70,9 @@
                             </li>
                         </ul>
                     </li>
-                    {{-- @endcan --}}
+                    @endcan
 
-                    {{-- @can('menucategory') --}}
+                    @can('menu category')
                     <li class="nav-item">
                         <a href="{{route('viewcategory') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -82,8 +82,8 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan --}}
-                    {{-- @can('menuunit') --}}
+                    @endcan
+                    @can('menu unit')
                     <li class="nav-item">
                         <a href="{{route('viewunit') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -93,9 +93,9 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan --}}
+                    @endcan
 
-                    {{-- @can('menuorder') --}}
+                    @can('menu order')
                     <li class="nav-item">
                         <a href="{{route('orders.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -105,8 +105,9 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan
-                    @can('menuwarehouse') --}}
+                    @endcan
+
+                    @can('menu warehouse')
                     <li class="nav-header">{{ __('tran.warehouse') }}</li>
                     <li class="nav-item">
                         <a href="{{route('viewwarehouses') }}" class="nav-link">
@@ -117,9 +118,11 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan
-                    @can('menuaccount') --}}
+                    @endcan
+
+                    @can('menu account')
                     <li class="nav-header">{{ __('tran.accounts') }}</li>
+                    @can('view admin')
                     <li class="nav-item">
                         <a href="{{route('users.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -129,8 +132,9 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan
-                    @can('menubrand') --}}
+                    @endcan
+                    @endcan
+                    @can('menu brand')
                     <li class="nav-item">
                         <a href="{{route('brand.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -140,8 +144,9 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan
-                    @can('menuroles') --}}
+                    @endcan
+
+                    @can('menu roles')
                     <li class="nav-item">
                         <a href="{{route('roles.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -151,10 +156,10 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan
-                    @can('menusetting') --}}
-                    <li class="nav-header">{{ __('tran.settings') }}</li>
+                    @endcan
 
+                    @can('menu setting')
+                    <li class="nav-header">{{ __('tran.settings') }}</li>
                     <li class="nav-item">
                         <a href="{{route('setting.view') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -171,7 +176,7 @@
                             </p>
                         </a>
                     </li>
-                    {{-- @endcan --}}
+                    @endcan
 
                 </ul>
             </nav>

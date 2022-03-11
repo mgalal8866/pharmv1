@@ -4,9 +4,9 @@
     @include('livewire.admin.unit.editunit')
     <div class="card">
         <div class="card-header" >
-              {{-- @can('newunit') --}}
+              @can('new unit')
             <button class="btn btn-success" data-toggle="modal" data-target="#modal-create">{{ __('tran.new') . __('tran.unit') }}</button>
-                {{-- @endcan --}}
+                @endcan
             <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" wire:model="searchtxt" class="form-control float-right" placeholder="Search">
@@ -38,12 +38,12 @@
                             <td>{{ $loop->index+1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td>
-                                {{-- @can('editunit') --}}
+                                @can('edit unit')
                                 <button class="btn btn-info  btn-sm"   data-toggle="modal" data-target="#modal-edit" wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
-                                {{-- @endcan --}}
-                                {{-- @can('delunit') --}}
+                                @endcan
+                                @can('delete unit')
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                         @endforeach
@@ -55,15 +55,7 @@
                         </tr>
                         @endif
                     </tbody>
-                    <tfoot>
-                        {{-- <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
-                        </tr> --}}
-                    </tfoot>
+
                 </table>
                 <div class="d-flex justify-content-center">
                     {!! $units->links() !!}

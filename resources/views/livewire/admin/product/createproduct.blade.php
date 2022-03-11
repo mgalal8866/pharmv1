@@ -90,11 +90,51 @@ New Product
 
               </div>
             </div>
+
+            <!-- /.card-body -->
+          </div>
+          <div class="card card-info">
+            <div class="card-header">
+              <h3 class="card-title">{{ __('tran.attribute') }}</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+
+                <div class="form-group">
+                    <label class="col-md-10" for="inputStatus">{{ __('tran.attr') }}</label>
+                   {{-- <div class="col-md-10"> --}}
+                        <select id="inputStatus" class="form-control @error('attr') is-invalid @enderror custom-select" wire:model='attr' >
+                        <option value="" selected>{{  __('tran.select'). __('tran.attribute') }}</option>
+                        @foreach ( $pattributes as $pattribute )
+                        <option value="{{ $pattribute->id }}">{{ $pattribute->name }}</option>
+                        @endforeach
+                        </select>
+                        @error('attr')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
+                   {{-- <div class="col-md-2"> --}}
+                    <button type="button" class="btn btn-info" wire:click.prevent='add'>{{__('tran.add')}}</button>
+                    {{-- </div> --}}
+                    {{-- </div> --}}
+
+                </div>
+                @foreach ($inputs as $key =>$value )
+                <div class="form-group">
+                    <label class="control-label">{{ $pattributes->where('id' , $inputs[$key] )->first()->name}}</label>
+                    <input type="text" placeholder="{{ $pattributes->where('id' , $inputs[$key])->first()->name }}"
+                    wire:model="attribute_values.{{$value}}" class="form-control">
+                    <button type="button"  class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">{{__('tran.remove')}}</button>
+                </div>
+                @endforeach
+
+            </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
-
         <div class="col-md-6">
           <div class="card card-secondary">
             <div class="card-header">

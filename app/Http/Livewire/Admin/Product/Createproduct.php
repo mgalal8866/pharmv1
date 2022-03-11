@@ -6,6 +6,7 @@ use App\Models\Unit;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\ProductAttribute;
 use App\Models\Warehouse;
 use Livewire\WithFileUploads;
 use Facades\App\Helper\Helper;
@@ -20,7 +21,23 @@ class Createproduct extends Component
     public $datepk,$origin,$effective,$activesubstance;
     public $inputFile ;
 
-    public function updated($propertyQty)
+    public $attr;
+    public $inputs=[];
+    public $attribute_arr=[],$attribute_values;
+public function add(){
+    if(!in_array($this->attr,$this->attribute_arr))
+    {
+        array_push($this->inputs, $this->attr);
+        array_push($this->attribute_arr,$this->attr);
+    }
+}
+ public function remove($attrr){
+    //
+    unset($this->inputs[$attrr]);
+    unset($this->attribute_arr[$attrr]);
+
+}
+   public function updated($propertyQty)
     {
         // $this->validateOnly($propertyName);
         //   dd(     \Carbon\Carbon::parse($arr)->format('Y-m-d'));
@@ -81,6 +98,7 @@ class Createproduct extends Component
         $units = Unit::all();
         $warehouse = Warehouse::all();
         $catrgory = Category::all();
-        return view('livewire.admin.product.createproduct',['units'=>$units , 'category'=>$catrgory,'warehouse'=>$warehouse])->layout('admin.layouts.master');
+        $pattributes  = ProductAttribute::all();
+        return view('livewire.admin.product.createproduct',['pattributes'=> $pattributes,'units'=>$units , 'category'=>$catrgory,'warehouse'=>$warehouse])->layout('admin.layouts.master');
     }
 }

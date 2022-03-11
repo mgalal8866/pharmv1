@@ -4,9 +4,9 @@
     @include('livewire.admin.roles.editroles')
     <div class="card">
         <div class="card-header" >
-            {{-- @can('newrole') --}}
+            @can('new role')
               <button class="btn btn-success" data-toggle="modal" data-target="#modal-create">{{ __('tran.new') . __('tran.role') }}</button>
-            {{-- @endcan --}}
+            @endcan
             <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" wire:model="searchtxt" class="form-control float-right" placeholder="Search">
@@ -48,12 +48,13 @@
                             </td>
                             <td>{{ $item->created_at }}</td>
                             <td>
-                                {{-- @can('editrole') --}}
+                                @can('edit role')
                                 <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->id }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
-                                {{-- @endcan --}}
-                                {{-- @can('delrole') --}}
+                                @endcan
+                                
+                                @can('delete role')
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->id }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                         @endforeach

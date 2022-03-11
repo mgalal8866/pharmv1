@@ -56,12 +56,12 @@
                             </td> --}}
                             <td>{{ $item->created_at }}</td>
                             <td>
-                                {{-- @can('edituser') --}}
+                                @can('edit admin')
                                 <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->id }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
-                                {{-- @endcan --}}
-                                {{-- @can('deluser') --}}
+                                @endcan
+                                @can('delete admin')
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->id }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                         @endforeach

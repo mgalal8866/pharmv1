@@ -4,9 +4,9 @@
     @include('livewire.admin.category.editcategory')
     <div class="card">
         <div class="card-header" >
-            {{-- @can('newcategory') --}}
+            @can('new category')
               <button class="btn btn-success" data-toggle="modal" data-target="#modal-create">{{ __('tran.new') . __('tran.category') }}</button>
-            {{-- @endcan --}}
+            @endcan
             <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" wire:model="searchtxt" class="form-control float-right" placeholder="Search">
@@ -47,12 +47,12 @@
                                 @endif
                             </td>
                             <td>
-                                {{-- @can('editcategory') --}}
+                                @can('edit category')
                                 <button class="btn btn-info  btn-sm"  data-toggle="modal" data-target="#modal-edit"  wire:click="edit('{{ $item->slug }}','{{ ($categorys->where('id',$item->parent_id)->first()->slug)??null }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
-                                {{-- @endcan --}}
-                                {{-- @can('delcategory') --}}
+                                @endcan
+                                @can('delete category')
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                         @endforeach
@@ -65,15 +65,6 @@
                         @endif
 
                     </tbody>
-                    <tfoot>
-                        {{-- <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
-                        </tr> --}}
-                    </tfoot>
                 </table>
                 <div class="d-flex justify-content-center">
                     {!! $categorys->links() !!}
@@ -96,26 +87,5 @@
 <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-  <!-- Page specific script -->
-    <script>
-        $(function() {
-            // $("#example1").DataTable({
-            //     "responsive": true,
-            //     "lengthChange": false,
-            //     "autoWidth": false,
-            //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-            // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            // $('#example1').DataTable({
-            //     "paging": false,
-            //     "lengthChange": false,
-            //     "searching": false,
-            //     "ordering": true,
-            //     "info": false,
-            //     "autoWidth": false,
-            //     "responsive": true,
-            //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-            // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-    </script>
-    @endpush
+ @endpush
 </div>

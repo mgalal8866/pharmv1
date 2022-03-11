@@ -15,71 +15,62 @@ class PermissionTableseeder extends Seeder
     public function run()
     {
         $permissions =[
-            'المستخدمين',
-            'قائمة المستخدمين',
-            'اضافة مستخدم',
-            'تعديل مستخدم',
-            'حذف مستخدم',
-            'صلاحيات المستخدمين',
-
-            'عرض صلاحية',
-            'اضافة صلاحية',
-            'تعديل صلاحية',
-            'حذف صلاحية',
-
-
-            'الوحدات',
-            'اضافه وحده',
-            'حذف وحده',
-            'تعديل وحده',
-            'تغير حاله وحده',
-
-            'الاقسام',
-            'اضافه قسم',
-            'حذف قسم',
-            'تعديل قسم',
-            'تغير حاله قسم',
-
-            'المنتجات',
-            'اضافه منتج',
-            'تعديل منتج',
-            'حذف منتج',
-            'تغير حاله منتج',
-
-            'العملاء',
-            'اضافه عميل',
-            'عرض العملاء',
-            'تعديل عميل',
-            'حذف عميل',
-            'تغير حاله عميل',
-
-            'الطلبات',
-            'عرض الطلب',
-
-            'الاشعارات',
-            'ارسال اشعار',
-
-            'قائمه الاعدادات',
-            'الاعدادات',
-            'تعديل الاعدادات',
-
 //************* UNIT*************************** */
-            'viewunit',
+            'menu unit',
+            'view unit',
             'newunit',
             'editunit',
             'deleteunit',
 //************* CATEGORY*************************** */
-            'viewcategory',
-            'newcategory',
-            'editcategory',
-            'deletecategory',
+            'menu category',
+            'view category',
+            'new category',
+            'edit category',
+            'delete category',
 //************* WAREHOUSE*************************** */
-            'viewwarehouse',
-            'newwarehouse',
-            'editwarehouse',
-            'deletewarehouse',
+            'menu warehouse',
+            'view warehouse',
+            'new warehouse',
+            'edit warehouse',
+            'delete warehouse',
+//********************Order******************************* */
+            'menu order',
+            'view order',
+            'view details order',
+//*******************Product****************************** */
+            'menu product',
+            'view product',
+            'edit product',
+            'delete product',
+            'new product',
+//*******************Setting****************************** */
+            'menu setting',
+            'view setting',
+            'new setting',
+            'delete setting',
+
+//********************Users************************************ */
+            'menu account',
+            'view admin',
+            'edit admin',
+            'delete admin',
+            
+            'menu brand',
+            'view brand',
+//********************Permission************************************ */
+            'new permission',
+            'edit permission',
+            'delete permission',
+
+//********************Roles************************************ */
+
+            'menu roles',
+            'view roles',
+            'new roles',
+            'delete roles'
+
         ];
-        
+
         foreach ($permissions as $permission)
         {
             Permission::create(['guard_name' => 'web','name'=> $permission]);

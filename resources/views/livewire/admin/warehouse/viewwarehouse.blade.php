@@ -1,12 +1,18 @@
 <div>
+    @can('new warehouse')
     @include('livewire.admin.warehouse.createwarehouse')
+    @endcan
+    @can('edit warehouse')
     @include('livewire.admin.warehouse.deletewarehouse')
+    @endcan
+    @can('delete warehouse')
     @include('livewire.admin.warehouse.editwarehouse')
+    @endcan
     <div class="card">
         <div class="card-header" >
-              {{-- @can('newwarehouse') --}}
+              @can('new warehouse')
             <button class="btn btn-success" data-toggle="modal" data-target="#modal-create">{{ __('tran.new') . __('tran.warehouse') }}</button>
-                {{-- @endcan --}}
+                @endcan
             <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" wire:model="searchtxt" class="form-control float-right" placeholder="Search">
@@ -42,12 +48,12 @@
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->address }}</td>
                             <td>
-                                {{-- @can('editwarehouse') --}}
+                                @can('edit warehouse')
                                 <button class="btn btn-info  btn-sm"   data-toggle="modal" data-target="#modal-edit" wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
-                                {{-- @endcan --}}
-                                {{-- @can('delwarehouse') --}}
+                                @endcan
+                                @can('delete warehouse')
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                         @endforeach

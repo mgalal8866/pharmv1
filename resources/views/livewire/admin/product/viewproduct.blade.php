@@ -4,9 +4,9 @@
     @include('livewire.admin.product.editproduct')
     <div class="card">
         <div class="card-header" >
-              {{-- @can('newproduct') --}}
+              {{-- @can('new product')
             <button class="btn btn-success" data-toggle="modal" data-target="#modal-create">{{ __('tran.new') . __('tran.product') }}</button>
-                {{-- @endcan --}}
+              @endcan --}}
             <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" wire:model="searchtxt" class="form-control float-right" placeholder="Search">
@@ -76,12 +76,12 @@
                             <td>{{ $item->warehouse_product()->first()->unit->name }}</td>
                             <td>{{ $item->warehouse_product()->first()->category->name }}</td>
                             <td>
-                                {{-- @can('editproduct') --}}
+                                @can('edit product')
                                 <button class="btn btn-info  btn-sm"   data-toggle="modal" data-target="#modal-edit" wire:click="edit('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
-                                {{-- @endcan --}}
-                                {{-- @can('delproduct') --}}
+                                @endcan
+                                @can('delete product')
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                         @endforeach

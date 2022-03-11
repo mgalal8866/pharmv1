@@ -83,33 +83,33 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
             Route::get('file-import-export', [DashbordController::class, 'fileImportExport'])->name('dddddd');
             Route::post('file-import', [DashbordController::class, 'fileImport'])->name('file-import');
                      //***********************  Start Unit***********************************//
-            Route::get('/view_unit',Viewunit::class)->name('viewunit')->middleware(['permission:view unit','permission:viewproduct']);
+            Route::get('/view_unit',Viewunit::class)->name('viewunit')->middleware(['permission:view unit']);
             //***********************  end Unit***********************************//
             //***********************  Start Category***********************************//
-            Route::get('/view_category',Viewcategory::class)->name('viewcategory')->middleware(['permission:view product','permission:viewproduct']);
+            Route::get('/view_category',Viewcategory::class)->name('viewcategory')->middleware(['permission:view category']);
             //***********************  end Category***********************************//
             //***********************  Start UNITS***********************************//
-            Route::get('/warehouses',Viewwarehouse::class)->name('viewwarehouses')->middleware(['permission:view warehouses','permission:viewproduct']);
+            Route::get('/warehouses',Viewwarehouse::class)->name('viewwarehouses')->middleware(['permission:view warehouses']);
             //***********************  end UNITS***********************************//
             //***********************  Start USERS***********************************//
-            Route::get('/users',Viewusers::class)->name('users.view')->middleware(['permission:viewproduct','permission:viewproduct']);
-            Route::get('/brand/accounts',Brand::class)->name('brand.view')->middleware(['permission:viewproduct','permission:viewproduct']);
+            Route::get('/users',Viewusers::class)->name('users.view')->middleware(['permission:view admin']);
+            Route::get('/brand/accounts',Brand::class)->name('brand.view')->middleware(['permission:view brand']);
             //***********************  end USERS***********************************//
             //***********************  Start Roles***********************************//
-            Route::get('/roles',Viewroles::class)->name('roles.view')->middleware(['permission:viewproduct','permission:viewproduct']);
+            Route::get('/roles',Viewroles::class)->name('roles.view')->middleware(['permission:view roles']);
             //***********************  end Roles***********************************//
             //***********************  Start Products***********************************//
-            Route::get('/products',Viewproduct::class)->name('product.view')->middleware(['permission:viewproduct','permission:viewproduct']);
-            Route::get('/product/create',Createproduct::class)->name('product.create')->middleware(['permission:viewproduct','permission:viewproduct']);
+            Route::get('/products',Viewproduct::class)->name('product.view')->middleware(['permission:view product']);
+            Route::get('/product/create',Createproduct::class)->name('product.create')->middleware(['permission:new product']);
             //***********************  end Products***********************************//
             //***********************  Start Order***********************************//
-            Route::get('/orders',Vieworder::class)->name('orders.view')->middleware(['permission:viewproduct','permission:viewproduct']);
-            Route::get('/order/detailsorder/{ordernumber}',Viewdetailsorder::class)->name('detailsorder.view')->middleware(['permission:viewproduct','permission:viewproduct']);
+            Route::get('/orders',Vieworder::class)->name('orders.view')->middleware(['permission:view order']);
+            Route::get('/order/detailsorder/{ordernumber}',Viewdetailsorder::class)->name('detailsorder.view')->middleware(['permission:view details order']);
             //***********************  end Order***********************************//
-            Route::get('/unit/create',CreateUnit::class)->middleware(['permission:viewproduct','permission:viewproduct']);
+            Route::get('/unit/create',CreateUnit::class)->middleware(['permission:new unit']);
             Route::get('/dashborad',[DashbordController::class,'index'])->name('dashborad');
             Route::get('/getusers',[UserController::class,'index']);
-            Route::get('/setting',Setting::class)->name('setting.view')->middleware(['permission:viewproduct','permission:viewproduct']);
+            Route::get('/setting',Setting::class)->name('setting.view')->middleware(['permission:view setting']);
 
             // Route::get('/setting/info',Info::class)->name('setting.info');
 

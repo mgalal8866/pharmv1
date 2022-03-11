@@ -45,10 +45,10 @@
                             <td>{{ $item->order_details()->count() }}</td>
                             <td>{{ $item->order_details()->sum('total') }}</td>
                             <td>
-                                {{-- @can('editorder') --}}
+                                @can('view details order')
                                 <a href="{{ route('detailsorder.view',['ordernumber' => $item->numberorder]) }}" class="btn btn-info  btn-sm"
                                 ><i class="fas fa-pencil-alt"></i>{{ __('tran.view') }}</a>
-                                {{-- @endcan --}}
+                                @endcan
                                 {{-- @can('delorder') --}}
                                 {{-- <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button> --}}
                                 {{-- @endcan --}}
