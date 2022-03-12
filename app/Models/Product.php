@@ -22,7 +22,7 @@ class Product extends Model
         }
         public function attributevalues()
         {
-            return $this->hasMany(attributevalues::class,'product_id');
+            return $this->hasMany(attribute_values::class,'product_id');
         }
 
 }

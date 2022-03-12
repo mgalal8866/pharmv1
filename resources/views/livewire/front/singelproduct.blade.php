@@ -64,6 +64,11 @@
                                 <li class="m_bottom_3"><span class="project_list_title second_font d_inline_b">Active Substance:</span> <span class="color_dark fw_light">{{ $product->product->effective }}</span></li>
                                 <li class="m_bottom_3"><span class="project_list_title second_font d_inline_b">Availability:</span> <span class="scheme_color fw_light">in stock</span> <span class="fw_light">{{ $product->qty }}</span></li>
                                 <li class="m_bottom_3"><span class="project_list_title second_font d_inline_b">Product Code:</span> <span class="fw_light">{{ $product->code }}</span></li>
+                                @foreach ($product->product->attributevalues->where('product_id',$product->product_id)  as  $pav)
+                                <li class="m_bottom_3"><span class="project_list_title second_font d_inline_b">{{ $pav->productattribute->name  }} : </span>
+                                    <span class="fw_light">{{$pav->value}}</span>
+                                </li>
+                                @endforeach
                             </ul>
                             <hr class="divider_light m_bottom_15">
                             <p class="fw_light m_bottom_14 color_grey">{{ $product->product->description }}</p>
