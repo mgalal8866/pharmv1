@@ -1,8 +1,8 @@
 @section('page2')
-New Product
+Edit Product
 @stop
 @section('page')
-New Product
+Edit Product
 @stop
 <div>
    <form wire:submit.prevent="save"  enctype="multipart/form-data">

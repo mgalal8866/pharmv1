@@ -29,7 +29,9 @@ class Viewproduct extends Component
                 $this->slug = $slug;
 
             }
-
+            public function editroute($slug){
+                return  redirect()->route('product.edit',['slug'=>$slug]);
+            }
             public function edit($slug)
             {
                 $this->slug = $slug;

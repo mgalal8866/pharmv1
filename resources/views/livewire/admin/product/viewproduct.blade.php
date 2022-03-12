@@ -77,7 +77,7 @@
                             <td>{{ $item->warehouse_product()->first()->category->name }}</td>
                             <td>
                                 @can('edit product')
-                                <button class="btn btn-info  btn-sm"  wire:click.prevent="{{ route('product.edit',['slug'=>$item->slug]) }}"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
+                                <button class="btn btn-info  btn-sm"  wire:click="editroute('{{ $item->slug }}')"><i class="fas fa-pencil-alt"></i>{{ __('tran.edit') }}</button>
                                 @endcan
                                 @can('delete product')
                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"  wire:click="view('{{ $item->slug }}')"><i class="fas fa-trash"></i> {{ __('tran.del') }} </button>
