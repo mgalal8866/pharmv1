@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
-    protected $table = 'Products';
+    protected $table = 'products';
     public $timestamps = true;
     protected $guarded = [];
     public function setNameAttribute($value)

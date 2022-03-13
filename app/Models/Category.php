@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
-    protected $table = 'Categorys';
+    protected $table = 'categorys';
     public $timestamps = true;
     protected $guarded = [];
 

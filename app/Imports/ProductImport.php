@@ -11,13 +11,10 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class ProductImport implements ToCollection, WithHeadingRow
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+
     public function collection(Collection  $rows)
     {
+        dd(' $rows->count()');
         foreach ($rows as $row ){
             dd( $row['اسم الصنف إنجليزي'],$row['المادة الفعالة'],$row['منشأ']);
                 $product = product::create([

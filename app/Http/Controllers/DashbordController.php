@@ -36,6 +36,7 @@ class DashbordController extends Controller
 
     public function fileImport(Request $request)
     {
+    //   dd($request->file('file')->store('temp'));
         Excel::import(new ProductImport, $request->file('file')->store('temp'));
         return back();
     }
