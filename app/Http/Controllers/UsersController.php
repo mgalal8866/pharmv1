@@ -90,11 +90,12 @@ class UsersController extends Controller
     {
                     $validator =  Validator::make($request->all(),[
                         'email' => 'required|email|exists:brandaccounts,email',
-                        'password' => 'required|exists:brandaccounts,password',
+                       'password' => 'required',//|exists:brandaccounts,password'
+
                     ],
                     [
                         'email.required' => 'مطلوب'  ,
-                        'password.exists' => 'الباسورد غير صحيح '
+                        'password.required' => 'الباسورد غير صحيح '
                      ]);
 
                 if( Auth::guard('brandaccount')->attempt(['email' => $request->email,'password'=>$request->password,'is_active'=> 1],$request->remember_me)){
@@ -102,10 +103,11 @@ class UsersController extends Controller
                 }else{
 
                 if($validator->fails()){
+
                     return redirect()->back()->withErrors($validator)->withInput($request->all());
                 }
                     toastr()->error('الايميل غير مفعل يرجى التواصل مع الادارة', 'Alert',['timeOut' => 15000]);
-                    return redirect()->route('front');
+                    return redirect()->route('front')->withInput($request->all());
                 }
 
 

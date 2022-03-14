@@ -1,42 +1,59 @@
+
 <div >
-    <form role="search" class="relative db_xs_centered button_in_input">
-        <input type="text" wire:model="query" name="" tabindex="1" placeholder="{{ __('tran.search') }}" class="fs_medium color_light fw_light w_full tr_all">
-        <button class="color_dark tr_all color_lbrown_hover"><i class="fa fa-search d_inline_m"></i></button>
-    </form>
-{{--
-    <div wire:loading class="absolute z-10 w-full bg-white rounded-t-none shadow-lg list-group">
-        <div class="list-item">Searching...</div>
-    </div> --}}
-    <div wire:loading class="absolute z-10 w-full bg-white rounded-t-none shadow-lg list-group">
-        <div class="list-item">Searching...</div>
+
+    <div class="search-header">
+        <form>
+            @csrf
+            <input  wire:model="query" class="text-right" placeholder=" بحث عن منتج">
+            <button class="color_dark tr_all color_lbrown_hover"><i class="fa fa-search d_inline_m"></i></button>
+            {{-- <button class=""><i class="uil uil-search"></i>اضغط للبحث</button> --}}
+        </form>
+        <div wire:loading style="position: relative;"   class="dropdown bg_grey_light  animated fadeInUp visible">
+            <div class="list-item">Searching...</div>
+        </div>
     </div>
+            @if(!empty($query))
+                <div style="position: relative;" class="dropdown bg_grey_light  animated fadeInUp visible">
+                        <div class="search-by-cat" >
+                            @foreach($products as  $contact)
+                            <div class="dvsearch">
+                                    <a href="#" class="single-cat">
+                                    {{-- <div class="icon"><img src="{{(isset($contact['product_image'][0]['image']))?$contact['product_image'][0]['image']:asset('assets/images/product/noimage.jpg')}}" alt=""></div> --}}
+                                    <div class="text">{{$contact['name']}}</div>
+                                    </a>
+                                <form wire:submit.prevent="store( {{$contact['id']}} , '{{$contact['name']}}' , {{$contact['price']}})" >
+                                    @csrf
+                                    <button class="btn btn-primary" type="submit"><i class="uil uil-shopping-cart-alt uil-lg"></i></button>
+                                </form>
 
-    @if(!empty($query))
-        <div class="fixed top-0 bottom-0 left-0 right-0" wire:click="reset"></div>
-
-        <div class="absolute z-10 w-full bg-white rounded-t-none shadow-lg list-group">
-            @if(!empty($products))
-                @foreach($products as  $contact)
-                    {{-- <a
-                        href="#"
-                        class="list-item {{ $highlightIndex === $i ? 'highlight' : '' }}"
-                    >{{ $contact->name}}</a> --}}
-                    <a href="#" class="list-item {{ $highlightIndex === $loop->index ? 'highlight' : '' }}" >
-                        {{ $contact->name }}</a>
-                @endforeach
-            @else
-                <div class="list-item">No results!</div>
-            @endif
-        </div>
-        <div class="px-4 mt-4">
-            {{-- {{$products->links()}} --}}
-        </div>
-    @endif
-
-
-
-
+                            </div>
+                            <hr>
+                            @endforeach
+                        </div>
+                        <center>
+                        <div>
+                            {!! $products->links('livewire.pag')  !!}
+                        </div>
+                    </center>
+                </div>
+             @endif
 </div>
 
 
 
+@push('scripts')
+{{-- <script>
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById('searchBar').style.top = '-50px';
+      } else {
+        document.getElementById('searchBar').style.top = '0';
+      }
+      prevScrollpos = currentScrollPos;
+    }
+    </script> --}}
+
+
+@endpush

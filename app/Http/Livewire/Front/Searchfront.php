@@ -62,7 +62,7 @@ class Searchfront extends Component
     public function render()
     {
         // $products = Product::whereHas('warehouse_product')->where('name','like', '%'. $this->txtsearch . '%')->orderBy('id','desc')->latest()->paginate(20);
-        $products = Product::whereHas('warehouse_product')->where('name','like', '%'. $this->query . '%')->orderBy('id','desc')->latest()->paginate(20);
+        $products = Product::whereHas('warehouse_product')->where('name','like', '%'. $this->query . '%')->orderBy('id','desc')->latest()->paginate(10);
 
         return view('livewire.front.searchfront',['products'=>$products]);
     }

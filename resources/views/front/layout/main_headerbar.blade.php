@@ -69,14 +69,14 @@
                                 <ul>
                                     <li class="m_bottom_15">
                                         <label for="email" class="second_font m_bottom_4 d_inline_b fs_medium">{{ __('tran.email') }}</label>
-                                        <input type="text" name="email" id="email" class="w_full tr_all"> @error('email')
+                                        <input type="text" name="email" id="email" placeholder="Enter Your Email" class="w_full tr_all"> @error('email')
                                         <span class="text-danger text-right" role="alert">
                                            *{{ $message }}
                                         </span> @enderror
                                     </li>
                                     <li class="m_bottom_20">
                                         <label for="password" class="second_font m_bottom_4 d_inline_b fs_medium">{{ __('tran.password') }}</label>
-                                        <input type="password" name="password" id="password" class="w_full tr_all"> @error('password')
+                                        <input type="password" name="password" id="password"  placeholder="Enter Your Password" class="w_full tr_all"> @error('password')
                                         <span class="text-danger text-right" role="alert">
                                            *{{ $message }}
                                         </span> @enderror

@@ -32,7 +32,6 @@
 @toastr_render
 	<script>
 
-
           window.addEventListener('Toast' , (e)=> {
             toastr.options.timeOut = 15000;
             toastr.success(e.detail.msg,'Alert');
